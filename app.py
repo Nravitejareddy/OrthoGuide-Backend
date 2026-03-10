@@ -15,24 +15,26 @@ CORS(app)
 # Database Models
 # ---------------------------
 
-# Admin Table
 class Admin(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     admin_id = db.Column(db.String(50), unique=True)
+    name = db.Column(db.String(100))
     password = db.Column(db.String(255))
+    email = db.Column(db.String(100))
+    phone_number = db.Column(db.String(15))
 
     def __repr__(self):
         return f"<Admin {self.admin_id}>"
 
-# Clinician Table
 class Clinician(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     clinician_id = db.Column(db.String(50), unique=True)
     name = db.Column(db.String(100))
+    role = db.Column(db.String(50))
     phone_number = db.Column(db.String(15))
     password = db.Column(db.String(255))
+    is_active = db.Column(db.Boolean, default=True)
 
-# Patient Table
 class Patient(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     patient_id = db.Column(db.String(50), unique=True)
@@ -40,10 +42,10 @@ class Patient(db.Model):
     phone_number = db.Column(db.String(15))
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(255))
-    status = db.Column(db.String(50), default="on track")  # on track, attention, critical
-    created_by_clinician = db.Column(db.String(50))  # clinician_id
+    status = db.Column(db.String(50), default="on track")
+    created_by_clinician = db.Column(db.String(50))
+    is_active = db.Column(db.Boolean, default=True)
 
-# Create tables
 with app.app_context():
     db.create_all()
 
@@ -56,146 +58,161 @@ def home():
     return {"message": "OrthoGuide Backend Running"}
 
 # ---------------------------
-# Unified Login API (Admin & Clinician)
+# Login
 # ---------------------------
+
 @app.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
-    user_id = data.get("user_id")   # Can be admin_id or clinician_id
-    password = data.get("password") # Raw password input
+    user_id = data.get("user_id")
+    password = data.get("password")
 
-    # Try Admin first
+    # Admin login
     admin = Admin.query.filter_by(admin_id=user_id).first()
     if admin and bcrypt.check_password_hash(admin.password, password):
         return jsonify({
             "message": "Login successful",
             "role": "admin",
-            "user_id": admin.admin_id
+            "user_id": admin.admin_id,
+            "name": admin.name
         }), 200
 
-    # Try Clinician
+    # Clinician login
     clinician = Clinician.query.filter_by(clinician_id=user_id).first()
     if clinician and bcrypt.check_password_hash(clinician.password, password):
+
+        if not clinician.is_active:
+            return jsonify({"error": "Clinician account is inactive"}), 403
+
         return jsonify({
             "message": "Login successful",
             "role": "clinician",
             "user_id": clinician.clinician_id,
-            "name": clinician.name
+            "name": clinician.name,
+            "role_name": clinician.role,
+            "is_active": clinician.is_active
         }), 200
 
-    # Invalid credentials
+    # Patient login
+    patient = Patient.query.filter_by(patient_id=user_id).first()
+    if patient and bcrypt.check_password_hash(patient.password, password):
+
+        if not patient.is_active:
+            return jsonify({"error": "Patient account is inactive"}), 403
+
+        return jsonify({
+            "message": "Login successful",
+            "role": "patient",
+            "user_id": patient.patient_id,
+            "name": patient.name,
+            "status": patient.status
+        }), 200
+
     return jsonify({"error": "Invalid credentials"}), 401
 
+
 # ---------------------------
-# Admin creates Clinician
+# ADMIN PROFILE
 # ---------------------------
-@app.route("/admin/create_clinician", methods=["POST"])
-def create_clinician():
+
+@app.route("/admin/get_profile", methods=["POST"])
+def get_admin_profile():
+
     data = request.get_json()
-    
-    admin_id = data.get("admin_id")
-    password = data.get("password")
-    
-    # Verify admin login
-    admin = Admin.query.filter_by(admin_id=admin_id).first()
-    if not admin or not bcrypt.check_password_hash(admin.password, password):
+
+    admin = Admin.query.filter_by(admin_id=data.get("admin_id")).first()
+
+    if not admin:
+        return jsonify({"error": "Admin not found"}), 404
+
+    return jsonify({
+        "admin_id": admin.admin_id,
+        "name": admin.name,
+        "email": admin.email,
+        "phone_number": admin.phone_number
+    }), 200
+
+
+# ---------------------------
+# ADMIN UPDATE PROFILE
+# ---------------------------
+
+@app.route("/admin/update_profile", methods=["POST"])
+def admin_update_profile():
+
+    data = request.get_json()
+
+    admin = Admin.query.filter_by(admin_id=data.get("admin_id")).first()
+
+    if not admin:
+        return jsonify({"error": "Admin not found"}), 404
+
+    if not bcrypt.check_password_hash(admin.password, data.get("password")):
         return jsonify({"error": "Invalid admin credentials"}), 401
 
-    # Clinician details
-    clinician_id = data.get("clinician_id")
-    name = data.get("name")
-    phone_number = data.get("phone_number")
-    
-    # Default password = phone_number
-    default_password = bcrypt.generate_password_hash(phone_number).decode("utf-8")
-    
-    # Check if clinician already exists
-    existing = Clinician.query.filter_by(clinician_id=clinician_id).first()
-    if existing:
-        return jsonify({"error": "Clinician already exists"}), 400
-    
-    clinician = Clinician(
-        clinician_id=clinician_id,
-        name=name,
-        phone_number=phone_number,
-        password=default_password
-    )
-    
-    db.session.add(clinician)
+    admin.name = data.get("name", admin.name)
+    admin.email = data.get("email", admin.email)
+    admin.phone_number = data.get("phone_number", admin.phone_number)
+
     db.session.commit()
-    
-    return jsonify({"message": f"Clinician {name} created successfully"}), 201
+
+    return jsonify({"message": "Admin profile updated successfully"}), 200
+
 
 # ---------------------------
-# Create Patient (by Admin or Clinician)
+# ADMIN CHANGE PASSWORD
 # ---------------------------
-@app.route("/create_patient", methods=["POST"])
-def create_patient():
+
+@app.route("/admin/change_password", methods=["POST"])
+def admin_change_password():
+
     data = request.get_json()
 
-    # Determine who is creating the patient
-    admin_id = data.get("admin_id")
-    clinician_id = data.get("clinician_id")
-    password = data.get("password")  # raw password (admin or clinician)
+    admin = Admin.query.filter_by(admin_id=data.get("admin_id")).first()
 
-    creator_name = None
+    if not admin:
+        return jsonify({"error": "Admin not found"}), 404
 
-    # Admin creating patient
-    if admin_id:
-        admin = Admin.query.filter_by(admin_id=admin_id).first()
-        if not admin or not bcrypt.check_password_hash(admin.password, password):
-            return jsonify({"error": "Invalid admin credentials"}), 401
-        creator_name = f"Admin {admin_id}"
+    if not bcrypt.check_password_hash(admin.password, data.get("current_password")):
+        return jsonify({"error": "Current password incorrect"}), 401
 
-    # Clinician creating patient
-    elif clinician_id:
-        clinician = Clinician.query.filter_by(clinician_id=clinician_id).first()
-        if not clinician or not bcrypt.check_password_hash(clinician.password, password):
-            return jsonify({"error": "Invalid clinician credentials"}), 401
-        creator_name = f"Clinician {clinician_id}"
+    if data.get("new_password") != data.get("confirm_password"):
+        return jsonify({"error": "Passwords do not match"}), 400
 
-    else:
-        return jsonify({"error": "Creator credentials missing"}), 400
+    admin.password = bcrypt.generate_password_hash(data.get("new_password")).decode("utf-8")
 
-    # Patient details
-    patient_id = data.get("patient_id")
-    name = data.get("name")
-    phone_number = data.get("phone_number")
-    email = data.get("email")
-    status = data.get("status", "on track")  # default "on track"
-
-    # Default password = phone_number
-    default_password = bcrypt.generate_password_hash(phone_number).decode("utf-8")
-
-    # Check if patient already exists
-    existing_patient = Patient.query.filter_by(patient_id=patient_id).first()
-    if existing_patient:
-        return jsonify({"error": "Patient already exists"}), 400
-
-    # Create patient
-    patient = Patient(
-        patient_id=patient_id,
-        name=name,
-        phone_number=phone_number,
-        email=email,
-        password=default_password,
-        status=status,
-        created_by_clinician=clinician_id if clinician_id else None
-    )
-
-    db.session.add(patient)
     db.session.commit()
 
-    return jsonify({"message": f"Patient {name} created successfully by {creator_name}"}), 201
+    return jsonify({"message": "Password updated successfully"}), 200
+
 
 # ---------------------------
-# Dashboard API (Admin)
+# HELP & SUPPORT API
 # ---------------------------
+
+@app.route("/system/support", methods=["GET"])
+def system_support():
+
+    return jsonify({
+        "technical_support_phone": "+91 9876543210",
+        "support_email": "support@orthoguide.com",
+        "system_version": "2.5.0"
+    }), 200
+
+
+# ---------------------------
+# ADMIN DASHBOARD
+# ---------------------------
+
 @app.route("/admin/dashboard", methods=["GET"])
 def admin_dashboard():
+
     total_clinicians = Clinician.query.count()
     total_patients = Patient.query.count()
-    active_cases = Patient.query.filter(Patient.status.in_(["attention", "critical"])).count()
+
+    active_cases = Patient.query.filter(
+        Patient.status.in_(["attention","critical"])
+    ).count()
 
     return jsonify({
         "total_clinicians": total_clinicians,
@@ -203,8 +220,10 @@ def admin_dashboard():
         "active_cases": active_cases
     }), 200
 
+
 # ---------------------------
-# Run Server
+# RUN SERVER
 # ---------------------------
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
