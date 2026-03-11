@@ -3,7 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from config import Config
-from datetime import datetime
+from datetime import datetime, timedelta
+import random
+import string
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -31,7 +33,7 @@ class Clinician(db.Model):
     name = db.Column(db.String(100))
     role = db.Column(db.String(50))
     phone_number = db.Column(db.String(15))
-    email = db.Column(db.String(100))  # NEW: purely for display
+    email = db.Column(db.String(100))
     password = db.Column(db.String(255))
     is_active = db.Column(db.Boolean, default=True)
 
@@ -49,6 +51,13 @@ class Patient(db.Model):
     is_active = db.Column(db.Boolean, default=True)
 
 
+class PatientConsent(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    patient_id = db.Column(db.String(50))
+    consent_given = db.Column(db.Boolean, default=False)
+    consent_date = db.Column(db.DateTime, default=datetime.utcnow)
+
+
 class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     patient_id = db.Column(db.String(50))
@@ -58,6 +67,24 @@ class Appointment(db.Model):
     appointment_type = db.Column(db.String(50))
     notes = db.Column(db.Text)
     status = db.Column(db.String(50), default="scheduled")
+
+
+class TreatmentHistory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    patient_id = db.Column(db.String(50))
+    stage = db.Column(db.String(100))
+    status = db.Column(db.String(50))
+    updated_by = db.Column(db.String(50))
+    notes = db.Column(db.Text)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+class PasswordResetOTP(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(100))
+    otp = db.Column(db.String(6))
+    expires_at = db.Column(db.DateTime)
+    verified = db.Column(db.Boolean, default=False)
 
 
 with app.app_context():
@@ -77,7 +104,11 @@ def home():
 
 @app.route("/login", methods=["POST"])
 def login():
+
     data = request.get_json()
+    if not data:
+        return jsonify({"error": "Invalid request"}), 400
+
     user_id = data.get("user_id")
     password = data.get("password")
 
@@ -87,59 +118,215 @@ def login():
 
     clinician = Clinician.query.filter_by(clinician_id=user_id).first()
     if clinician and bcrypt.check_password_hash(clinician.password, password):
+
         if not clinician.is_active:
             return jsonify({"error": "Clinician inactive"}), 403
-        return jsonify({"role": "clinician", "user_id": clinician.clinician_id, "name": clinician.name})
+
+        return jsonify({
+            "role": "clinician",
+            "user_id": clinician.clinician_id,
+            "name": clinician.name
+        })
 
     patient = Patient.query.filter_by(patient_id=user_id).first()
+
     if patient and bcrypt.check_password_hash(patient.password, password):
+
         if not patient.is_active:
             return jsonify({"error": "Patient inactive"}), 403
-        return jsonify({"role": "patient", "user_id": patient.patient_id, "name": patient.name})
+
+        consent = PatientConsent.query.filter_by(patient_id=patient.patient_id).first()
+
+        return jsonify({
+            "role": "patient",
+            "user_id": patient.patient_id,
+            "name": patient.name,
+            "consent_given": True if consent else False
+        })
 
     return jsonify({"error": "Invalid credentials"}), 401
+
+# ---------------------------
+# PATIENT LOGIN
+# ---------------------------
+
+@app.route("/patient/login", methods=["POST"])
+def patient_login():
+
+    data = request.get_json()
+
+    patient = Patient.query.filter_by(patient_id=data.get("patient_id")).first()
+
+    if not patient:
+        return jsonify({"error": "Patient not found"}), 404
+
+    if not bcrypt.check_password_hash(patient.password, data.get("password")):
+        return jsonify({"error": "Incorrect password"}), 401
+
+    if not patient.is_active:
+        return jsonify({"error": "Patient account inactive"}), 403
+
+    consent = PatientConsent.query.filter_by(patient_id=patient.patient_id).first()
+
+    return jsonify({
+        "role": "patient",
+        "patient_id": patient.patient_id,
+        "name": patient.name,
+        "status": patient.status,
+        "treatment_stage": patient.treatment_stage,
+        "consent_given": True if consent else False
+    })
+
+# ---------------------------
+# SAVE CONSENT
+# ---------------------------
+
+@app.route("/patient/consent", methods=["POST"])
+def patient_consent():
+
+    data = request.get_json()
+
+    existing = PatientConsent.query.filter_by(patient_id=data.get("patient_id")).first()
+
+    if existing:
+        return jsonify({"message": "Consent already recorded"})
+
+    consent = PatientConsent(
+        patient_id=data.get("patient_id"),
+        consent_given=True
+    )
+
+    db.session.add(consent)
+    db.session.commit()
+
+    return jsonify({"message": "Consent saved successfully"})
+
+# ---------------------------
+# CHANGE PASSWORD
+# ---------------------------
+
+@app.route("/patient/change_password", methods=["POST"])
+def patient_change_password():
+
+    data = request.get_json()
+
+    patient = Patient.query.filter_by(patient_id=data.get("patient_id")).first()
+
+    if not patient:
+        return jsonify({"error": "Patient not found"}), 404
+
+    if not bcrypt.check_password_hash(patient.password, data.get("old_password")):
+        return jsonify({"error": "Old password incorrect"}), 401
+
+    if data.get("new_password") != data.get("confirm_password"):
+        return jsonify({"error": "Passwords do not match"}), 400
+
+    patient.password = bcrypt.generate_password_hash(data.get("new_password")).decode("utf-8")
+
+    db.session.commit()
+
+    return jsonify({"message": "Password updated successfully"})
+
+# ---------------------------
+# FORGOT PASSWORD
+# ---------------------------
+
+@app.route("/patient/forgot_password", methods=["POST"])
+def forgot_password():
+
+    data = request.get_json()
+    email = data.get("email")
+
+    patient = Patient.query.filter_by(email=email).first()
+
+    if not patient:
+        return jsonify({"error": "Email not found"}), 404
+
+    otp = ''.join(random.choices(string.digits, k=6))
+
+    otp_record = PasswordResetOTP(
+        email=email,
+        otp=otp,
+        expires_at=datetime.utcnow() + timedelta(minutes=5),
+        verified=False
+    )
+
+    db.session.add(otp_record)
+    db.session.commit()
+
+    print("OTP:", otp)
+
+    return jsonify({"message": "OTP sent"})
+
+# ---------------------------
+# VERIFY OTP
+# ---------------------------
+
+@app.route("/patient/verify_otp", methods=["POST"])
+def verify_otp():
+
+    data = request.get_json()
+    email = data.get("email")
+    otp = data.get("otp")
+
+    record = PasswordResetOTP.query.filter_by(email=email, otp=otp).first()
+
+    if not record:
+        return jsonify({"error": "Invalid OTP"}), 400
+
+    if datetime.utcnow() > record.expires_at:
+        return jsonify({"error": "OTP expired"}), 400
+
+    record.verified = True
+    db.session.commit()
+
+    return jsonify({"message": "OTP verified"})
+
+# ---------------------------
+# RESET PASSWORD
+# ---------------------------
+
+@app.route("/patient/reset_password", methods=["POST"])
+def reset_password():
+
+    data = request.get_json()
+    email = data.get("email")
+
+    record = PasswordResetOTP.query.filter_by(email=email, verified=True).first()
+
+    if not record:
+        return jsonify({"error": "OTP verification required"}), 400
+
+    if data.get("new_password") != data.get("confirm_password"):
+        return jsonify({"error": "Passwords do not match"}), 400
+
+    patient = Patient.query.filter_by(email=email).first()
+
+    if not patient:
+        return jsonify({"error": "Email not found"}), 404
+
+    patient.password = bcrypt.generate_password_hash(data.get("new_password")).decode("utf-8")
+
+    db.session.commit()
+
+    PasswordResetOTP.query.filter_by(email=email).delete()
+    db.session.commit()
+
+    return jsonify({"message": "Password reset successful"})
 
 # ---------------------------
 # ADMIN DASHBOARD
 # ---------------------------
 
-@app.route("/admin/dashboard", methods=["GET"])
+@app.route("/admin/dashboard")
 def admin_dashboard():
-    total_clinicians = Clinician.query.count()
-    total_patients = Patient.query.count()
-    active_cases = Patient.query.filter(Patient.status.in_(["attention", "critical"])).count()
-    return jsonify({
-        "total_clinicians": total_clinicians,
-        "total_patients": total_patients,
-        "active_cases": active_cases
-    })
-
-# ---------------------------
-# CLINICIAN DASHBOARD
-# ---------------------------
-
-@app.route("/clinician/dashboard", methods=["POST"])
-def clinician_dashboard():
-    data = request.get_json()
-    clinician_id = data.get("clinician_id")
-
-    total_patients = Patient.query.filter_by(created_by_clinician=clinician_id).count()
-    active_cases = Patient.query.filter(Patient.created_by_clinician==clinician_id, Patient.is_active==True).count()
-    priority_cases = Patient.query.filter(Patient.created_by_clinician==clinician_id, Patient.status.in_(["attention", "critical"])).count()
-
-    priority_patients = Patient.query.filter(
-        Patient.created_by_clinician==clinician_id,
-        Patient.status.in_(["attention", "critical"]),
-        ~Patient.patient_id.in_(db.session.query(Appointment.patient_id))
-    ).limit(5).all()
-
-    patient_list = [{"patient_id": p.patient_id, "name": p.name, "status": p.status, "stage": p.treatment_stage} for p in priority_patients]
 
     return jsonify({
-        "total_patients": total_patients,
-        "active_cases": active_cases,
-        "priority_cases": priority_cases,
-        "priority_patients": patient_list
+        "total_clinicians": Clinician.query.count(),
+        "total_patients": Patient.query.count(),
+        "active_cases": Patient.query.filter(
+            Patient.status.in_(["attention", "critical"])
+        ).count()
     })
 
 # ---------------------------
@@ -148,8 +335,14 @@ def clinician_dashboard():
 
 @app.route("/clinician/create_patient", methods=["POST"])
 def create_patient():
+
     data = request.get_json()
-    hashed_pw = bcrypt.generate_password_hash(data.get("password")).decode("utf-8")
+
+    if Patient.query.filter_by(patient_id=data.get("patient_id")).first():
+        return jsonify({"error": "Patient ID already exists"}), 400
+
+    hashed_pw = bcrypt.generate_password_hash(data.get("phone_number")).decode("utf-8")
+
     patient = Patient(
         patient_id=data.get("patient_id"),
         name=data.get("name"),
@@ -158,68 +351,11 @@ def create_patient():
         password=hashed_pw,
         created_by_clinician=data.get("clinician_id")
     )
+
     db.session.add(patient)
     db.session.commit()
+
     return jsonify({"message": "Patient account created"})
-
-# ---------------------------
-# PATIENT SEARCH + FILTER
-# ---------------------------
-
-@app.route("/clinician/patients", methods=["POST"])
-def clinician_patients():
-    data = request.get_json()
-    clinician_id = data.get("clinician_id")
-    search = data.get("search", "")
-    status = data.get("status", "all")
-
-    query = Patient.query.filter_by(created_by_clinician=clinician_id)
-    if status != "all":
-        query = query.filter(Patient.status==status)
-    if search:
-        query = query.filter((Patient.name.like(f"%{search}%")) | (Patient.patient_id.like(f"%{search}%")))
-
-    patients = query.all()
-    result = []
-    for p in patients:
-        appointment = Appointment.query.filter_by(patient_id=p.patient_id).first()
-        appointment_status = "Appointment Scheduled" if appointment else "No Appointment Scheduled"
-        result.append({
-            "patient_id": p.patient_id,
-            "name": p.name,
-            "stage": p.treatment_stage,
-            "status": p.status,
-            "appointment_status": appointment_status
-        })
-    return jsonify(result)
-
-# ---------------------------
-# PATIENT PROFILE
-# ---------------------------
-
-@app.route("/clinician/patient_profile", methods=["POST"])
-def patient_profile():
-    data = request.get_json()
-    patient = Patient.query.filter_by(patient_id=data.get("patient_id")).first()
-    appointment = Appointment.query.filter_by(patient_id=patient.patient_id).order_by(Appointment.id.desc()).first()
-
-    appointment_data = None
-    if appointment:
-        appointment_data = {
-            "id": appointment.id,
-            "date": str(appointment.appointment_date),
-            "time": appointment.appointment_time,
-            "type": appointment.appointment_type,
-            "notes": appointment.notes
-        }
-
-    return jsonify({
-        "patient_id": patient.patient_id,
-        "name": patient.name,
-        "stage": patient.treatment_stage,
-        "status": patient.status,
-        "appointment": appointment_data
-    })
 
 # ---------------------------
 # UPDATE PATIENT
@@ -227,11 +363,49 @@ def patient_profile():
 
 @app.route("/clinician/update_patient", methods=["POST"])
 def update_patient():
+
+    valid_stages = [
+        "Pre-treatment",
+        "Bonding / First Trays",
+        "Alignment Phase",
+        "Bite Correction",
+        "Finishing and Detailing",
+        "Debonding and Retention"
+    ]
+
+    valid_status = ["on track", "attention", "critical"]
+
     data = request.get_json()
+
     patient = Patient.query.filter_by(patient_id=data.get("patient_id")).first()
-    patient.treatment_stage = data.get("stage", patient.treatment_stage)
-    patient.status = data.get("status", patient.status)
+
+    if not patient:
+        return jsonify({"error": "Patient not found"}), 404
+
+    stage = data.get("stage", patient.treatment_stage)
+
+    if stage not in valid_stages:
+        return jsonify({"error": "Invalid stage"}), 400
+
+    status = data.get("status", patient.status)
+
+    if status not in valid_status:
+        return jsonify({"error": "Invalid status"}), 400
+
+    patient.treatment_stage = stage
+    patient.status = status
+
+    history = TreatmentHistory(
+        patient_id=patient.patient_id,
+        stage=stage,
+        status=status,
+        updated_by=data.get("clinician_id"),
+        notes=data.get("notes", "")
+    )
+
+    db.session.add(history)
     db.session.commit()
+
     return jsonify({"message": "Patient updated"})
 
 # ---------------------------
@@ -240,150 +414,32 @@ def update_patient():
 
 @app.route("/clinician/schedule_appointment", methods=["POST"])
 def schedule_appointment():
+
     data = request.get_json()
-    date_obj = datetime.strptime(data.get("date"), "%Y-%m-%d").date()
+
+    patient = Patient.query.filter_by(patient_id=data.get("patient_id")).first()
+
+    if not patient:
+        return jsonify({"error": "Patient does not exist"}), 404
+
+    try:
+        date_obj = datetime.strptime(data.get("date"), "%Y-%m-%d").date()
+    except:
+        return jsonify({"error": "Invalid date format (YYYY-MM-DD required)"}), 400
+
     appointment = Appointment(
         patient_id=data.get("patient_id"),
         clinician_id=data.get("clinician_id"),
         appointment_date=date_obj,
         appointment_time=data.get("time"),
         appointment_type=data.get("type"),
-        notes=data.get("notes")
+        notes=data.get("notes", "")
     )
+
     db.session.add(appointment)
     db.session.commit()
+
     return jsonify({"message": "Appointment scheduled"})
-
-# ---------------------------
-# RESCHEDULE APPOINTMENT
-# ---------------------------
-
-@app.route("/clinician/reschedule_appointment", methods=["POST"])
-def reschedule_appointment():
-    data = request.get_json()
-    appointment = Appointment.query.get(data.get("appointment_id"))
-    appointment.appointment_date = datetime.strptime(data.get("date"), "%Y-%m-%d").date()
-    appointment.appointment_time = data.get("time")
-    appointment.appointment_type = data.get("type")
-    appointment.notes = data.get("notes")
-    db.session.commit()
-    return jsonify({"message": "Appointment rescheduled"})
-
-# ---------------------------
-# DELETE APPOINTMENT
-# ---------------------------
-
-@app.route("/clinician/delete_appointment", methods=["POST"])
-def delete_appointment():
-    data = request.get_json()
-    appointment = Appointment.query.get(data.get("appointment_id"))
-    if not appointment:
-        return jsonify({"error": "Appointment not found"}), 404
-    db.session.delete(appointment)
-    db.session.commit()
-    return jsonify({"message": "Appointment deleted"})
-
-# ---------------------------
-# SCHEDULE BY DATE
-# ---------------------------
-
-@app.route("/clinician/schedule_by_date", methods=["POST"])
-def schedule_by_date():
-    data = request.get_json()
-    clinician_id = data.get("clinician_id")
-    date = datetime.strptime(data.get("date"), "%Y-%m-%d").date()
-
-    appointments = Appointment.query.filter_by(clinician_id=clinician_id, appointment_date=date).all()
-    result = []
-    for a in appointments:
-        patient = Patient.query.filter_by(patient_id=a.patient_id).first()
-        result.append({
-            "appointment_id": a.id,
-            "time": a.appointment_time if a.appointment_time else "TBD",
-            "patient_name": patient.name,
-            "patient_id": patient.patient_id,
-            "stage": patient.treatment_stage,
-            "appointment_type": a.appointment_type,
-            "status": patient.status
-        })
-
-    result = sorted(result, key=lambda x: (x["time"] == "TBD", x["time"]))
-    return jsonify(result)
-
-# ---------------------------
-# CLINICIAN PROFILE APIs
-# ---------------------------
-
-@app.route("/clinician/profile", methods=["POST"])
-def get_clinician_profile():
-    data = request.get_json()
-    clinician = Clinician.query.filter_by(clinician_id=data.get("clinician_id")).first()
-    if not clinician:
-        return jsonify({"error": "Clinician not found"}), 404
-    return jsonify({
-        "clinician_id": clinician.clinician_id,
-        "name": clinician.name,
-        "role": clinician.role,
-        "phone_number": clinician.phone_number,
-        "email": clinician.email  # include email in response
-    })
-
-
-@app.route("/clinician/edit_profile", methods=["POST"])
-def edit_clinician_profile():
-    data = request.get_json()
-    clinician = Clinician.query.filter_by(clinician_id=data.get("clinician_id")).first()
-    if not clinician:
-        return jsonify({"error": "Clinician not found"}), 404
-
-    clinician.name = data.get("name", clinician.name)
-    clinician.role = data.get("role", clinician.role)
-    clinician.phone_number = data.get("phone_number", clinician.phone_number)
-    clinician.email = data.get("email", clinician.email)  # allow editing email
-    db.session.commit()
-    return jsonify({"message": "Profile updated successfully"})
-
-
-@app.route("/clinician/change_password", methods=["POST"])
-def clinician_change_password():
-    data = request.get_json()
-    clinician = Clinician.query.filter_by(clinician_id=data.get("clinician_id")).first()
-    if not clinician:
-        return jsonify({"error": "Clinician not found"}), 404
-
-    if not bcrypt.check_password_hash(clinician.password, data.get("old_password")):
-        return jsonify({"error": "Old password incorrect"}), 401
-
-    if data.get("new_password") != data.get("confirm_password"):
-        return jsonify({"error": "Passwords do not match"}), 400
-
-    clinician.password = bcrypt.generate_password_hash(data.get("new_password")).decode("utf-8")
-    db.session.commit()
-    return jsonify({"message": "Password updated successfully"})
-
-
-@app.route("/clinician/deactivate_account", methods=["POST"])
-def clinician_deactivate_account():
-    data = request.get_json()
-    clinician = Clinician.query.filter_by(clinician_id=data.get("clinician_id")).first()
-    if not clinician:
-        return jsonify({"error": "Clinician not found"}), 404
-    clinician.is_active = False
-    db.session.commit()
-    return jsonify({"message": "Account deactivated"})
-
-
-# ---------------------------
-# SYSTEM SUPPORT
-# ---------------------------
-
-@app.route("/system/support", methods=["GET"])
-def system_support():
-    return jsonify({
-        "technical_support_phone": "+919876543210",
-        "support_email": "support@orthoguide.com",
-        "system_version": "2.5.0"
-    })
 
 # ---------------------------
 # RUN SERVER
