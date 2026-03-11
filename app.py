@@ -6,7 +6,9 @@ from config import Config
 from datetime import datetime, timedelta
 import random
 import string
+import os
 from apscheduler.schedulers.background import BackgroundScheduler
+from pytz import timezone
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -50,6 +52,7 @@ class Patient(db.Model):
     treatment_stage = db.Column(db.String(100), default="Pre-treatment")
     created_by_clinician = db.Column(db.String(50))
     is_active = db.Column(db.Boolean, default=True)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
 
 class PatientConsent(db.Model):
@@ -98,6 +101,13 @@ class PatientNotification(db.Model):
     is_read = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
+class PatientNotificationSettings(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    patient_id = db.Column(db.String(50), nullable=False)
+    oral_hygiene = db.Column(db.Boolean, default=True)
+    appliance_care = db.Column(db.Boolean, default=True)
+    appointment = db.Column(db.Boolean, default=True)
+
 with app.app_context():
     db.create_all()
 
@@ -109,15 +119,45 @@ def send_daily_reminders():
     with app.app_context():
         patients = Patient.query.filter_by(is_active=True).all()
         for patient in patients:
-            # Oral hygiene reminder (toggle ON assumed)
-            notif = PatientNotification(
-                patient_id=patient.patient_id,
-                type='oral_hygiene',
-                message="Time to maintain your daily oral care!"
-            )
-            db.session.add(notif)
+            settings = PatientNotificationSettings.query.filter_by(patient_id=patient.patient_id).first()
+            if not settings:
+                # If no settings exist, assume all ON
+                settings = PatientNotificationSettings(patient_id=patient.patient_id)
+                db.session.add(settings)
+                db.session.commit()
+
+            # Oral hygiene
+            if settings.oral_hygiene:
+                notif = PatientNotification(
+                    patient_id=patient.patient_id,
+                    type='oral_hygiene',
+                    message="Time to maintain your daily oral care!"
+                )
+                db.session.add(notif)
+
+            # Appliance care
+            if settings.appliance_care:
+                notif = PatientNotification(
+                    patient_id=patient.patient_id,
+                    type='appliance_care',
+                    message="Check your appliance for any issues and clean it properly!"
+                )
+                db.session.add(notif)
+
+            # Appointment reminders
+            if settings.appointment:
+                next_app = get_next_appointment(patient.patient_id)
+                if next_app:
+                    notif = PatientNotification(
+                        patient_id=patient.patient_id,
+                        type='appointment',
+                        message=f"Upcoming appointment on {next_app['date']} at {next_app['time']}"
+                    )
+                    db.session.add(notif)
+
         db.session.commit()
     print("Daily reminders sent!")
+
 # ---------------------------
 # HOME
 # ---------------------------
@@ -290,6 +330,57 @@ def patient_change_password():
 
     return jsonify({"message": "Password updated successfully"})
 
+# ---------------------------
+# UPDATE PATIENT PROFILE
+# ---------------------------
+
+@app.route("/patient/update_profile", methods=["POST"])
+def patient_update_profile():
+    data = request.get_json()
+    patient_id = data.get("patient_id")
+    
+    patient = Patient.query.filter_by(patient_id=patient_id).first()
+    if not patient:
+        return jsonify({"error": "Patient not found"}), 404
+
+    # Update fields if provided
+    new_name = data.get("name")
+    new_email = data.get("email")
+    new_phone = data.get("phone_number")
+
+    if new_email and new_email != patient.email:
+        # Check if email already exists
+        if Patient.query.filter_by(email=new_email).first():
+            return jsonify({"error": "Email already in use"}), 400
+        patient.email = new_email
+
+    if new_name:
+        patient.name = new_name
+
+    if new_phone:
+        patient.phone_number = new_phone
+
+    db.session.commit()
+
+    return jsonify({"message": "Profile updated successfully"})
+
+# ---------------------------
+# DELETE PATIENT ACCOUNT
+# ---------------------------
+
+@app.route("/patient/delete_account", methods=["POST"])
+def patient_delete_account():
+    data = request.get_json()
+    patient_id = data.get("patient_id")
+
+    patient = Patient.query.filter_by(patient_id=patient_id).first()
+    if not patient:
+        return jsonify({"error": "Patient not found"}), 404
+
+    patient.is_active = False
+    db.session.commit()
+
+    return jsonify({"message": "Account deleted successfully"})
 
 # ---------------------------
 # FORGOT PASSWORD
@@ -705,6 +796,20 @@ def get_notifications(patient_id):
 
     return jsonify(result)
 
+@app.route("/patient/notification/settings", methods=["POST"])
+def update_notification_settings():
+    data = request.get_json()
+    patient_id = data.get("patient_id")
+    settings = PatientNotificationSettings.query.filter_by(patient_id=patient_id).first()
+    if not settings:
+        settings = PatientNotificationSettings(patient_id=patient_id)
+        db.session.add(settings)
+    settings.oral_hygiene = data.get("oral_hygiene", settings.oral_hygiene)
+    settings.appliance_care = data.get("appliance_care", settings.appliance_care)
+    settings.appointment = data.get("appointment", settings.appointment)
+    db.session.commit()
+    return jsonify({"message": "Settings updated"})
+
 @app.route("/patient/notification/read/<int:notif_id>", methods=["POST"])
 def mark_notification_read(notif_id):
     notif = PatientNotification.query.get(notif_id)
@@ -714,18 +819,43 @@ def mark_notification_read(notif_id):
     db.session.commit()
     return jsonify({"message": "Notification marked as read"})
 
+# ---------------------------
+# SCHEDULER SETUP
+# ---------------------------
+
 scheduler = BackgroundScheduler()
+
+# Daily reminders at 7:30 AM IST
 scheduler.add_job(
     id='daily_reminders',
     func=send_daily_reminders,
     trigger='cron',
-    hour=2,    # UTC hour (for 7:30 AM IST)
-    minute=0
+    hour=7,
+    minute=30,
+    timezone=timezone('Asia/Kolkata')
 )
-scheduler.start()
+
+# Optional: OTP cleanup at midnight IST
+def cleanup_expired_otps():
+    with app.app_context():
+        PasswordResetOTP.query.filter(PasswordResetOTP.expires_at < datetime.utcnow()).delete()
+        db.session.commit()
+    print("Expired OTPs cleaned up.")
+
+scheduler.add_job(
+    id='cleanup_otps',
+    func=cleanup_expired_otps,
+    trigger='cron',
+    hour=0,
+    minute=0,
+    timezone=timezone('Asia/Kolkata')
+)
 # ---------------------------
 # RUN SERVER
 # ---------------------------
 
 if __name__ == "__main__":
+    # Start scheduler only once (avoids double start in debug mode)
+    if not app.debug or os.environ.get("WERKZEUG_RUN_MAIN") == "true":
+        scheduler.start()
     app.run(debug=True)
