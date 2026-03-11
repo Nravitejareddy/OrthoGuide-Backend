@@ -6,6 +6,7 @@ from config import Config
 from datetime import datetime, timedelta
 import random
 import string
+from apscheduler.schedulers.background import BackgroundScheduler
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -86,10 +87,37 @@ class PasswordResetOTP(db.Model):
     expires_at = db.Column(db.DateTime)
     verified = db.Column(db.Boolean, default=False)
 
+class PatientNotification(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    patient_id = db.Column(db.String(50), nullable=False)
+    type = db.Column(db.Enum('oral_hygiene', 'appliance_care', 'appointment', 'report_issue', native_enum=False), nullable=False)
+    message = db.Column(db.Text, nullable=False)
+    related_appointment_id = db.Column(db.Integer, nullable=True)
+    report_severity = db.Column(db.Integer, nullable=True)  # 1-10
+    clinician_label = db.Column(db.Enum('attention', 'critical'), nullable=True)
+    is_read = db.Column(db.Boolean, default=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
 with app.app_context():
     db.create_all()
 
+# ---------------------------
+# DAILY REMINDER FUNCTION
+# ---------------------------
+
+def send_daily_reminders():
+    with app.app_context():
+        patients = Patient.query.filter_by(is_active=True).all()
+        for patient in patients:
+            # Oral hygiene reminder (toggle ON assumed)
+            notif = PatientNotification(
+                patient_id=patient.patient_id,
+                type='oral_hygiene',
+                message="Time to maintain your daily oral care!"
+            )
+            db.session.add(notif)
+        db.session.commit()
+    print("Daily reminders sent!")
 # ---------------------------
 # HOME
 # ---------------------------
@@ -97,6 +125,32 @@ with app.app_context():
 @app.route("/")
 def home():
     return {"message": "OrthoGuide Backend Running"}
+
+# ---------------------------
+# HELPER FUNCTION
+# ---------------------------
+
+def get_next_appointment(patient_id):
+
+    today = datetime.utcnow().date()
+
+    appointment = Appointment.query.filter(
+        Appointment.patient_id == patient_id,
+        Appointment.appointment_date >= today
+    ).order_by(Appointment.appointment_date.asc()).first()
+
+    if appointment:
+
+        time = appointment.appointment_time if appointment.appointment_time else "NA"
+
+        return {
+            "date": str(appointment.appointment_date),
+            "time": time,
+            "type": appointment.appointment_type
+        }
+
+    return None
+
 
 # ---------------------------
 # LOGIN
@@ -114,7 +168,11 @@ def login():
 
     admin = Admin.query.filter_by(admin_id=user_id).first()
     if admin and bcrypt.check_password_hash(admin.password, password):
-        return jsonify({"role": "admin", "user_id": admin.admin_id, "name": admin.name})
+        return jsonify({
+            "role": "admin",
+            "user_id": admin.admin_id,
+            "name": admin.name
+        })
 
     clinician = Clinician.query.filter_by(clinician_id=user_id).first()
     if clinician and bcrypt.check_password_hash(clinician.password, password):
@@ -141,10 +199,11 @@ def login():
             "role": "patient",
             "user_id": patient.patient_id,
             "name": patient.name,
-            "consent_given": True if consent else False
+            "consent_given": consent.consent_given if consent else False
         })
 
     return jsonify({"error": "Invalid credentials"}), 401
+
 
 # ---------------------------
 # PATIENT LOGIN
@@ -174,8 +233,9 @@ def patient_login():
         "name": patient.name,
         "status": patient.status,
         "treatment_stage": patient.treatment_stage,
-        "consent_given": True if consent else False
+        "consent_given": consent.consent_given if consent else False
     })
+
 
 # ---------------------------
 # SAVE CONSENT
@@ -201,6 +261,7 @@ def patient_consent():
 
     return jsonify({"message": "Consent saved successfully"})
 
+
 # ---------------------------
 # CHANGE PASSWORD
 # ---------------------------
@@ -221,11 +282,14 @@ def patient_change_password():
     if data.get("new_password") != data.get("confirm_password"):
         return jsonify({"error": "Passwords do not match"}), 400
 
-    patient.password = bcrypt.generate_password_hash(data.get("new_password")).decode("utf-8")
+    patient.password = bcrypt.generate_password_hash(
+        data.get("new_password")
+    ).decode("utf-8")
 
     db.session.commit()
 
     return jsonify({"message": "Password updated successfully"})
+
 
 # ---------------------------
 # FORGOT PASSWORD
@@ -258,6 +322,7 @@ def forgot_password():
 
     return jsonify({"message": "OTP sent"})
 
+
 # ---------------------------
 # VERIFY OTP
 # ---------------------------
@@ -269,18 +334,21 @@ def verify_otp():
     email = data.get("email")
     otp = data.get("otp")
 
+    PasswordResetOTP.query.filter(
+        PasswordResetOTP.expires_at < datetime.utcnow()
+    ).delete()
+    db.session.commit()
+
     record = PasswordResetOTP.query.filter_by(email=email, otp=otp).first()
 
     if not record:
         return jsonify({"error": "Invalid OTP"}), 400
 
-    if datetime.utcnow() > record.expires_at:
-        return jsonify({"error": "OTP expired"}), 400
-
     record.verified = True
     db.session.commit()
 
     return jsonify({"message": "OTP verified"})
+
 
 # ---------------------------
 # RESET PASSWORD
@@ -302,10 +370,9 @@ def reset_password():
 
     patient = Patient.query.filter_by(email=email).first()
 
-    if not patient:
-        return jsonify({"error": "Email not found"}), 404
-
-    patient.password = bcrypt.generate_password_hash(data.get("new_password")).decode("utf-8")
+    patient.password = bcrypt.generate_password_hash(
+        data.get("new_password")
+    ).decode("utf-8")
 
     db.session.commit()
 
@@ -313,6 +380,7 @@ def reset_password():
     db.session.commit()
 
     return jsonify({"message": "Password reset successful"})
+
 
 # ---------------------------
 # ADMIN DASHBOARD
@@ -329,6 +397,7 @@ def admin_dashboard():
         ).count()
     })
 
+
 # ---------------------------
 # CREATE PATIENT
 # ---------------------------
@@ -341,7 +410,9 @@ def create_patient():
     if Patient.query.filter_by(patient_id=data.get("patient_id")).first():
         return jsonify({"error": "Patient ID already exists"}), 400
 
-    hashed_pw = bcrypt.generate_password_hash(data.get("phone_number")).decode("utf-8")
+    hashed_pw = bcrypt.generate_password_hash(
+        data.get("phone_number")
+    ).decode("utf-8")
 
     patient = Patient(
         patient_id=data.get("patient_id"),
@@ -356,6 +427,7 @@ def create_patient():
     db.session.commit()
 
     return jsonify({"message": "Patient account created"})
+
 
 # ---------------------------
 # UPDATE PATIENT
@@ -408,6 +480,7 @@ def update_patient():
 
     return jsonify({"message": "Patient updated"})
 
+
 # ---------------------------
 # SCHEDULE APPOINTMENT
 # ---------------------------
@@ -441,6 +514,215 @@ def schedule_appointment():
 
     return jsonify({"message": "Appointment scheduled"})
 
+
+# ---------------------------
+# PATIENT DASHBOARD
+# ---------------------------
+
+@app.route("/patient/dashboard/<patient_id>")
+def patient_dashboard(patient_id):
+
+    patient = Patient.query.filter_by(patient_id=patient_id).first()
+
+    if not patient:
+        return jsonify({"error": "Patient not found"}), 404
+
+    stages = [
+        "Pre-treatment",
+        "Bonding / First Trays",
+        "Alignment Phase",
+        "Bite Correction",
+        "Finishing and Detailing",
+        "Debonding and Retention"
+    ]
+
+    current_index = stages.index(patient.treatment_stage) if patient.treatment_stage in stages else 0
+    progress = int(((current_index) / len(stages)) * 100)
+
+    appointment = get_next_appointment(patient_id)
+
+    return jsonify({
+        "name": patient.name,
+        "treatment_stage": patient.treatment_stage,
+        "progress_percent": progress,
+        "next_appointment": appointment
+    })
+
+
+# ---------------------------
+# PATIENT PROGRESS
+# ---------------------------
+
+@app.route("/patient/progress/<patient_id>")
+def patient_progress(patient_id):
+
+    patient = Patient.query.filter_by(patient_id=patient_id).first()
+
+    if not patient:
+        return jsonify({"error": "Patient not found"}), 404
+
+    stages = [
+        "Initial Consultation",
+        "Bonding / First Trays",
+        "Alignment Phase",
+        "Bite Correction",
+        "Finishing and Detailing",
+        "Debonding and Retention"
+    ]
+
+    current_stage = patient.treatment_stage
+
+    result = []
+
+    for stage in stages:
+
+        status = "pending"
+
+        if stage == current_stage:
+            status = "current"
+
+        history = TreatmentHistory.query.filter_by(
+            patient_id=patient_id,
+            stage=stage
+        ).first()
+
+        if history:
+            status = "done"
+
+        result.append({
+            "stage": stage,
+            "status": status
+        })
+
+    completed = len([r for r in result if r["status"] == "done"])
+    percent = int((completed / len(stages)) * 100)
+
+    return jsonify({
+        "progress_percent": percent,
+        "stages": result
+    })
+
+
+# ---------------------------
+# PATIENT APPOINTMENTS
+# ---------------------------
+
+@app.route("/patient/appointments/<patient_id>")
+def patient_appointments(patient_id):
+
+    today = datetime.utcnow().date()
+
+    upcoming = Appointment.query.filter(
+        Appointment.patient_id == patient_id,
+        Appointment.appointment_date >= today
+    ).all()
+
+    past = Appointment.query.filter(
+        Appointment.patient_id == patient_id,
+        Appointment.appointment_date < today
+    ).all()
+
+    upcoming_list = []
+
+    for a in upcoming:
+
+        time = a.appointment_time if a.appointment_time else "NA"
+
+        upcoming_list.append({
+            "date": str(a.appointment_date),
+            "time": time,
+            "type": a.appointment_type,
+            "status": a.status
+        })
+
+    past_list = []
+
+    for a in past:
+
+        past_list.append({
+            "date": str(a.appointment_date),
+            "type": a.appointment_type,
+            "status": "completed"
+        })
+
+    return jsonify({
+        "upcoming": upcoming_list,
+        "past": past_list
+    })
+
+# ---------------------------
+# PATIENT NOTIFICATIONS / CARE REMINDERS
+# ---------------------------
+
+@app.route("/patient/notification/add", methods=["POST"])
+def add_notification():
+    data = request.get_json()
+    patient_id = data.get("patient_id")
+    type_ = data.get("type")  # 'oral_hygiene', 'appliance_care', 'appointment', 'report_issue'
+    message = data.get("message")
+    severity = data.get("severity")  # optional, only for report_issue
+    appointment_id = data.get("appointment_id")  # optional
+
+    clinician_label = None
+    if type_ == "report_issue" and severity:
+        clinician_label = "attention" if severity <= 6 else "critical"
+
+    notif = PatientNotification(
+        patient_id=patient_id,
+        type=type_,
+        message=message,
+        related_appointment_id=appointment_id,
+        report_severity=severity,
+        clinician_label=clinician_label
+    )
+    db.session.add(notif)
+    db.session.commit()
+
+    return jsonify({"message": "Notification added successfully"})
+
+@app.route("/patient/notifications/<patient_id>")
+def get_notifications(patient_id):
+    filters = request.args.getlist("type")  # ?type=oral_hygiene&type=appointment
+    query = PatientNotification.query.filter_by(patient_id=patient_id)
+
+    if filters:
+        query = query.filter(PatientNotification.type.in_(filters))
+
+    notifications = query.order_by(PatientNotification.created_at.desc()).all()
+
+    result = []
+    for n in notifications:
+        result.append({
+            "id": n.id,
+            "type": n.type,
+            "message": n.message,
+            "appointment_id": n.related_appointment_id,
+            "report_severity": n.report_severity,
+            "clinician_label": n.clinician_label,
+            "is_read": n.is_read,
+            "created_at": n.created_at.strftime("%Y-%m-%d %H:%M:%S")
+        })
+
+    return jsonify(result)
+
+@app.route("/patient/notification/read/<int:notif_id>", methods=["POST"])
+def mark_notification_read(notif_id):
+    notif = PatientNotification.query.get(notif_id)
+    if not notif:
+        return jsonify({"error": "Notification not found"}), 404
+    notif.is_read = True
+    db.session.commit()
+    return jsonify({"message": "Notification marked as read"})
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(
+    id='daily_reminders',
+    func=send_daily_reminders,
+    trigger='cron',
+    hour=2,    # UTC hour (for 7:30 AM IST)
+    minute=0
+)
+scheduler.start()
 # ---------------------------
 # RUN SERVER
 # ---------------------------
