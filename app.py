@@ -13,6 +13,7 @@ from sqlalchemy import Enum
 from enum import Enum as PyEnum
 import json
 from difflib import get_close_matches
+from chatbot.ai_engine import ask_ai
 
 PATIENT_STAGES = [
     "Pre-treatment",
@@ -1053,12 +1054,21 @@ def chatbot():
     if not user_message:
         return jsonify({"reply": "Please enter a message."}), 400
 
-    answers = find_faq_answer(user_message, top_n=1)  # top_n=1 for best match
-    top_answer = answers[0]  # pick best match
+    ai_reply = ask_ai(user_message)
+
+    if ai_reply:
+        return jsonify({
+            "reply": ai_reply,
+            "source": "AI"
+        })
+
+    answers = find_faq_answer(user_message, top_n=1)
+    top_answer = answers[0]
 
     return jsonify({
         "reply": top_answer["answer"],
-        "score": top_answer["score"]
+        "score": top_answer["score"],
+        "source": "FAQ"
     })
 
 # ---------------------------
