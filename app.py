@@ -6,14 +6,42 @@ from config import Config
 from datetime import datetime, timedelta
 import random
 import string
-import os
 from apscheduler.schedulers.background import BackgroundScheduler
 from pytz import timezone
 from sqlalchemy import Enum
 from enum import Enum as PyEnum
-import json
-from difflib import get_close_matches
-from chatbot.ai_engine import ask_ai
+from chatbot.chatbot_engine import find_faq_answer
+import smtplib
+from email.mime.text import MIMEText
+
+# ---------------------------
+# Logging configuration
+# ---------------------------
+import logging
+
+logging.basicConfig(
+    filename='app.log',           # Log file name
+    level=logging.INFO,           # Minimum level to log (INFO, ERROR, WARNING)
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+# ---------------------------
+# EMAIL OTP FUNCTION
+# ---------------------------
+def send_email_otp(to_email, otp):
+    msg = MIMEText(f"Your password reset OTP is: {otp}")
+    msg['Subject'] = "Password Reset OTP"
+    msg['From'] = "noreply@orthoguide.com"
+    msg['To'] = to_email
+
+    try:
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login("your_email@gmail.com", "your_app_password")
+        server.send_message(msg)
+        server.quit()
+    except Exception as e:
+        logging.error(f"Error sending OTP email to {to_email}: {e}")
 
 PATIENT_STAGES = [
     "Pre-treatment",
@@ -36,17 +64,6 @@ class ClinicianLabel(PyEnum):
 
 app = Flask(__name__)
 app.config.from_object(Config)
-
-# ---------------------------
-# LOAD FAQ JSON
-# ---------------------------
-faq_file = os.path.join("chatbot", "orthodontic_faqs.json")
-try:
-    with open(faq_file, "r", encoding="utf-8") as f:
-        FAQS = json.load(f)
-except Exception as e:
-    print(f"Error loading {faq_file}: {e}")
-    FAQS = []
     
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
@@ -203,9 +220,9 @@ def send_daily_reminders():
             db.session.commit()
         except Exception as e:
             db.session.rollback()
-            print(f"Error committing notifications: {e}")
+            logging.error(f"Error committing notifications: {e}")
 
-    print("Daily reminders sent!")
+    logging.info("Daily reminders sent!")
 # ---------------------------
 # HOME
 # ---------------------------
@@ -213,6 +230,18 @@ def send_daily_reminders():
 @app.route("/")
 def home():
     return {"message": "OrthoGuide Backend Running"}
+
+# ---------------------------
+# SUPPORT INFO
+# ---------------------------
+
+@app.route("/support/info", methods=["GET"])
+def support_info():
+    return jsonify({
+        "clinic_phone": "+91 9876543210",
+        "support_email": "support@orthoguide.com",
+        "system_version": "2.5.0"
+    })
 
 # ---------------------------
 # HELPER FUNCTION
@@ -239,41 +268,6 @@ def get_next_appointment(patient_id):
 
     return None
 
-# ---------------------------
-# CHATBOT HELPER
-# ---------------------------
-
-def find_faq_answer(user_message, limit=1):
-    """
-    Find the closest matching FAQ based on keywords or question similarity.
-    Returns the answer if found, else a default reply.
-    """
-    if not FAQS:
-        return "Sorry, I don't have FAQs right now."
-
-    # Normalize message
-    msg = user_message.lower()
-
-    # First try keyword matching
-    keyword_matches = []
-    for faq in FAQS:
-        if any(kw.lower() in msg for kw in faq.get("keywords", [])):
-            keyword_matches.append(faq)
-
-    if keyword_matches:
-        return keyword_matches[0]["answer"]
-
-    # Fallback: match question text similarity
-    questions = [faq["question"] for faq in FAQS]
-    matches = get_close_matches(user_message, questions, n=limit, cutoff=0.6)
-
-    if matches:
-        for faq in FAQS:
-            if faq["question"] == matches[0]:
-                return faq["answer"]
-
-    # Default reply
-    return "Sorry, I could not find an answer. Please contact your clinician."
 # ---------------------------
 # LOGIN
 # ---------------------------
@@ -382,7 +376,7 @@ def patient_consent():
         db.session.commit()
     except Exception as e:
         db.session.rollback()  # undo the failed DB operation
-        print(f"Error saving consent for patient {patient_id}: {e}")
+        logging.error(f"Error saving consent for patient {patient_id}: {e}")
         return jsonify({"error": "Failed to save consent"}), 500
 
     return jsonify({"message": "Consent saved successfully"})
@@ -416,11 +410,28 @@ def patient_change_password():
         db.session.commit()
     except Exception as e:
         db.session.rollback()  # undo any partial changes
-        print(f"Error updating password for patient {patient_id}: {e}")
+        logging.error(f"Error updating password for patient {patient_id}: {e}")
         return jsonify({"error": "Failed to update password"}), 500
 
     return jsonify({"message": "Password updated successfully"})
+# ---------------------------
+# GET PATIENT PROFILE
+# ---------------------------
 
+@app.route("/patient/profile/<patient_id>", methods=["GET"])
+def get_patient_profile(patient_id):
+
+    patient = Patient.query.filter_by(patient_id=patient_id).first()
+
+    if not patient:
+        return jsonify({"error": "Patient not found"}), 404
+
+    return jsonify({
+        "patient_id": patient.patient_id,
+        "name": patient.name,
+        "email": patient.email,
+        "phone_number": patient.phone_number
+    })
 # ---------------------------
 # UPDATE PATIENT PROFILE
 # ---------------------------
@@ -455,7 +466,7 @@ def patient_update_profile():
         db.session.commit()
     except Exception as e:
         db.session.rollback()  # undo any partial changes
-        print(f"Error updating profile for patient {patient_id}: {e}")
+        logging.error(f"Error updating profile for patient {patient_id}: {e}")
         return jsonify({"error": "Failed to update profile"}), 500
 
     return jsonify({"message": "Profile updated successfully"})
@@ -479,7 +490,7 @@ def patient_delete_account():
         db.session.commit()
     except Exception as e:
         db.session.rollback()
-        print(f"Error deleting patient account {patient_id}: {e}")
+        logging.error(f"Error deleting patient account {patient_id}: {e}")
         return jsonify({"error": "Failed to delete account"}), 500
 
     return jsonify({"message": "Account deleted successfully"})
@@ -517,12 +528,12 @@ def forgot_password():
         db.session.commit()
     except Exception as e:
         db.session.rollback()
-        print(f"Error saving OTP for {email}: {e}")
+        logging.error(f"Error saving OTP for {email}: {e}")
         return jsonify({"error": "Failed to generate OTP"}), 500
 
-    print("OTP:", otp)
-
-    return jsonify({"message": "OTP sent"})
+    #print("OTP:", otp)
+    send_email_otp(email, otp)
+    return jsonify({"message": "OTP sent to registered email"})
 
 
 # ---------------------------
@@ -544,7 +555,7 @@ def verify_otp():
         db.session.commit()
     except Exception as e:
         db.session.rollback()
-        print(f"Error cleaning up expired OTPs: {e}")
+        logging.error(f"Error cleaning up expired OTPs: {e}")
         return jsonify({"error": "Failed to cleanup expired OTPs"}), 500
 
     # Verify OTP
@@ -558,7 +569,7 @@ def verify_otp():
         db.session.commit()
     except Exception as e:
         db.session.rollback()
-        print(f"Error verifying OTP for {email}: {e}")
+        logging.error(f"Error verifying OTP for {email}: {e}")
         return jsonify({"error": "Failed to verify OTP"}), 500
 
     return jsonify({"message": "OTP verified"})
@@ -594,7 +605,7 @@ def reset_password():
         db.session.commit()
     except Exception as e:
         db.session.rollback()
-        print(f"Error updating password for {email}: {e}")
+        logging.error(f"Error updating password for {email}: {e}")
         return jsonify({"error": "Failed to update password"}), 500
 
     # Delete OTPs safely
@@ -654,7 +665,7 @@ def create_patient():
         db.session.commit()
     except Exception as e:
         db.session.rollback()
-        print(f"Error creating patient {data.get('patient_id')}: {e}")
+        logging.error(f"Error creating patient {data.get('patient_id')}: {e}")
         return jsonify({"error": "Failed to create patient"}), 500
 
     return jsonify({"message": "Patient account created"})
@@ -729,13 +740,14 @@ def schedule_appointment():
     # --------------------------
     # Validate appointment time (HH:MM)
     # --------------------------
-    time_str = data.get("time")
+    time_str = data.get("time", "NA")
     if time_str:
         try:
             datetime.strptime(time_str, "%H:%M")  # expects 24-hour format like 14:30
         except ValueError:
             return jsonify({"error": "Invalid time format (HH:MM expected)"}), 400
-
+    else:
+        time_str = "NA"
     # --------------------------
     # Create Appointment object
     # --------------------------
@@ -896,6 +908,23 @@ def add_notification():
     appointment_id = data.get("appointment_id")
 
     # ----------------------------
+    # Map issues to severity
+    # ----------------------------
+    ISSUE_SEVERITY = {
+        "Loose Bracket / Band": 6,
+        "Poking Wire": 7,
+        "Lost Aligner": 5,
+        "Severe Pain": 9,
+        "Swollen Gums": 6,
+        "Broken Appliance": 8
+    }
+
+    # If frontend sends issues list
+    if issues and not severity:
+        severity = max([ISSUE_SEVERITY.get(i, 5) for i in issues])
+
+    message = ", ".join(issues) if issues else data.get("message")
+    # ----------------------------
     # Validate notification type
     # ----------------------------
     if type_ not in [e.value for e in NotificationType]:
@@ -929,9 +958,9 @@ def add_notification():
         db.session.commit()
     except Exception as e:
         db.session.rollback()
-        print(f"Error adding notification for {patient_id}: {e}")
+        logging.error(f"Error adding notification for {patient_id}: {e}")
         return jsonify({"error": "Failed to add notification"}), 500
-
+    logging.info(f"Notification added for patient {patient_id}, type={type_}, severity={severity}")
     return jsonify({"message": "Notification added successfully"})
 
 
@@ -985,6 +1014,7 @@ def update_notification_settings():
         print(f"Error updating notification settings for patient {patient_id}: {e}")
         return jsonify({"error": "Failed to update settings"}), 500
 
+    logging.info(f"Notification settings updated for patient {patient_id}: { {field: getattr(settings, field) for field in ['oral_hygiene','appliance_care','appointment']} }")
     return jsonify({"message": "Settings updated successfully"})
 
 
@@ -1000,9 +1030,10 @@ def mark_notification_read(notif_id):
         db.session.commit()
     except Exception as e:
         db.session.rollback()
-        print(f"Error marking notification {notif_id} as read: {e}")
+        logging.error(f"Error marking notification {notif_id} as read: {e}")
         return jsonify({"error": "Failed to mark notification"}), 500
-
+    
+    logging.info(f"Notification {notif_id} marked as read for patient {notif.patient_id}")
     return jsonify({"message": "Notification marked as read"})
 # ---------------------------
 # SCHEDULER SETUP
@@ -1024,12 +1055,16 @@ scheduler.add_job(
 def cleanup_expired_otps():
     with app.app_context():
         try:
-            PasswordResetOTP.query.filter(PasswordResetOTP.expires_at < datetime.utcnow()).delete()
+            PasswordResetOTP.query.filter(
+                (PasswordResetOTP.expires_at < datetime.utcnow()) |
+                ((PasswordResetOTP.verified == True) &
+                 (PasswordResetOTP.expires_at < datetime.utcnow() - timedelta(days=1)))
+            ).delete()
             db.session.commit()
-            print("Expired OTPs cleaned up.")
+            logging.info("Expired OTPs cleaned up.")
         except Exception as e:
             db.session.rollback()
-            print(f"Error cleaning up expired OTPs: {e}")
+            logging.error(f"Error cleaning up expired OTPs: {e}")
 
 scheduler.add_job(
     id='cleanup_otps',
@@ -1044,8 +1079,6 @@ scheduler.add_job(
 # CHATBOT ENDPOINT USING SCORING
 # ---------------------------
 
-from chatbot.chatbot_engine import find_faq_answer  # put at the top of your file
-
 @app.route("/chatbot", methods=["POST"])
 def chatbot():
     data = request.get_json()
@@ -1054,20 +1087,11 @@ def chatbot():
     if not user_message:
         return jsonify({"reply": "Please enter a message."}), 400
 
-    ai_reply = ask_ai(user_message)
-
-    if ai_reply:
-        return jsonify({
-            "reply": ai_reply,
-            "source": "AI"
-        })
-
-    answers = find_faq_answer(user_message, top_n=1)
-    top_answer = answers[0]
-
+    results = find_faq_answer(user_message)
+    reply = results[0]["answer"] if results else "Sorry, I don't have an answer for that."
+    
     return jsonify({
-        "reply": top_answer["answer"],
-        "score": top_answer["score"],
+        "reply": reply,
         "source": "FAQ"
     })
 
@@ -1077,6 +1101,10 @@ def chatbot():
 
 if __name__ == "__main__":
     with app.app_context():
-        db.create_all()  # make sure tables exist before scheduler
-    scheduler.start()
-    app.run(debug=True, host="0.0.0.0", port=5000)
+        db.create_all()
+
+    if not scheduler.running:
+        scheduler.start()
+
+    print("Server starting on http://127.0.0.1:5000", flush=True)
+    app.run(debug=False, host="0.0.0.0", port=5000, use_reloader=False)

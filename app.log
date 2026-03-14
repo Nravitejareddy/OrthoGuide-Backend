@@ -1,0 +1,78 @@
+2026-03-14 13:55:24,525 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 13:55:24,525 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 13:55:24,551 - INFO - Added job "send_daily_reminders" to job store "default"
+2026-03-14 13:55:24,551 - INFO - Added job "cleanup_expired_otps" to job store "default"
+2026-03-14 13:55:24,551 - INFO - Scheduler started
+2026-03-14 13:55:24,594 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.67.212.65:5000
+2026-03-14 13:55:24,594 - INFO - [33mPress CTRL+C to quit[0m
+2026-03-14 13:59:13,802 - INFO - 127.0.0.1 - - [14/Mar/2026 13:59:13] "GET / HTTP/1.1" 200 -
+2026-03-14 13:59:13,827 - INFO - 127.0.0.1 - - [14/Mar/2026 13:59:13] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-03-14 14:00:13,092 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 14:00:13,092 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 14:00:13,112 - INFO - Added job "send_daily_reminders" to job store "default"
+2026-03-14 14:00:13,112 - INFO - Added job "cleanup_expired_otps" to job store "default"
+2026-03-14 14:00:13,112 - INFO - Scheduler started
+2026-03-14 14:00:13,120 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.67.212.65:5000
+2026-03-14 14:00:13,120 - INFO - [33mPress CTRL+C to quit[0m
+2026-03-14 14:02:14,361 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 14:02:14,361 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 14:02:14,381 - INFO - Added job "send_daily_reminders" to job store "default"
+2026-03-14 14:02:14,381 - INFO - Added job "cleanup_expired_otps" to job store "default"
+2026-03-14 14:02:14,381 - INFO - Scheduler started
+2026-03-14 14:02:14,388 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.67.212.65:5000
+2026-03-14 14:02:14,388 - INFO - [33mPress CTRL+C to quit[0m
+2026-03-14 14:04:07,145 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 14:04:07,145 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 14:04:07,166 - INFO - Added job "send_daily_reminders" to job store "default"
+2026-03-14 14:04:07,166 - INFO - Added job "cleanup_expired_otps" to job store "default"
+2026-03-14 14:04:07,166 - INFO - Scheduler started
+2026-03-14 14:04:07,174 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.67.212.65:5000
+2026-03-14 14:04:07,174 - INFO - [33mPress CTRL+C to quit[0m
+2026-03-14 14:04:56,250 - INFO - 127.0.0.1 - - [14/Mar/2026 14:04:56] "GET / HTTP/1.1" 200 -
+2026-03-14 14:05:35,007 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 14:05:35,007 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 14:05:35,033 - INFO - Added job "send_daily_reminders" to job store "default"
+2026-03-14 14:05:35,033 - INFO - Added job "cleanup_expired_otps" to job store "default"
+2026-03-14 14:05:35,033 - INFO - Scheduler started
+2026-03-14 14:05:35,041 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.67.212.65:5000
+2026-03-14 14:05:35,041 - INFO - [33mPress CTRL+C to quit[0m
+2026-03-14 14:13:32,489 - INFO - 127.0.0.1 - - [14/Mar/2026 14:13:32] "POST /chatbot HTTP/1.1" 200 -
+2026-03-14 14:15:03,542 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 14:15:03,542 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 14:15:03,563 - INFO - Added job "send_daily_reminders" to job store "default"
+2026-03-14 14:15:03,563 - INFO - Added job "cleanup_expired_otps" to job store "default"
+2026-03-14 14:15:03,563 - INFO - Scheduler started
+2026-03-14 14:15:03,571 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.67.212.65:5000
+2026-03-14 14:15:03,571 - INFO - [33mPress CTRL+C to quit[0m
+2026-03-14 14:15:12,139 - INFO - 127.0.0.1 - - [14/Mar/2026 14:15:12] "POST /chatbot HTTP/1.1" 200 -
+2026-03-14 14:15:24,270 - INFO - 127.0.0.1 - - [14/Mar/2026 14:15:24] "[31m[1mPOST /chatbot HTTP/1.1[0m" 415 -
+2026-03-14 14:15:37,859 - INFO - 127.0.0.1 - - [14/Mar/2026 14:15:37] "[31m[1mPOST /chatbot HTTP/1.1[0m" 415 -
+2026-03-14 14:15:40,775 - INFO - 127.0.0.1 - - [14/Mar/2026 14:15:40] "POST /chatbot HTTP/1.1" 200 -
+2026-03-14 14:34:48,629 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 14:34:48,629 - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-14 14:34:48,650 - INFO - Added job "send_daily_reminders" to job store "default"
+2026-03-14 14:34:48,651 - INFO - Added job "cleanup_expired_otps" to job store "default"
+2026-03-14 14:34:48,651 - INFO - Scheduler started
+2026-03-14 14:34:48,658 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.67.212.65:5000
+2026-03-14 14:34:48,658 - INFO - [33mPress CTRL+C to quit[0m
