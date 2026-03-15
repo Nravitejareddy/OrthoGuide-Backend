@@ -840,6 +840,42 @@ def admin_dashboard():
         ).count()
     })
 
+@app.route("/admin/system_settings", methods=["GET"])
+def get_system_settings():
+    settings = AppSettings.query.first()
+
+    return jsonify({
+        "clinic_phone": settings.clinic_phone,
+        "support_email": settings.support_email,
+        "admin_phone": settings.admin_phone,
+        "admin_email": settings.admin_email,
+        "system_support_email": settings.system_support_email,
+        "system_version": settings.system_version,
+        "clinic_name": settings.clinic_name
+    })
+
+
+@app.route("/admin/system_settings", methods=["POST"])
+def update_system_settings():
+    data = request.get_json()
+    settings = AppSettings.query.first()
+
+    if not settings:
+        settings = AppSettings()
+        db.session.add(settings)
+
+    settings.clinic_phone = data.get("clinic_phone", settings.clinic_phone)
+    settings.support_email = data.get("support_email", settings.support_email)
+    settings.admin_phone = data.get("admin_phone", settings.admin_phone)
+    settings.admin_email = data.get("admin_email", settings.admin_email)
+    settings.system_support_email = data.get("system_support_email", settings.system_support_email)
+    settings.system_version = data.get("system_version", settings.system_version)
+    settings.clinic_name = data.get("clinic_name", settings.clinic_name)
+
+    db.session.commit()
+
+    return jsonify({"message": "System settings updated successfully"})
+
 # ---------------------------
 # GET ALL CLINICIANS
 # ---------------------------
@@ -1686,11 +1722,12 @@ def change_admin_password():
 
 @app.route("/system/support", methods=["GET"])
 def get_system_support():
+    settings = AppSettings.query.first()
 
     return jsonify({
-        "admin_phone": "+91 98765 43210",
-        "support_email": "support-admin@orthoguide.com",
-        "app_version": "2.5.0"
+        "admin_phone": settings.admin_phone,
+        "support_email": settings.system_support_email,
+        "app_version": settings.system_version
     })
 
 # ---------------------------
