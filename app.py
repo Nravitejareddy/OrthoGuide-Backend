@@ -169,17 +169,6 @@ class PatientNotificationSettings(db.Model):
     appliance_care = db.Column(db.Boolean, default=True)
     appointment = db.Column(db.Boolean, default=True)
 
-class Appointment(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    patient_id = db.Column(db.String(50))
-    clinician_id = db.Column(db.String(50))
-    appointment_date = db.Column(db.Date)
-    appointment_time = db.Column(db.String(50))
-    appointment_type = db.Column(db.String(50))
-    notes = db.Column(db.Text)
-    status = db.Column(db.String(50), default="scheduled")
-
-
 # ---------------------------
 # SYSTEM SETTINGS MODEL
 # ---------------------------
@@ -1204,6 +1193,74 @@ def schedule_appointment():
         return jsonify({"error": str(e)}), 500
 
     return jsonify({"message": "Appointment scheduled"})
+
+@app.route("/clinician/schedule/<clinician_id>", methods=["GET"])
+def clinician_schedule(clinician_id):
+
+    date_str = request.args.get("date")
+
+    if not date_str:
+        return jsonify({"error": "Date required"}), 400
+
+    date_obj = datetime.strptime(date_str, "%Y-%m-%d").date()
+
+    appointments = Appointment.query.filter_by(
+        clinician_id=clinician_id,
+        appointment_date=date_obj
+    ).all()
+
+    result = []
+
+    for a in appointments:
+
+        patient = Patient.query.filter_by(patient_id=a.patient_id).first()
+
+        result.append({
+            "appointment_id": a.id,
+            "patient_id": a.patient_id,
+            "patient_name": patient.name if patient else "Unknown",
+            "treatment_stage": patient.treatment_stage if patient else None,
+            "status": patient.status if patient else None,
+            "appointment_time": a.appointment_time,
+            "appointment_type": a.appointment_type,
+            "notes": a.notes
+        })
+
+    return jsonify(result)
+
+@app.route("/appointment/delete/<int:appointment_id>", methods=["DELETE"])
+def delete_appointment(appointment_id):
+
+    appointment = Appointment.query.get(appointment_id)
+
+    if not appointment:
+        return jsonify({"error": "Appointment not found"}), 404
+
+    db.session.delete(appointment)
+    db.session.commit()
+
+    return jsonify({"message": "Appointment deleted"})
+
+@app.route("/appointment/reschedule", methods=["PUT"])
+def reschedule_appointment():
+
+    data = request.get_json()
+
+    appointment = Appointment.query.get(data.get("appointment_id"))
+
+    if not appointment:
+        return jsonify({"error": "Appointment not found"}), 404
+
+    appointment.appointment_date = datetime.strptime(
+        data.get("date"), "%Y-%m-%d"
+    ).date()
+
+    appointment.appointment_time = data.get("time")
+
+    db.session.commit()
+
+    return jsonify({"message": "Appointment rescheduled"})
+
 
 # ---------------------------
 # CLINICIAN DASHBOARD
