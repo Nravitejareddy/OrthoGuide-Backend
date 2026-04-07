@@ -1,0 +1,3945 @@
+[
+  {
+    "intent": "greeting",
+    "keywords": [
+      "hello",
+      "hi",
+      "hey",
+      "good",
+      "morning",
+      "afternoon",
+      "evening"
+    ],
+    "question": "Hello",
+    "answer": "Hello! I'm your OrthoGuide assistant. How can I help you today? You can ask about braces care, pain, food, cleaning, or treatment."
+  },
+  {
+    "intent": "goodbye",
+    "keywords": [
+      "bye",
+      "goodbye",
+      "see",
+      "later",
+      "thanks",
+      "thank"
+    ],
+    "question": "Goodbye",
+    "answer": "You're welcome! If you have more questions about your orthodontic treatment, feel free to ask anytime."
+  },
+  {
+    "intent": "thanks",
+    "keywords": [
+      "thanks",
+      "thank",
+      "appreciate",
+      "helpful"
+    ],
+    "question": "Thank you",
+    "answer": "You're welcome! I'm here to help with your orthodontic questions."
+  },
+  {
+    "intent": "bot_identity",
+    "keywords": [
+      "who",
+      "are",
+      "you",
+      "bot",
+      "assistant"
+    ],
+    "question": "Who are you?",
+    "answer": "I am OrthoGuide AI, a virtual assistant designed to help answer common questions about braces and orthodontic treatment."
+  },
+  {
+    "intent": "fallback",
+    "keywords": [],
+    "question": "Unknown question",
+    "answer": "I'm sorry, I didn't understand that. Please ask about braces care, food, pain, cleaning, or orthodontic treatment."
+  },
+  {
+    "intent": "what_are_braces",
+    "keywords": [
+      "what",
+      "are",
+      "braces"
+    ],
+    "question": "What are braces?",
+    "answer": "Braces are orthodontic devices made of small brackets that are bonded to your teeth and connected with wires. They work by applying gentle, continuous pressure to gradually move your teeth into their correct position. Over time, this helps improve the alignment of your teeth and your bite. Braces can also help prevent future dental problems and improve your smile. Your orthodontist adjusts them periodically to ensure effective treatment."
+  },
+  {
+    "intent": "who_needs_braces",
+    "keywords": [
+      "who",
+      "needs",
+      "braces"
+    ],
+    "question": "Who needs braces?",
+    "answer": "Braces are recommended for people with crooked teeth, overcrowding, gaps, or bite issues such as overbite, underbite, or crossbite. They help align teeth properly for both functional and aesthetic reasons. Properly aligned teeth make chewing and speaking easier and improve oral hygiene. Braces can also prevent long-term dental problems, like jaw pain or gum disease. Your orthodontist will assess your teeth and bite to determine if braces are necessary."
+  },
+  {
+    "intent": "age_for_braces",
+    "keywords": [
+      "age",
+      "for",
+      "teen",
+      "adult",
+      "braces"
+    ],
+    "question": "At what age can you get braces?",
+    "answer": "Braces are typically started once most permanent teeth have come in, usually between the ages of 10 and 14. However, adults can also benefit from orthodontic treatment at any age. While children’s teeth and jaws are more adaptable, adults can achieve excellent results with proper care. The exact timing may depend on your dental development and specific needs. An orthodontist can advise the best time to start treatment for optimal results."
+  },
+  {
+    "intent": "adults_get_braces",
+    "keywords": [
+      "adult",
+      "age",
+      "braces",
+      "treatment",
+      "older",
+      "teeth",
+      "align"
+    ],
+    "question": "Can adults get braces?",
+    "answer": "Yes, adults can get braces and many choose to do so for both health and cosmetic reasons. Treatment may take slightly longer than in children because adult teeth move more slowly. Braces can improve bite issues, close gaps, and align teeth properly, enhancing oral function. Modern options like clear aligners or ceramic braces make treatment discreet and comfortable. Regular follow-ups are important to ensure effective results at any age."
+  },
+  {
+    "intent": "braces_appearance_or_health",
+    "keywords": [
+      "appearance",
+      "look",
+      "health",
+      "chewing",
+      "speech",
+      "hygiene",
+      "benefit",
+      "braces"
+    ],
+    "question": "Do braces only improve appearance?",
+    "answer": "No, braces do more than improve the look of your smile. They help correct bite problems, which makes chewing and speaking easier and more comfortable. Proper alignment also improves oral hygiene by making it easier to clean teeth thoroughly. This can prevent cavities, gum problems, and jaw-related issues in the future. Overall, braces provide long-term benefits for both function and aesthetics."
+  },
+  {
+    "intent": "braces_fix_gaps",
+    "keywords": [
+      "gap",
+      "spacing",
+      "close",
+      "teeth",
+      "space",
+      "align",
+      "braces"
+    ],
+    "question": "Can braces fix gaps in teeth?",
+    "answer": "Yes, braces are very effective at closing gaps between teeth and aligning them properly. They gradually move the teeth together using gentle, continuous pressure. Closing gaps improves your bite and overall dental function, as well as the appearance of your smile. In some cases, additional appliances may be used to speed up or refine results. Following your orthodontist’s guidance is essential to maintain the progress achieved."
+  },
+  {
+    "intent": "how_braces_work",
+    "keywords": [
+      "how",
+      "braces",
+      "work",
+      "pressure"
+    ],
+    "question": "How do braces work?",
+    "answer": "Braces work by applying controlled pressure to your teeth over time. Small brackets are attached to each tooth and connected by a wire, which the orthodontist adjusts periodically. This pressure gradually shifts teeth into the correct position, improving both alignment and bite. Braces also guide jaw growth in younger patients. Regular adjustments and proper care ensure the treatment progresses efficiently and safely."
+  },
+  {
+    "intent": "braces_damage_teeth",
+    "keywords": [
+      "damage",
+      "harm",
+      "safe",
+      "teeth",
+      "braces",
+      "decay",
+      "stain"
+    ],
+    "question": "Do braces damage teeth?",
+    "answer": "No, braces themselves do not damage teeth when properly applied and monitored by an orthodontist. However, poor oral hygiene during treatment can lead to staining, cavities, or gum problems. It is important to brush carefully, floss, and use any recommended dental tools to keep teeth clean. Regular dental check-ups help catch any issues early. With proper care, braces safely improve your smile without harming your teeth."
+  },
+  {
+    "intent": "braces_fix_bite",
+    "keywords": [
+      "fix",
+      "bite",
+      "overbite",
+      "underbite",
+      "problems",
+      "correct",
+      "braces"
+    ],
+    "question": "Can braces fix bite problems?",
+    "answer": "Yes, braces can correct a variety of bite problems including overbites, underbites, crossbites, and open bites. Proper bite alignment improves chewing, speaking, and overall oral health. In more severe cases, additional appliances or treatments may be required alongside braces. Correcting your bite can also reduce jaw strain and prevent future dental issues. Your orthodontist will tailor the treatment to your specific bite concerns."
+  },
+  {
+    "intent": "braces_results_time",
+    "keywords": [
+      "result",
+      "time",
+      "months",
+      "results",
+      "progress",
+      "braces",
+      "change"
+    ],
+    "question": "How long does it take to see results with braces?",
+    "answer": "Many patients start noticing small improvements within 3 to 6 months of starting treatment. Full results usually take between 12 and 24 months depending on the complexity of the case. Regular orthodontic adjustments ensure the teeth move at a healthy pace. Consistent oral care and following your orthodontist’s advice can affect how quickly results appear. Patience is important, as gradual movement leads to stable and lasting results."
+  },
+  {
+    "intent": "metal_braces",
+    "keywords": [
+      "what",
+      "are",
+      "metal braces",
+      "steel",
+      "strong",
+      "effective",
+      "affordable"
+    ],
+    "question": "What are metal braces?",
+    "answer": "Metal braces are made of stainless steel brackets and wires that are attached to your teeth. They are strong, durable, and very effective at correcting a wide range of orthodontic issues. Metal braces are also the most affordable option compared to other types of braces. Adjustments are made regularly by your orthodontist to move teeth gradually. Despite being noticeable, they are reliable and work well for both children and adults."
+  },
+  {
+    "intent": "ceramic_braces",
+    "keywords": [
+      "what",
+      "are",
+      "ceramic braces",
+      "tooth-colored",
+      "bracket",
+      "blend",
+      "less-visible",
+      "aesthetic"
+    ],
+    "question": "What are ceramic braces?",
+    "answer": "Ceramic braces use brackets that are tooth-colored, allowing them to blend in with your natural teeth. This makes them less noticeable compared to metal braces, which is why many adults prefer them. They work on the same principle as metal braces by applying gentle pressure to move teeth. Ceramic braces may be slightly more delicate, so proper care and avoiding hard or sticky foods is important. Regular adjustments ensure effective and safe treatment."
+  },
+  {
+    "intent": "self_ligating_braces",
+    "keywords": [
+      "what",
+      "are",
+      "self-ligating",
+      "clip",
+      "braces"
+    ],
+    "question": "What are self-ligating braces?",
+    "answer": "Self-ligating braces use special clips instead of traditional elastic bands to hold the wire in place. This reduces friction and can make tooth movement more efficient, sometimes shortening overall treatment time. They also tend to be more comfortable for patients due to less pressure on the teeth. Adjustments are easier and require fewer visits to the orthodontist in some cases. They are suitable for both children and adults depending on the type of correction needed."
+  },
+  {
+    "intent": "lingual_braces",
+    "keywords": [
+      "what",
+      "are",
+      "lingual",
+      "braces",
+      "they"
+    ],
+    "question": "What are lingual braces?",
+    "answer": "Lingual braces are attached behind the teeth, making them virtually invisible from the front. They are effective at moving teeth like traditional braces but can be harder to clean and may require extra care. Adjusting them can be more challenging, so appointments may take longer. Many adults choose lingual braces for aesthetic reasons because they are hidden when smiling. With proper oral hygiene and follow-ups, they provide excellent results."
+  },
+  {
+    "intent": "clear_aligners",
+    "keywords": [
+      "what",
+      "are",
+      "aligner",
+      "clear",
+      "removable",
+      "invisible",
+      "tray",
+      "convenient",
+      "braces"
+    ],
+    "question": "What are clear aligners?",
+    "answer": "Clear aligners are transparent, removable trays that gradually shift teeth into alignment. They are nearly invisible and can be removed for eating and cleaning, which makes them very convenient. Aligners may cost more than traditional braces but are popular among adults for aesthetic reasons. Treatment requires following a strict schedule and wearing them for the recommended number of hours each day. Your orthodontist monitors progress with periodic check-ups and adjustments."
+  },
+  {
+    "intent": "fastest_braces",
+    "keywords": [
+      "which",
+      "type",
+      "of",
+      "braces",
+      "is",
+      "the",
+      "fastest",
+      "quick"
+    ],
+    "question": "Which type of braces is the fastest?",
+    "answer": "Self-ligating braces and clear aligners may provide faster results in certain cases due to efficient tooth movement. They reduce friction and pressure compared to traditional braces, which can speed up adjustments. However, treatment time also depends on the severity of your dental issues and compliance with instructions. Regular follow-ups and proper care are still important to achieve the best results. Your orthodontist will advise which option is most suitable for you."
+  },
+  {
+    "intent": "best_braces_for_adults",
+    "keywords": [
+      "which",
+      "braces",
+      "are",
+      "best",
+      "for",
+      "adults"
+    ],
+    "question": "which braces are best for adults?",
+    "answer": "Adults often prefer ceramic braces or clear aligners because they are less noticeable than metal braces. Both options allow effective tooth movement while maintaining a more aesthetic appearance. The choice depends on comfort, lifestyle, and the complexity of the case. Clear aligners are removable, which can make eating and cleaning easier. Your orthodontist will recommend the best option based on your individual needs."
+  },
+  {
+    "intent": "least_visible_braces",
+    "keywords": [
+      "invisible",
+      "which",
+      "visible",
+      "least",
+      "hidden",
+      "aesthetic",
+      "braces"
+    ],
+    "question": "Which braces are the least visible?",
+    "answer": "Clear aligners and lingual braces are the most discreet orthodontic options. Aligners are transparent trays that are hardly noticeable, while lingual braces are attached behind the teeth. Both options allow patients to maintain a natural look while receiving effective treatment. Choosing between them depends on comfort, case complexity, and oral hygiene habits. Your orthodontist can help decide which option works best for your lifestyle."
+  },
+  {
+    "intent": "braces_type_difference",
+    "keywords": [
+      "difference",
+      "type",
+      "effectiveness",
+      "braces"
+    ],
+    "question": "Do braces work differently depending on type?",
+    "answer": "All braces work on the same principle of applying gentle pressure to move teeth into proper alignment. Differences between types involve aesthetics, comfort, cost, and treatment efficiency. Some types, like self-ligating braces, reduce friction, while clear aligners offer removability and convenience. Your orthodontist will recommend the type that best suits your dental needs and personal preferences. Proper care and follow-ups ensure effective treatment regardless of the type."
+  },
+  {
+    "intent": "aligners_vs_braces",
+    "keywords": [
+      "aligners",
+      "braces",
+      "better",
+      "than",
+      "removable",
+      "complex",
+      "option",
+      "orthodontist"
+    ],
+    "question": "Are aligners better than braces?",
+    "answer": "Aligners are more discreet and removable, which makes them convenient for eating and cleaning. However, braces are often better for complex cases involving severe crowding or bite issues. The choice between aligners and braces depends on your dental condition, aesthetic preference, and lifestyle. Orthodontists assess each case and recommend the best treatment option. Following instructions and attending regular appointments is essential for both options."
+  },
+  {
+    "intent": "braces_cost_india",
+    "keywords": [
+      "how",
+      "much",
+      "braces",
+      "cost",
+      "price",
+      "India",
+      "expense",
+      "treatment"
+    ],
+    "question": "How much do braces cost in India?",
+    "answer": "The cost of braces ranges from ₹25,000 to ₹1,50,000 depending on the type of braces, complexity of the case, and city. Metal braces are usually the most affordable, while ceramic or invisible options can cost more. Additional factors like diagnostic tests, retainers, and follow-up visits may also affect the total cost. It's important to discuss pricing with your orthodontist before starting treatment. Proper care during treatment helps get the best value from your investment."
+  },
+  {
+    "intent": "metal_braces_cost",
+    "keywords": [
+      "Are",
+      "metal braces",
+      "cheaper",
+      "than",
+      "other",
+      "types",
+      "affordable"
+    ],
+    "question": "Are metal braces cheaper than other types?",
+    "answer": "Yes, metal braces are the most affordable option, usually starting from around ₹25,000. They are strong, durable, and effective for most orthodontic cases. Even though they are visible, their cost-effectiveness makes them popular among both children and adults. Regular check-ups are included in most treatment plans, which ensures proper progress. Choosing metal braces can be a budget-friendly way to achieve a healthy, aligned smile."
+  },
+  {
+    "intent": "ceramic_braces_cost",
+    "keywords": [
+      "how",
+      "much",
+      "ceramic braces",
+      "cost",
+      "price"
+    ],
+    "question": "How much do ceramic braces cost?",
+    "answer": "Ceramic braces usually cost between ₹40,000 and ₹80,000 on average. They are tooth-colored, making them less noticeable than metal braces and more popular with adults. The price depends on the complexity of your dental alignment and the duration of treatment. Proper care is essential as ceramic brackets can be slightly more fragile. Despite the higher cost, many people choose ceramic braces for their aesthetic benefits."
+  },
+  {
+    "intent": "self_ligating_braces_cost",
+    "keywords": [
+      "how",
+      "much",
+      "self-ligating braces",
+      "cost",
+      "price",
+      "expensive",
+      "fast"
+    ],
+    "question": "How much do self-ligating braces cost?",
+    "answer": "Self-ligating braces usually start at around ₹60,000 and can go above ₹1,00,000 depending on the case complexity. They use clips instead of elastic bands, which can make treatment faster and more comfortable. Regular orthodontic visits are required to monitor progress and adjust wires as needed. Their efficiency and comfort may justify the higher cost for some patients. Your orthodontist can provide a detailed estimate based on your specific needs."
+  },
+  {
+    "intent": "aligner_cost",
+    "keywords": [
+      "how",
+      "much",
+      "aligner",
+      "invisible",
+      "braces",
+      "cost",
+      "price"
+    ],
+    "question": "How much do invisible braces (aligners) cost?",
+    "answer": "Clear aligners typically range from ₹30,000 to ₹1,50,000 depending on treatment length and complexity. They are nearly invisible and removable, making them convenient for adults and professionals. The cost may vary based on the number of aligner trays, frequency of follow-ups, and technology used. Following instructions carefully is important to ensure effective results. Aligners are a popular choice for patients seeking a discreet orthodontic solution."
+  },
+  {
+    "intent": "insurance_braces",
+    "keywords": [
+      "Does",
+      "insurance",
+      "cover",
+      "braces",
+      "policy",
+      "medical"
+    ],
+    "question": "Does insurance cover braces?",
+    "answer": "Most health insurance policies in India do not cover braces, as they are considered a cosmetic or elective procedure. Some policies may offer partial coverage if braces are needed for medical reasons, like correcting severe bite issues. It's important to check with your insurance provider before starting treatment. Your orthodontist can provide supporting documents if coverage is available. Planning ahead helps avoid unexpected expenses."
+  },
+  {
+    "intent": "emi_braces",
+    "keywords": [
+      "are",
+      "EMI",
+      "installment",
+      "plan",
+      "braces"
+    ],
+    "question": "Are EMI options available for braces?",
+    "answer": "Yes, many dental clinics in India offer EMI options to make braces more affordable. For example, plans can start as low as ₹2,000 per month with 0% interest in some clinics. This allows patients to spread the cost over several months while receiving treatment. Always confirm the terms and duration of the EMI plan with your clinic. Financial planning can make orthodontic treatment more accessible without compromising quality."
+  },
+  {
+    "intent": "why_braces_expensive",
+    "keywords": [
+      "why",
+      "expensive",
+      "cost",
+      "reason",
+      "braces",
+      "treatment",
+      "price"
+    ],
+    "question": "Why are braces expensive?",
+    "answer": "Braces can be expensive due to several factors. Costs cover the orthodontist’s expertise, regular adjustments, treatment duration, and advanced materials used. Additional expenses may include X-rays, retainers, and follow-up visits. Each treatment plan is personalized, which also contributes to the overall price. Investing in braces ensures long-term dental health, improved function, and a better smile."
+  },
+  {
+    "intent": "braces_one_time_cost",
+    "keywords": [
+      "one-time",
+      "one time",
+      "cost",
+      "braces",
+      "payment",
+      "installment",
+      "retain"
+    ],
+    "question": "Are braces a one-time cost?",
+    "answer": "Braces cost is usually spread across installments during the treatment period. This helps patients manage expenses while receiving comprehensive care. After braces are removed, retainers may be an additional cost to maintain the results. Regular follow-ups are part of the treatment and may be included in the package. Planning for all associated costs ensures smooth treatment without financial surprises."
+  },
+  {
+    "intent": "braces_worth_investment",
+    "keywords": [
+      "worth",
+      "investment",
+      "benefit",
+      "health",
+      "confidence",
+      "braces"
+    ],
+    "question": "Are braces worth the investment?",
+    "answer": "Yes, braces are a valuable investment in both dental health and confidence. They improve teeth alignment, bite, and oral hygiene, preventing future dental issues. A straight, healthy smile can boost self-esteem and social confidence. While treatment involves time and cost, the long-term benefits often outweigh the expenses. Following your orthodontist’s guidance ensures you get the best results from your investment."
+  },
+  {
+    "intent": "braces_treatment_duration",
+    "keywords": [
+      "duration",
+      "How",
+      "months",
+      "treatment",
+      "time",
+      "braces",
+      "length"
+    ],
+    "question": "How long does braces treatment last?",
+    "answer": "Braces treatment usually lasts between 12 and 24 months, depending on the severity of the misalignment and bite issues. Some mild cases may take less time, while complex cases can take longer. Regular adjustments and patient compliance play an important role in determining the total duration. Each patient's treatment plan is personalized by the orthodontist. Following their instructions ensures timely and effective results."
+  },
+  {
+    "intent": "braces_treatment_six_months",
+    "keywords": [
+      "Can",
+      "braces",
+      "treatment",
+      "finish",
+      "6 months",
+      "quick",
+      "short"
+    ],
+    "question": "Can braces treatment finish in 6 months?",
+    "answer": "In some mild cases, braces treatment can be completed in 6 to 9 months. These cases usually involve minor crowding or spacing issues. Most patients, however, require 12–24 months for full correction. Rapid treatment options may be available with self-ligating braces or aligners, but only after a careful evaluation by the orthodontist. Patience is important, as gradual tooth movement ensures stable and long-lasting results."
+  },
+  {
+    "intent": "children_braces_duration",
+    "keywords": [
+      "children",
+      "kids",
+      "child",
+      "fast",
+      "treatment",
+      "braces"
+    ],
+    "question": "Do children’s braces take less time?",
+    "answer": "Yes, children’s braces usually take less time because their bones and teeth are still growing and more adaptable. Tooth movement occurs more easily in younger patients, which can speed up treatment. Regular check-ups and proper care are still essential to achieve the desired results. Early intervention can prevent more complicated orthodontic problems later. Children’s compliance with instructions and hygiene also affects treatment duration."
+  },
+  {
+    "intent": "adults_braces_duration",
+    "keywords": [
+      "Do",
+      "adult",
+      "age",
+      "longer",
+      "slow",
+      "treatment",
+      "braces"
+    ],
+    "question": "Do adults take longer with braces?",
+    "answer": "Yes, adults may take a bit longer to see results because their teeth and bones are fully developed. Tooth movement occurs more slowly, but treatment is still very effective. Adults benefit from modern options like clear aligners and ceramic braces, which make treatment comfortable and discreet. Regular visits and following orthodontist instructions are key for timely results. Despite slightly longer treatment time, the outcomes are excellent and long-lasting."
+  },
+  {
+    "intent": "factors_affecting_duration",
+    "keywords": [
+      "factors",
+      "duration",
+      "treatment",
+      "time",
+      "severity",
+      "age",
+      "braces"
+    ],
+    "question": "What factors affect braces treatment time?",
+    "answer": "Several factors can influence the duration of braces treatment. These include the severity of misalignment, age of the patient, type of braces used, and how well the patient follows instructions. Complex cases with bite issues may require additional appliances and longer treatment. Regular follow-ups and good oral hygiene also help achieve results efficiently. Your orthodontist will provide an estimated timeline based on your specific needs."
+  },
+  {
+    "intent": "missed_appointments_delay",
+    "keywords": [
+      "missed",
+      "appointments",
+      "delay",
+      "treatment",
+      "braces",
+      "progress"
+    ],
+    "question": "Do missed appointments delay treatment?",
+    "answer": "Yes, missing appointments can delay your treatment progress. Regular visits are important for adjusting braces, monitoring movement, and ensuring treatment stays on track. Skipping check-ups may prolong the overall duration and affect results. Planning appointments in advance and attending them consistently helps achieve the desired outcome within the estimated timeframe. Your orthodontist can advise on the best schedule for adjustments."
+  },
+  {
+    "intent": "braces_adjustment_frequency",
+    "keywords": [
+      "how often",
+      "adjusted",
+      "tighten wires",
+      "4 to 8 weeks",
+      "regular visit",
+      "checkup schedule",
+      "orthodontist visit",
+      "braces adjustment"
+    ],
+    "question": "How often are braces adjusted?",
+    "answer": "Braces are usually adjusted every 4 to 8 weeks, depending on the treatment plan and type of braces. During these visits, the orthodontist tightens or changes wires to maintain steady tooth movement. Some advanced braces, like self-ligating systems, may require fewer or shorter appointments. Regular adjustments are important to ensure effective progress and prevent complications. Consistent visits help achieve results within the expected timeline."
+  },
+  {
+    "intent": "speeding_up_braces",
+    "keywords": [
+      "Can",
+      "speed",
+      "fast",
+      "shorten",
+      "treatment",
+      "braces"
+    ],
+    "question": "Can braces treatment be sped up?",
+    "answer": "Treatment time can sometimes be shortened with self-ligating braces or clear aligners, which move teeth more efficiently. Good patient compliance, such as following orthodontist instructions and maintaining oral hygiene, also helps speed up treatment. In some cases, additional appliances or minor procedures may accelerate results. However, rushing treatment excessively can be harmful, so it should always be guided by an orthodontist. Safe, gradual movement ensures long-term stability."
+  },
+  {
+    "intent": "tracking_braces_progress",
+    "keywords": [
+      "How",
+      "orthodontists",
+      "track",
+      "progress",
+      "x-ray",
+      "scan",
+      "monitor",
+      "braces"
+    ],
+    "question": "How do orthodontists track progress?",
+    "answer": "Orthodontists track progress through regular checkups, X-rays, and sometimes digital scans. These tools help assess how teeth are moving and whether adjustments are needed. Progress tracking ensures the treatment stays on schedule and avoids complications. Orthodontists may also use photographs or impressions to compare changes over time. Monitoring is essential to achieve a healthy and properly aligned smile."
+  },
+  {
+    "intent": "braces_results_forever",
+    "keywords": [
+      "Do",
+      "result",
+      "forever",
+      "long-term",
+      "retainer",
+      "permanent",
+      "teeth",
+      "braces"
+    ],
+    "question": "Do braces results last forever?",
+    "answer": "Yes, the results of braces can last a lifetime if retainers are worn as prescribed. Teeth naturally shift over time, so retainers help maintain the corrected position. Regular follow-ups and good oral hygiene are essential to preserve the results. Skipping retainer use may cause teeth to relapse and undo some of the correction. Consistent care ensures that the investment in braces provides a lasting, healthy smile."
+  },
+  {
+    "intent": "brushing_with_braces",
+    "keywords": [
+      "How",
+      "brush",
+      "toothbrush",
+      "clean",
+      "brackets",
+      "braces"
+    ],
+    "question": "How do I brush with braces?",
+    "answer": "When brushing with braces, use a soft-bristle toothbrush and hold it at a 45° angle to clean around brackets and wires. Brush gently for at least 2 minutes, making sure to reach every surface of your teeth. Pay extra attention to areas where food can get trapped. Using small circular motions helps remove plaque effectively. Regular brushing prevents cavities, gum issues, and ensures your braces work efficiently."
+  },
+  {
+    "intent": "special_toothbrush_for_braces",
+    "keywords": [
+      "toothbrush",
+      "special",
+      "orthodontic",
+      "electric",
+      "clean",
+      "braces",
+      "hygiene"
+    ],
+    "question": "Do I need a special toothbrush?",
+    "answer": "Yes, using an orthodontic toothbrush or an electric toothbrush can make cleaning around braces easier and more effective. These brushes are designed to reach around brackets and wires to remove trapped food and plaque. Regular toothbrushes can work too, but may require more time and careful technique. Consistent brushing with the right tools helps prevent cavities and gum problems. Your orthodontist can recommend the best toothbrush for your needs."
+  },
+  {
+    "intent": "flossing_with_braces",
+    "keywords": [
+      "floss",
+      "threader",
+      "clean",
+      "braces",
+      "hygiene",
+      "teeth"
+    ],
+    "question": "Can I floss with braces?",
+    "answer": "Yes, you can floss with braces, but you’ll need special tools like floss threaders or interdental brushes. These tools help you reach between teeth and under wires to remove plaque and food particles. Flossing daily prevents cavities and gum disease, which can slow down treatment. It may take a bit longer than regular flossing, but it’s essential for maintaining healthy teeth. Your orthodontist or dental hygienist can show you the correct technique."
+  },
+  {
+    "intent": "braces_bad_breath",
+    "keywords": [
+      "bad breath",
+      "halitosis",
+      "odor",
+      "mouth",
+      "clean",
+      "hygiene",
+      "braces"
+    ],
+    "question": "Do braces cause bad breath?",
+    "answer": "Braces themselves do not cause bad breath, but poor cleaning can lead to trapped food and plaque, which may result in odor. Maintaining regular brushing, flossing, and mouth rinsing is important to prevent bad breath. Using a fluoride mouthwash can help kill bacteria and freshen breath. Cleaning around brackets and wires thoroughly ensures a healthy oral environment. Good oral hygiene habits are essential throughout your orthodontic treatment."
+  },
+  {
+    "intent": "braces_cavities_risk",
+    "keywords": [
+      "cavities",
+      "decay",
+      "tooth",
+      "risk",
+      "cleaning",
+      "braces",
+      "oral hygiene"
+    ],
+    "question": "Do braces cause cavities?",
+    "answer": "Braces themselves do not cause cavities, but improper cleaning increases the risk of decay. Plaque can build up around brackets and wires if teeth are not brushed and flossed regularly. Using fluoride toothpaste and mouthwash helps protect enamel. Regular dental check-ups are important to catch any early signs of cavities. Maintaining good oral hygiene ensures your teeth stay healthy throughout treatment."
+  },
+  {
+    "intent": "mouthwash_with_braces",
+    "keywords": [
+      "mouthwash",
+      "rinse",
+      "fluoride",
+      "braces",
+      "clean",
+      "fresh",
+      "hygiene"
+    ],
+    "question": "Can I use mouthwash with braces?",
+    "answer": "Yes, using a fluoride mouthwash is recommended when you have braces. It helps prevent cavities, strengthens enamel, and reaches areas that brushing might miss. Mouthwash also keeps your breath fresh and reduces bacterial buildup. Choose alcohol-free formulas to avoid irritation in sensitive areas. Incorporating mouthwash into your daily routine enhances overall oral hygiene during orthodontic treatment."
+  },
+  {
+    "intent": "broken_brackets_or_wires",
+    "keywords": [
+      "broken",
+      "bracket",
+      "wire",
+      "damage",
+      "emergency",
+      "braces",
+      "sharp"
+    ],
+    "question": "How to manage broken brackets or wires?",
+    "answer": "If a bracket or wire breaks, cover any sharp edges with orthodontic wax to prevent irritation or injury. Avoid eating hard or sticky foods until you can see your orthodontist. Schedule an appointment as soon as possible to repair the damage. Trying to fix it yourself can cause more harm. Prompt attention ensures your treatment stays on track and remains comfortable."
+  },
+  {
+    "intent": "braces_fall_off",
+    "keywords": [
+      "bracket",
+      "loosen",
+      "fall off",
+      "wire",
+      "hard food",
+      "braces",
+      "repair"
+    ],
+    "question": "Can braces fall off?",
+    "answer": "Yes, brackets can sometimes loosen or fall off, especially if you eat hard or sticky foods. If this happens, avoid touching or bending the bracket or wire yourself. Your orthodontist can reattach the bracket safely and check for any other issues. Taking care with food and following dietary instructions helps prevent this. Regular check-ups also allow the orthodontist to monitor and secure your braces."
+  },
+  {
+    "intent": "frequent_visits_with_braces",
+    "keywords": [
+      "visit",
+      "dentist",
+      "orthodontist",
+      "appointment",
+      "check-up",
+      "braces",
+      "adjustment",
+      "more often"
+    ],
+    "question": "Do I need to visit the dentist more often with braces?",
+    "answer": "Yes, regular visits to your orthodontist are essential when you have braces. These visits allow for adjustments, monitoring progress, and ensuring that your treatment stays on track. Appointments are usually scheduled every 4–8 weeks depending on your treatment plan. Skipping visits can prolong treatment or cause issues with tooth movement. Consistent follow-ups help achieve the best results efficiently."
+  },
+  {
+    "intent": "whitening_with_braces",
+    "keywords": [
+      "whitening",
+      "teeth",
+      "braces",
+      "bleach",
+      "cosmetic",
+      "treatment"
+    ],
+    "question": "Can I whiten my teeth during braces treatment?",
+    "answer": "It is not recommended to whiten your teeth while wearing braces. Whitening products can cause uneven results since the brackets cover parts of your teeth. It’s better to wait until after the braces are removed for even whitening. Maintaining good oral hygiene during treatment keeps teeth looking clean and healthy. Your orthodontist can suggest safe options for post-treatment whitening if desired."
+  },
+  {
+    "intent": "foods_to_avoid_braces",
+    "keywords": [
+      "foods",
+      "avoid",
+      "sticky",
+      "hard",
+      "crunchy",
+      "chewy",
+      "gum",
+      "popcorn",
+      "caramel",
+      "nuts",
+      "braces"
+    ],
+    "question": "What foods should I avoid with braces?",
+    "answer": "You should avoid sticky, hard, crunchy, and chewy foods while wearing braces. Items like gum, popcorn, caramel, and nuts can damage brackets or wires. Hard foods can also loosen braces, delaying treatment. Choosing softer alternatives helps protect your orthodontic appliances. Following these guidelines ensures your braces work effectively and reduces emergency visits to the orthodontist."
+  },
+  {
+    "intent": "pizza_with_braces",
+    "keywords": [
+      "I",
+      "eat",
+      "pizza",
+      "crust",
+      "hard",
+      "bite",
+      "chew",
+      "braces",
+      "soft"
+    ],
+    "question": "Can I eat pizza with braces?",
+    "answer": "Yes, you can eat pizza with braces, but avoid hard or thick crusts that may damage brackets. It’s best to cut slices into smaller, manageable bites. Soft toppings are easier to chew and reduce the risk of breaking wires. Always brush and rinse after eating to remove any food particles. This helps maintain oral hygiene and protects your braces."
+  },
+  {
+    "intent": "chocolate_with_braces",
+    "keywords": [
+      "I",
+      "eat",
+      "chocolate",
+      "sticky",
+      "caramel",
+      "soft",
+      "candy",
+      "braces"
+    ],
+    "question": "Can I eat chocolate with braces?",
+    "answer": "Yes, you can enjoy chocolate, but choose soft varieties and avoid sticky caramel-filled chocolates. Sticky or hard candies can loosen brackets or bend wires. Eating chocolate in moderation and cleaning your teeth afterward keeps your braces safe. Soft chocolate is easier to chew and won’t interfere with treatment. Maintaining proper oral hygiene ensures a healthy smile throughout orthodontic care."
+  },
+  {
+    "intent": "ice_cream_with_braces",
+    "keywords": [
+      "ice cream",
+      "hard chunks",
+      "cold",
+      "braces"
+    ],
+    "question": "Can I eat ice cream with braces?",
+    "answer": "Yes, ice cream is safe with braces as long as you avoid biting hard chunks. Soft and creamy ice cream is easy to eat and won’t damage your brackets or wires. Cold treats can even soothe mild soreness after adjustments. After eating, rinse your mouth or brush lightly to prevent sugar buildup. Enjoying soft desserts in moderation is part of a safe orthodontic diet."
+  },
+  {
+    "intent": "chewing_gum_with_braces",
+    "keywords": [
+      "I",
+      "eat",
+      "gum",
+      "chew",
+      "sticky",
+      "damage",
+      "wires",
+      "brackets",
+      "braces"
+    ],
+    "question": "Can I chew gum with braces?",
+    "answer": "No, chewing gum is not recommended during braces treatment. Gum can stick to brackets and wires, causing them to loosen or break. Even sugar-free gum can be risky because it can pull on the wires. Avoiding gum helps prevent unnecessary visits to the orthodontist. Stick to soft, non-sticky foods to keep your braces intact."
+  },
+  {
+    "intent": "soda_with_braces",
+    "keywords": [
+      "soda",
+      "carbonated",
+      "drink",
+      "cavities",
+      "stains",
+      "braces",
+      "straw"
+    ],
+    "question": "Can I drink soda with braces?",
+    "answer": "You can drink soda occasionally, but it increases the risk of cavities and stains. Using a straw can help reduce contact with your teeth and braces. Sugary or acidic drinks can weaken enamel if consumed frequently. Always rinse your mouth or brush after drinking soda to protect your teeth. Limiting soda intake helps maintain oral health during orthodontic treatment."
+  },
+  {
+    "intent": "apples_with_braces",
+    "keywords": [
+      "I",
+      "eat",
+      "apples",
+      "cut",
+      "bite",
+      "pieces",
+      "hard",
+      "fruit",
+      "braces"
+    ],
+    "question": "Can I eat apples with braces?",
+    "answer": "Yes, apples are fine with braces if you cut them into small, manageable pieces. Biting directly into a whole apple can damage brackets or wires. Soft fruits or peeled apples are even easier to eat. Eating slowly and carefully protects your braces and ensures safe chewing. Brushing after meals keeps your teeth clean and healthy."
+  },
+  {
+    "intent": "street_food_with_braces",
+    "keywords": [
+      "I",
+      "eat",
+      "street",
+      "food",
+      "soft",
+      "chew",
+      "hygiene",
+      "braces",
+      "snack",
+      "safe"
+    ],
+    "question": "Can I eat street food with braces?",
+    "answer": "Yes, you can enjoy street food with braces, but choose softer options and avoid hard, crunchy, or sticky items. Maintain good hygiene by brushing or rinsing after eating. Be cautious with fried or sticky foods that can get trapped in brackets. Eating safely helps prevent damage and keeps your teeth clean. With careful choices, street food can be part of your diet."
+  },
+  {
+    "intent": "meat_with_braces",
+    "keywords": [
+      "I",
+      "eat",
+      "meat",
+      "bones",
+      "chewy",
+      "soft",
+      "braces",
+      "protein"
+    ],
+    "question": "Can I eat meat with braces?",
+    "answer": "Yes, meat is fine with braces if you avoid bones and chewy cuts. Opt for boneless, cooked, or tender meat to make chewing easier and prevent damage. Cut meat into small pieces and eat slowly. Proper preparation ensures your braces stay safe and effective. Including soft protein sources helps maintain a balanced diet during treatment."
+  },
+  {
+    "intent": "best_foods_braces",
+    "keywords": [
+      "best",
+      "foods",
+      "eat",
+      "braces",
+      "soft",
+      "chew",
+      "nutritious",
+      "healthy",
+      "diet"
+    ],
+    "question": "What are the best foods to eat with braces?",
+    "answer": "The best foods for braces are soft and easy to chew, such as cooked vegetables, soft fruits, rice, pasta, yogurt, eggs, and smoothies. These foods minimize stress on brackets and wires while still providing essential nutrients. Avoid hard, sticky, or chewy foods to prevent damage. Eating a balanced diet helps maintain oral health and supports orthodontic treatment. Consistently choosing soft, nutritious options ensures a smoother treatment experience."
+  },
+  {
+    "intent": "braces_pain_initial",
+    "keywords": [
+      "pain",
+      "sore",
+      "discomfort",
+      "hurt",
+      "first",
+      "applied",
+      "start",
+      "braces",
+      "ache"
+    ],
+    "question": "Do braces hurt when first applied?",
+    "answer": "Yes, it is normal to experience mild soreness or discomfort for the first 3–7 days after getting braces. Your teeth and gums are adjusting to the new pressure applied by brackets and wires. This discomfort is temporary and usually eases as your mouth gets used to the braces. Eating soft foods and rinsing with warm salt water can help soothe your gums. Most patients find that pain decreases each day during the first week."
+  },
+  {
+    "intent": "braces_pain_tightening",
+    "keywords": [
+      "tightening",
+      "hurt",
+      "adjustment",
+      "pain",
+      "sore",
+      "discomfort",
+      "braces"
+    ],
+    "question": "Do braces hurt during tightening?",
+    "answer": "Yes, some discomfort or pressure is common after braces are tightened or adjusted. This usually lasts 24–48 hours and is part of the normal tooth-moving process. Using orthodontic wax on brackets and sticking to soft foods can help relieve discomfort. Over-the-counter pain relievers are also effective if needed. The pain is temporary and gradually subsides as teeth shift into place."
+  },
+  {
+    "intent": "relieve_braces_pain",
+    "keywords": [
+      "relieve",
+      "pain",
+      "soreness",
+      "wax",
+      "soft food",
+      "OTC",
+      "braces"
+    ],
+    "question": "How to relieve braces pain?",
+    "answer": "To relieve braces pain, you can use orthodontic wax to cover sharp edges on brackets and wires. Eating soft foods like yogurt, mashed vegetables, and smoothies helps reduce pressure on teeth. Over-the-counter pain relievers, such as ibuprofen or paracetamol, can be taken if recommended by your dentist. Warm salt water rinses may also soothe sore gums. Consistent care and patience help your mouth adjust comfortably."
+  },
+  {
+    "intent": "braces_mouth_ulcers",
+    "keywords": [
+      "ulcers",
+      "sores",
+      "gums",
+      "irritation",
+      "wax",
+      "braces"
+    ],
+    "question": "Do braces cause mouth ulcers?",
+    "answer": "Yes, wires and brackets may occasionally irritate your gums and cheeks, causing mouth ulcers or sores. Applying orthodontic wax over sharp areas can prevent or reduce irritation. Maintaining good oral hygiene and rinsing with salt water or antiseptic mouthwash can also help. Ulcers are usually temporary and heal as your mouth adapts. Contact your orthodontist if ulcers are severe or persistent."
+  },
+  {
+    "intent": "braces_headache",
+    "keywords": [
+      "headache",
+      "pain",
+      "discomfort",
+      "adjustment",
+      "braces",
+      "pressure"
+    ],
+    "question": "Do braces cause headaches?",
+    "answer": "Occasionally, braces can cause mild headaches during initial adjustments as your teeth and jaw adapt to new pressure. This usually passes within a day or two. Eating soft foods and resting can help reduce discomfort. Over-the-counter pain relief may be used if needed, but always follow professional advice. Headaches are typically temporary and decrease as your mouth adjusts."
+  },
+  {
+    "intent": "aligner_vs_braces_pain",
+    "keywords": [
+      "aligner",
+      "invisible",
+      "pain",
+      "braces",
+      "compare"
+    ],
+    "question": "Is braces pain worse than aligner pain?",
+    "answer": "Aligners are generally less painful than traditional braces because they apply gentler, gradual pressure on teeth. Braces may cause more soreness initially, especially after adjustments. However, both braces and aligners create mild pressure as teeth move into proper alignment. Pain from either treatment is temporary and manageable. Your orthodontist can help determine which option is best for your comfort and treatment needs."
+  },
+  {
+    "intent": "numbing_gel_braces",
+    "keywords": [
+      "numbing gel",
+      "benzocaine",
+      "relief",
+      "pain",
+      "braces"
+    ],
+    "question": "Can I use numbing gels for braces pain?",
+    "answer": "Yes, numbing gels containing benzocaine or similar ingredients can provide temporary relief for sore spots in your mouth. Apply the gel directly to the irritated area as instructed on the packaging. These gels help reduce discomfort from brackets or wires rubbing against your gums or cheeks. They are a temporary solution and should be combined with proper oral care. Always consult your orthodontist if discomfort persists."
+  },
+  {
+    "intent": "braces_pain_while_eating",
+    "keywords": [
+      "pain",
+      "eat",
+      "chew",
+      "sore",
+      "braces",
+      "discomfort"
+    ],
+    "question": "Do braces hurt while eating?",
+    "answer": "Yes, eating can be uncomfortable, especially in the first few days after braces are applied or adjusted. Soft foods like mashed potatoes, yogurt, and smoothies can help reduce pressure on your teeth. Avoid hard, crunchy, or sticky foods that may worsen soreness or damage braces. The discomfort usually decreases as your mouth adapts. Proper diet and care make eating easier during orthodontic treatment."
+  },
+  {
+    "intent": "braces_jaw_pain",
+    "keywords": [
+      "jaw",
+      "pain",
+      "bite",
+      "alignment",
+      "soreness",
+      "braces"
+    ],
+    "question": "Do braces cause jaw pain?",
+    "answer": "Sometimes, braces can cause mild jaw pain as your bite alignment changes and teeth move. This discomfort is normal and usually improves over time as your mouth adjusts. Using soft foods and gentle massaging can help relieve soreness. If pain is severe or persistent, contact your orthodontist for advice. Monitoring bite changes ensures a healthy, functional result from treatment."
+  },
+  {
+    "intent": "braces_pain_go_away",
+    "keywords": [
+      "pain",
+      "soreness",
+      "adjustment",
+      "relief",
+      "braces",
+      "discomfort"
+    ],
+    "question": "Will braces pain go away?",
+    "answer": "Yes, braces pain is temporary and your mouth adjusts after each phase of treatment. Mild soreness or pressure usually lasts a few days following adjustments. Using orthodontic wax, soft foods, and pain relievers can help manage discomfort. Over time, your teeth and gums adapt, making eating and speaking more comfortable. Consistent care and patience are key to a smooth orthodontic experience."
+  },
+  {
+    "intent": "braces_effectiveness",
+    "keywords": [
+      "effective",
+      "results",
+      "alignment",
+      "bite",
+      "braces",
+      "teeth",
+      "correction"
+    ],
+    "question": "How effective are braces?",
+    "answer": "Braces are highly effective for correcting misaligned teeth and bite issues. They apply gentle, continuous pressure to move teeth into proper positions over time. Most patients see noticeable improvements within months, with full results after completing the treatment plan. Braces can handle both mild and complex orthodontic problems. Proper care and regular visits ensure the best outcomes."
+  },
+  {
+    "intent": "permanent_teeth_correction",
+    "keywords": [
+      "permanent",
+      "retain",
+      "teeth",
+      "braces",
+      "long-term"
+    ],
+    "question": "Can braces permanently fix teeth?",
+    "answer": "Yes, braces can permanently correct teeth alignment, especially when retainers are used after treatment. Retainers help maintain the new position of teeth and prevent relapse. Without proper retainer use, teeth can gradually shift back to their original positions. Consistent follow-ups with your orthodontist are essential for long-lasting results. Over time, a well-maintained smile can remain healthy and straight."
+  },
+  {
+    "intent": "braces_face_shape",
+    "keywords": [
+      "face",
+      "appearance",
+      "shape",
+      "jaw",
+      "alignment",
+      "braces"
+    ],
+    "question": "Do braces change face shape?",
+    "answer": "Braces can subtly improve facial harmony by aligning the jaw and correcting bite issues. Properly aligned teeth support the lips and cheeks, enhancing overall facial aesthetics. While braces mainly focus on teeth and bite, changes in jaw alignment can affect your smile and profile. The improvement is gradual and depends on the severity of misalignment. Orthodontic treatment can boost confidence through a more balanced appearance."
+  },
+  {
+    "intent": "braces_speech_problems",
+    "keywords": [
+      "fix",
+      "speech",
+      "problems",
+      "lisp",
+      "pronunciation",
+      "misalignment",
+      "teeth",
+      "braces"
+    ],
+    "question": "Can braces fix speech problems?",
+    "answer": "Yes, braces can correct speech issues caused by misaligned teeth, such as lisping or difficulty pronouncing certain sounds. By moving teeth into proper positions, braces create space for the tongue to function correctly. This can improve clarity of speech and reduce strain while talking. The improvement may be gradual as your mouth adjusts. Consulting your orthodontist ensures the best approach for both alignment and speech correction."
+  },
+  {
+    "intent": "braces_jaw_problems",
+    "keywords": [
+      "fix",
+      "jaw",
+      "problems",
+      "TMJ",
+      "bite",
+      "alignment",
+      "orthodontic appliance",
+      "braces"
+    ],
+    "question": "Can braces fix jaw problems?",
+    "answer": "Yes, braces can help correct jaw problems by aligning teeth and adjusting the bite. In some cases, additional appliances like elastics or expanders may be used for more severe issues. Correcting jaw alignment can reduce pain, improve function, and enhance facial symmetry. Treatment duration depends on the complexity of the problem. Following the orthodontist’s guidance ensures a functional and healthy bite."
+  },
+  {
+    "intent": "braces_confidence",
+    "keywords": [
+      "confidence",
+      "smile",
+      "self-esteem",
+      "braces",
+      "appearance"
+    ],
+    "question": "Do braces improve confidence?",
+    "answer": "Yes, braces can significantly boost confidence by creating a straighter, healthier smile. Properly aligned teeth improve appearance and make it easier to smile comfortably. This positive change often affects social interactions, self-esteem, and overall wellbeing. The long-term benefits include improved oral health and reduced risk of future dental issues. Many patients feel more confident once treatment is complete."
+  },
+  {
+    "intent": "severe_crooked_teeth",
+    "keywords": [
+      "crowding",
+      "crooked",
+      "alignment",
+      "braces",
+      "severe",
+      "teeth"
+    ],
+    "question": "Can braces correct very crooked teeth?",
+    "answer": "Yes, braces are ideal for correcting severe crowding and very crooked teeth. They gradually move teeth into proper alignment, even in complex cases. Orthodontists may use additional appliances or techniques to handle extreme misalignment. Treatment duration depends on severity but typically results in a functional and aesthetic outcome. Consistent care and follow-up visits ensure long-term success."
+  },
+  {
+    "intent": "braces_gum_disease",
+    "keywords": [
+      "gum disease",
+      "gingivitis",
+      "plaque",
+      "braces",
+      "cleaning",
+      "oral hygiene"
+    ],
+    "question": "Do braces prevent gum disease?",
+    "answer": "Braces indirectly help prevent gum disease by aligning teeth and improving access for cleaning. Crooked or crowded teeth can trap plaque and food particles, increasing the risk of gum issues. Proper alignment allows for more effective brushing and flossing, reducing the chance of gingivitis and other gum problems. Regular dental check-ups are still important. Braces contribute to long-term oral health when combined with good hygiene."
+  },
+  {
+    "intent": "braces_chewing",
+    "keywords": [
+      "chewing",
+      "improve",
+      "bite",
+      "teeth",
+      "braces",
+      "function"
+    ],
+    "question": "Do braces improve chewing?",
+    "answer": "Yes, braces improve chewing by correcting bite problems and aligning teeth properly. A proper bite ensures that food is chewed evenly, reducing strain on jaw muscles. This also enhances digestion since food is broken down more efficiently. Misaligned teeth can make chewing uncomfortable or uneven, which braces address over time. Effective treatment restores both function and comfort."
+  },
+  {
+    "intent": "braces_digestion",
+    "keywords": [
+      "digestion",
+      "improve",
+      "chewing",
+      "bite",
+      "alignment",
+      "teeth",
+      "braces"
+    ],
+    "question": "Do braces improve digestion?",
+    "answer": "Yes, braces can improve digestion indirectly by allowing you to chew food more thoroughly. Properly aligned teeth make it easier to break down food before swallowing. Efficient chewing reduces stress on the stomach and aids nutrient absorption. Bite alignment also contributes to comfortable eating and overall oral health. Orthodontic treatment supports not just your smile, but your digestive wellbeing as well."
+  },
+  {
+    "intent": "what_are_retainers",
+    "keywords": [
+      "what",
+      "are",
+      "retainers",
+      "retainer",
+      "hold",
+      "teeth",
+      "after braces",
+      "position",
+      "orthodontic"
+    ],
+    "question": "What are retainers?",
+    "answer": "Retainers are orthodontic devices used to hold your teeth in their new positions after braces are removed. They help prevent teeth from shifting back to their previous alignment. Retainers can be removable or fixed, depending on your orthodontist’s recommendation. Wearing them as prescribed ensures your treatment results last long. Proper care and cleaning of retainers are essential for effectiveness and oral hygiene."
+  },
+  {
+    "intent": "need_retainers_after_braces",
+    "keywords": [
+      "need",
+      "retainer",
+      "prevent shift",
+      "teeth",
+      "after braces"
+    ],
+    "question": "Do I need retainers after braces?",
+    "answer": "Yes, retainers are essential after braces to prevent your teeth from moving back to their original positions. Teeth naturally shift over time, especially during the first few months after braces removal. Following your orthodontist’s instructions on wearing retainers ensures your new smile stays straight. Consistent use protects the time and investment you put into orthodontic treatment. Retainers are a crucial step in long-term success."
+  },
+  {
+    "intent": "retainer_wear_duration",
+    "keywords": [
+      "duration",
+      "wear",
+      "retainer",
+      "full-time",
+      "nightly",
+      "braces",
+      "months"
+    ],
+    "question": "How long should I wear retainers?",
+    "answer": "Typically, retainers are worn full-time for the first 6–12 months after braces are removed. After this initial period, they may be worn only at night as prescribed by your orthodontist. The exact schedule depends on your teeth and how much movement occurred during treatment. Wearing retainers consistently helps maintain your corrected alignment. Gradually, nightly wear may be sufficient for long-term stability."
+  },
+  {
+    "intent": "skipping_retainer_consequence",
+    "keywords": [
+      "happens",
+      "skip",
+      "retainer",
+      "relapse",
+      "teeth shift",
+      "braces"
+    ],
+    "question": "What happens if I skip retainers?",
+    "answer": "If you skip wearing your retainers, your teeth may gradually shift back toward their original positions. This is called relapse and can undo the results of your braces. The risk is highest in the first few months after braces removal. Consistently wearing retainers as prescribed helps keep your teeth stable. Any gaps or misalignments caused by skipping retainers may require further orthodontic treatment."
+  },
+  {
+    "intent": "retainers_pain",
+    "keywords": [
+      "Do",
+      "pain",
+      "hurt",
+      "pressure",
+      "discomfort",
+      "retainer",
+      "teeth",
+      "adjust"
+    ],
+    "question": "Do retainers hurt?",
+    "answer": "Mild pressure or discomfort is normal when you first start wearing retainers. This pressure helps keep teeth in their corrected positions. Any soreness usually subsides within a few days as your mouth adjusts. Using retainers as directed prevents teeth from shifting back while minimizing discomfort. If pain is severe or persists, consult your orthodontist for advice or adjustments."
+  },
+  {
+    "intent": "permanent_retainers",
+    "keywords": [
+      "permanent",
+      "fixed",
+      "stability",
+      "retainer",
+      "care"
+    ],
+    "question": "Are permanent retainers better?",
+    "answer": "Permanent retainers are effective for long-term stability because they are bonded to the back of your teeth and cannot be removed by the patient. They are ideal for preventing relapse, especially in cases prone to shifting. However, they require careful hygiene, including flossing with special tools, to prevent plaque buildup. Regular dental check-ups are important to maintain oral health. Your orthodontist will advise whether a permanent retainer is suitable for you."
+  },
+  {
+    "intent": "retainer_cost",
+    "keywords": [
+      "how much",
+      "cost",
+      "price",
+      "retainer",
+      "braces",
+      "replacement"
+    ],
+    "question": "How much do retainers cost?",
+    "answer": "Retainers in India generally cost between ₹3,000 and ₹15,000 depending on the type and material used. Removable retainers are usually less expensive than permanent, bonded ones. The price may also vary based on the orthodontist and city. Retainers are a worthwhile investment to maintain your newly aligned teeth. Your orthodontist can provide details on the best options for your budget and needs."
+  },
+  {
+    "intent": "lost_retainer_replacement",
+    "keywords": [
+      "lost",
+      "replacement",
+      "retainer",
+      "cost",
+      "extra"
+    ],
+    "question": "Can retainers be replaced if lost?",
+    "answer": "Yes, retainers can be replaced if they are lost or damaged, but a replacement will usually cost extra. Prompt replacement is important to prevent your teeth from shifting. Contact your orthodontist as soon as possible to get a new retainer. Some orthodontists may provide guidance on temporary measures while waiting for a replacement. Consistent retainer use is crucial for maintaining your corrected smile."
+  },
+  {
+    "intent": "cleaning_retainers",
+    "keywords": [
+      "clean",
+      "wash",
+      "soap",
+      "brush",
+      "retainer",
+      "care",
+      "hygiene"
+    ],
+    "question": "How do I clean retainers?",
+    "answer": "Clean retainers daily using a soft brush and mild soap or a special retainer cleaner. Avoid using hot water as it can warp the plastic. Rinse thoroughly after cleaning to remove any soap residue. Proper cleaning prevents bacteria buildup and keeps your retainer safe to wear. Regular hygiene ensures your teeth stay healthy and your retainer lasts longer."
+  },
+  {
+    "intent": "retainer_lifespan",
+    "keywords": [
+      "lifespan",
+      "duration",
+      "retainer",
+      "wear",
+      "care"
+    ],
+    "question": "How long do retainers last?",
+    "answer": "With proper care, retainers can last 2–5 years or even longer. Removable retainers may need replacement sooner if they are lost or damaged. Permanent retainers can last longer but require meticulous hygiene. Regular check-ups help monitor the condition of your retainers. Taking care of them ensures your teeth stay in their correct positions long-term."
+  },
+  {
+    "intent": "braces_missing_teeth",
+    "keywords": [
+      "missing teeth",
+      "gap",
+      "implant",
+      "space",
+      "braces"
+    ],
+    "question": "Can I get braces with missing teeth?",
+    "answer": "Yes, you can get braces even if you have missing teeth. Braces can help close gaps or properly align surrounding teeth in preparation for future implants or restorations. Your orthodontist will plan the treatment to ensure optimal spacing and function. Careful monitoring ensures that adjacent teeth do not drift into unwanted positions. Braces allow for both functional and aesthetic improvements in such cases."
+  },
+  {
+    "intent": "braces_with_crowns",
+    "keywords": [
+      "crown",
+      "cap",
+      "braces",
+      "teeth",
+      "restoration"
+    ],
+    "question": "Can I get braces with crowns?",
+    "answer": "Yes, braces can be applied even if some teeth have crowns. Orthodontists can adapt brackets to bond safely onto crowns without damaging them. Treatment planning considers the type and position of crowns to achieve proper alignment. Braces work effectively to move natural teeth while accommodating restorations. Regular check-ups ensure that crowns remain intact throughout treatment."
+  },
+  {
+    "intent": "braces_with_implants",
+    "keywords": [
+      "implant",
+      "artificial tooth",
+      "braces",
+      "teeth alignment",
+      "fixed tooth"
+    ],
+    "question": "Can I get braces with implants?",
+    "answer": "Braces cannot move dental implants because they are fixed into the jawbone. However, braces can align the natural teeth around the implants to ensure a balanced bite. Treatment planning will take the implants into account to achieve proper spacing and aesthetics. Orthodontists may coordinate with your dentist to prepare for implants if needed. Proper alignment around implants ensures long-term function and appearance."
+  },
+  {
+    "intent": "braces_with_gum_disease",
+    "keywords": [
+      "Can",
+      "gum disease",
+      "gingivitis",
+      "periodontitis",
+      "inflammation",
+      "braces"
+    ],
+    "question": "Can I get braces with gum disease?",
+    "answer": "No, orthodontic treatment should be delayed until gum disease is under control. Active gum disease can worsen with braces due to difficulty maintaining hygiene. Treating gum inflammation and infection first ensures safe and effective orthodontic treatment. Your orthodontist may coordinate with your dentist to monitor gum health during treatment. Healthy gums are essential for successful braces and long-term oral health."
+  },
+  {
+    "intent": "braces_during_pregnancy",
+    "keywords": [
+      "pregnancy",
+      "x-ray",
+      "braces",
+      "safe",
+      "mother",
+      "baby"
+    ],
+    "question": "Can I get braces during pregnancy?",
+    "answer": "Yes, braces can be worn during pregnancy, but X-rays are usually avoided unless essential. Orthodontic treatment can proceed safely with standard precautions. Your orthodontist may adjust treatment timing or techniques to ensure comfort. Always discuss any procedures with your gynecologist to ensure safety for both mother and baby. Routine adjustments and monitoring can continue safely throughout pregnancy."
+  },
+  {
+    "intent": "braces_open_bite",
+    "keywords": [
+      "Can",
+      "fix",
+      "open bite",
+      "overbite",
+      "malocclusion",
+      "braces",
+      "teeth"
+    ],
+    "question": "Can braces fix open bite?",
+    "answer": "Yes, braces can correct open bites, where upper and lower teeth do not meet properly. Treatment may involve braces, elastics, or sometimes surgery in severe cases. The orthodontist carefully plans tooth movement to achieve proper bite and jaw alignment. Correcting an open bite improves chewing, speech, and facial balance. Regular follow-ups ensure that treatment progresses effectively."
+  },
+  {
+    "intent": "braces_crossbite",
+    "keywords": [
+      "Can",
+      "fix",
+      "crossbite",
+      "cross bite",
+      "malocclusion",
+      "braces",
+      "expander"
+    ],
+    "question": "Can braces fix crossbite?",
+    "answer": "Yes, braces can correct crossbites where upper teeth bite inside lower teeth. Sometimes, additional appliances like expanders are used to widen the jaw. Correcting a crossbite improves function, prevents tooth wear, and enhances facial symmetry. Treatment planning considers age and severity of the bite. With proper orthodontic care, most crossbites can be successfully corrected."
+  },
+  {
+    "intent": "braces_protruding_teeth",
+    "keywords": [
+      "Can",
+      "fix",
+      "braces",
+      "protruding teeth",
+      "overjet",
+      "front teeth",
+      "stick out",
+      "alignment",
+      "appearance",
+      "function",
+      "elastics",
+      "bite",
+      "jaw"
+    ],
+    "question": "Can braces fix protruding teeth?",
+    "answer": "Yes, braces are commonly used to reduce protrusion of front teeth. They gradually move the teeth back into alignment, improving both appearance and function. Treatment may include elastics or other appliances to adjust bite and jaw position. Reducing protrusion also protects teeth from trauma and enhances your smile. Regular orthodontic visits ensure controlled and safe tooth movement."
+  },
+  {
+    "intent": "braces_post_extraction_gaps",
+    "keywords": [
+      "extraction",
+      "close",
+      "gaps",
+      "missing tooth",
+      "braces",
+      "alignment"
+    ],
+    "question": "Can braces close gaps after tooth extraction?",
+    "answer": "Yes, braces can move surrounding teeth to close gaps created by extractions. This ensures even spacing and proper alignment of remaining teeth. The orthodontist carefully monitors movement to prevent unwanted shifting. Closing gaps helps restore bite function and improves the aesthetic appearance of your smile. Treatment time depends on the size of the gap and overall dental condition."
+  },
+  {
+    "intent": "braces_tmj_problems",
+    "keywords": [
+      "TMJ",
+      "help",
+      "jaw",
+      "joint",
+      "pain",
+      "bite",
+      "braces"
+    ],
+    "question": "Do braces help TMJ problems?",
+    "answer": "Sometimes, braces can help reduce TMJ or jaw joint problems by correcting bite misalignment. Properly aligned teeth distribute forces evenly, which can relieve stress on the jaw joints. In some cases, additional appliances may be used alongside braces for better results. While braces help many patients, severe TMJ disorders may require further treatment. Your orthodontist will evaluate your bite and jaw health to provide the best approach."
+  },
+  {
+    "intent": "missing_teeth_before_orthodontics",
+    "keywords": [
+      "my dentist said",
+      "missing teeth",
+      "replacement",
+      "orthodontic treatment",
+      "first",
+      "alignment",
+      "bite",
+      "implants",
+      "crowns",
+      "bridges"
+    ],
+    "question": "My dentist said I need to have some missing teeth replaced, but I need orthodontic treatment first – why?",
+    "answer": "Your dentist is likely recommending orthodontic treatment first to ensure your overall dental health is optimal. Proper alignment of existing teeth and a correct bite make future restorations such as crowns, bridges, or dental implants much easier and more effective. Orthodontic treatment helps create the ideal spacing and positioning for long-term success. Attempting complicated restorations without proper alignment could compromise both function and aesthetics. Coordinating treatment with your orthodontist and dentist ensures the best outcome for your smile."
+  },
+  {
+    "intent": "sports_during_orthodontics",
+    "keywords": [
+      "sports",
+      "mouth guard",
+      "I",
+      "play",
+      "orthodontics",
+      "braces",
+      "safety"
+    ],
+    "question": "Can I play sports during orthodontic treatment?",
+    "answer": "Yes, you can continue to play sports while undergoing orthodontic treatment, but safety is important. Always wear a custom-fitted mouth guard to protect your teeth, braces, and gums from injury. Different types of braces or aligners may require specific types of guards, so discuss this with your orthodontist. Playing sports safely allows you to maintain your routine without compromising your orthodontic progress. Protecting your braces also prevents emergency visits and additional treatment."
+  },
+  {
+    "intent": "teeth_straight_forever",
+    "keywords": [
+      "teeth",
+      "straight",
+      "retainers",
+      "relapse",
+      "orthodontist",
+      "long-term",
+      "alignment"
+    ],
+    "question": "Once I finish orthodontic treatment, my teeth will remain straight forever, right?",
+    "answer": "Not necessarily. Teeth naturally shift over time, so it’s important to wear retainers exactly as prescribed by your orthodontist. Retainers help maintain the corrected positions and prevent relapse. Consistent use, especially in the first few months after braces, is critical for long-term results. Occasional follow-ups with your orthodontist can ensure your teeth remain healthy and aligned. With proper care, your beautiful smile can last for many years."
+  },
+  {
+    "intent": "alternatives_to_braces",
+    "keywords": [
+      "braces",
+      "only way",
+      "aligners",
+      "appliances",
+      "orthodontic treatment",
+      "teeth movement",
+      "options"
+    ],
+    "question": "Are braces the only way orthodontists can move my teeth?",
+    "answer": "No, braces are not the only way to move teeth. Orthodontists can also use removable or fixed appliances such as clear aligners to correct alignment issues. The choice of appliance depends on the complexity of your case, aesthetic preferences, and lifestyle. A professional consultation is essential to determine the best treatment for your individual needs. Proper planning ensures effective results with minimal discomfort."
+  },
+  {
+    "intent": "at_home_orthodontics_warning",
+    "keywords": [
+      "ads",
+      "home treatment",
+      "DIY",
+      "straightening",
+      "home",
+      "orthodontist",
+      "professional care",
+      "consultation"
+    ],
+    "question": "I’ve been seeing ads for straightening my teeth at home. Why not give it a shot?",
+    "answer": "Moving teeth is a complex biological process that requires careful monitoring by a trained orthodontist. DIY or at-home treatments can lead to serious complications such as misalignment, bite issues, or tooth damage. In India, qualified orthodontists undergo extensive training to ensure safe and effective treatment. Many clinics offer free or low-cost initial consultations to discuss your options. Investing in professional care ensures long-term dental health and a safe, beautiful smile."
+  },
+  {
+    "intent": "home_discomfort_tips",
+    "keywords": [
+      "treat",
+      "pain",
+      "tips",
+      "discomfort",
+      "I",
+      "home care",
+      "home",
+      "are there things"
+    ],
+    "question": "Are there things I can do at home to treat discomfort?",
+    "answer": "Yes, you can manage minor discomfort at home with a few simple tools. Orthodontic wax can cover sharp edges, while floss and interproximal brushes help maintain hygiene. Tweezers can reposition displaced wires if needed. Topical anesthetics like Orabase or Ora-Gel, and over-the-counter pain relievers, can provide relief. A warm salt water rinse (1 tsp salt in 8 oz warm water) can soothe irritated gums. These steps help you stay comfortable between appointments."
+  },
+  {
+    "intent": "notify_orthodontist_problems",
+    "keywords": [
+      "when",
+      "loose bracket",
+      "wire",
+      "problem",
+      "pain",
+      "emergency",
+      "orthodontist",
+      "notify",
+      "that there is",
+      "my treatment"
+    ],
+    "question": "When should I notify my orthodontist that there is a problem with my treatment?",
+    "answer": "You should contact your orthodontist immediately if a bracket becomes loose, a wire has shifted out of place, or you experience unusual pain. Prompt attention prevents further complications and keeps your treatment on track. Delaying notification can prolong discomfort and may require additional procedures. Orthodontists can provide guidance for temporary measures until your appointment. Being proactive ensures smooth and effective treatment progress."
+  },
+  {
+    "intent": "orthodontic_emergencies",
+    "keywords": [
+      "are",
+      "there",
+      "emergencies",
+      "orthodontist"
+    ],
+    "question": "Are there orthodontic emergencies?",
+    "answer": "Yes, emergencies can happen occasionally during orthodontic treatment, such as a broken wire or a loose bracket. Some situations may require an urgent phone call or an unexpected visit to your orthodontist. Prompt management of these issues prevents further damage to your teeth or braces. Your orthodontist will advise whether immediate attention is necessary. Being prepared with basic care items like wax can help manage minor issues at home until you are seen."
+  },
+  {
+    "intent": "work_school_miss",
+    "keywords": [
+      "work",
+      "school",
+      "miss",
+      "appointments",
+      "braces",
+      "aligners",
+      "treatment time"
+    ],
+    "question": "How much work or school will I miss for my treatment?",
+    "answer": "You may need to take some time away from work or school during orthodontic treatment, but your orthodontist will try to minimize disruptions. The longest appointments are usually for placing or removing braces and may be scheduled during daytime hours. Routine adjustment visits or picking up a new set of aligners every 6–10 weeks are typically short and easy to manage. Planning ahead allows you to continue daily activities with minimal interruption. Consistent attendance ensures your treatment progresses efficiently."
+  },
+  {
+    "intent": "insurance_replacement_retainers",
+    "keywords": [
+      "insurance",
+      "cover",
+      "retainer",
+      "replacement",
+      "cost",
+      "orthodontic plan"
+    ],
+    "question": "Will dental insurance cover replacement retainers?",
+    "answer": "Unfortunately, most dental insurance plans in India include retainers only as part of the initial orthodontic package, so replacements are usually an out-of-pocket expense. However, some clinics allow flexible payment options or installment plans to reduce the financial burden. It’s important to confirm with your orthodontist or insurance provider about any coverage or reimbursement possibilities. Proper care of your retainer can also extend its life and minimize replacement costs. Planning ahead helps avoid unexpected expenses while maintaining your orthodontic results."
+  },
+  {
+    "intent": "night_guard_and_retainer",
+    "keywords": [
+      "night guard",
+      "retainer",
+      "grinding",
+      "both",
+      "teeth",
+      "bite",
+      "custom retainer"
+    ],
+    "question": "I grind my teeth at night. Should I wear both a night guard and my retainer at the same time?",
+    "answer": "You should consult your orthodontist before wearing both devices together. Many patients switch to a dual-purpose custom hard-acrylic retainer that functions as both a night guard and a retainer. Wearing two separate devices simultaneously can alter your bite and is generally not recommended. Your orthodontist will recommend the safest and most effective solution for protecting your teeth while maintaining proper alignment. Using the right device ensures both comfort and long-term dental health."
+  },
+  {
+    "intent": "retainer_cleaning_and_storage",
+    "keywords": [
+      "clean",
+      "retainer",
+      "cleaning",
+      "store",
+      "hygiene",
+      "care",
+      "maintenance"
+    ],
+    "question": "How should I clean and store my retainer?",
+    "answer": "After each use, rinse your retainer with cool water and gently brush it with a soft toothbrush and mild soap. Allow it to air-dry in a ventilated case to prevent bacterial growth. Avoid hot water, bleach, or dishwasher cycles, as these can warp or weaken the plastic. Proper cleaning and storage help maintain hygiene, durability, and fit. Regular check-ups with your orthodontist can also ensure your retainer remains effective."
+  },
+  {
+    "intent": "removable_vs_fixed_retainers",
+    "keywords": [
+      "retainer",
+      "removable",
+      "difference",
+      "fixed",
+      "bonded",
+      "cleaning",
+      "types"
+    ],
+    "question": "What is the difference between removable and fixed (bonded) retainers?",
+    "answer": "Removable retainers can be taken out for eating and cleaning, which makes maintaining oral hygiene easier. Fixed or bonded retainers are thin wires attached to the backside of your front teeth, working continuously to prevent shifting. Both types are effective, but fixed retainers require careful flossing and periodic checks to ensure the bond remains strong. The choice between them depends on your specific alignment needs and lifestyle. Your orthodontist will recommend the best option to keep your teeth stable long-term."
+  },
+  {
+    "intent": "mouthguard_cleaning",
+    "keywords": [
+      "mouthguard",
+      "cleaning",
+      "clean",
+      "hygiene",
+      "care",
+      "sports",
+      "orthodontics"
+    ],
+    "question": "What’s the best way to clean a mouthguard?",
+    "answer": "Rinse your mouthguard in cool water after each use and gently brush it with a soft toothbrush and mild soap. Allow it to air-dry in a ventilated case, avoiding closed damp containers where bacteria thrive. Never use hot water, as it can warp the plastic. Regular cleaning ensures your mouthguard remains hygienic, odor-free, and durable. Proper care is essential for protecting your teeth during sports activities."
+  },
+  {
+    "intent": "mouthguard_lifespan",
+    "keywords": [
+      "mouthguard",
+      "sports",
+      "last",
+      "replacement"
+    ],
+    "question": "How long do mouthguards typically last?",
+    "answer": "With proper care, a custom mouthguard can last for one sports season. However, due to normal wear and tear, it should be replaced at the start of each new season. Inspect your guard regularly and replace it immediately if you notice cracks, tears, or a loose fit. Using a damaged mouthguard can reduce protection and increase the risk of injury. Regular replacement ensures your teeth remain fully protected during physical activity."
+  },
+  {
+    "intent": "custom_mouthguard",
+    "keywords": [
+      "need",
+      "custom mouthguard",
+      "custom-fitted mouthguard",
+      "boil-and-bite",
+      "sports",
+      "protection",
+      "comfort",
+      "durability"
+    ],
+    "question": "Do I really need a custom-fitted mouthguard?",
+    "answer": "While boil-and-bite guards offer some protection, a custom-fitted mouthguard from your orthodontist provides superior comfort, coverage, and durability. Custom guards fit precisely to your teeth and offer better shock absorption. If you play sports regularly, investing in a laboratory-made mouthguard reduces the risk of dental injuries and may help lower the chance of concussions. Professional mouthguards are more comfortable, so you’re more likely to wear them consistently. They are a worthwhile investment in long-term dental safety."
+  },
+  {
+    "intent": "night_guard_vs_sports_guard",
+    "keywords": [
+      "night guard",
+      "sports mouthguard",
+      "as",
+      "teeth protection",
+      "grinding",
+      "impact"
+    ],
+    "question": "Can I use a night guard as a sports mouthguard?",
+    "answer": "No, night guards and sports mouthguards serve different purposes and cannot be used interchangeably. Night guards protect your teeth while sleeping by preventing grinding or clenching. Sports mouthguards are thicker and designed to absorb impact during physical activity. Using the wrong device may reduce protection and fail to prevent damage. Always use the correct appliance as advised by your orthodontist for each activity."
+  },
+  {
+    "intent": "dental_xray_concerns",
+    "keywords": [
+      "dental x-ray",
+      "radiation",
+      "safety",
+      "children",
+      "treatment",
+      "orthodontist"
+    ],
+    "question": "What if I don’t want my child or I to get a dental X-ray?",
+    "answer": "Dental X-rays are an important tool for planning orthodontic treatment safely and effectively. In India, orthodontists follow strict safety standards to minimize radiation exposure. Your orthodontist can discuss alternative approaches or the timing of X-rays based on your concerns. While some patients may feel uneasy about radiation, the diagnostic benefits often outweigh the minimal risks. Open communication with your orthodontist ensures you make informed decisions while achieving optimal oral health."
+  },
+  {
+    "intent": "dental_xray_safety_children",
+    "keywords": [
+      "dental",
+      "x-ray",
+      "x ray",
+      "children",
+      "safe",
+      "radiation",
+      "orthodontics"
+    ],
+    "question": "Are dental X-rays safe for children?",
+    "answer": "Yes, dental X-rays are considered safe for children when performed with modern equipment and protective measures. The radiation dose is minimal, and the information gained helps detect cavities, tooth positioning, and other issues early. Early detection allows timely treatment, preventing more serious dental problems in the future. Your orthodontist will use X-rays judiciously to balance safety with diagnostic needs. Parents can feel confident that X-rays are a routine and safe part of orthodontic care."
+  },
+  {
+    "intent": "xray_breastfeeding",
+    "keywords": [
+      "dental",
+      "x-ray",
+      "breastfeeding",
+      "radiation",
+      "safe",
+      "precautions"
+    ],
+    "question": "Should I get a dental X-ray if I’m breastfeeding?",
+    "answer": "Yes, it is perfectly safe to get a dental X-ray while breastfeeding. The amount of radiation exposure is very low and focused on the mouth, so it does not affect breast milk. If you are concerned, inform your orthodontist—they can provide extra protection such as lead shielding for added peace of mind. Dental X-rays are important for monitoring oral health and ensuring your treatment plan proceeds safely. Taking precautions ensures both you and your baby remain safe during imaging procedures."
+  },
+  {
+    "intent": "xray_pregnancy",
+    "keywords": [
+      "dental",
+      "x-ray",
+      "pregnant",
+      "radiation",
+      "safe",
+      "precautions",
+      "orthodontist"
+    ],
+    "question": "Should I get a dental X-ray if I’m pregnant?",
+    "answer": "Dental X-rays are considered safe during pregnancy when modern equipment and safety measures are used. In India, orthodontists may provide lead aprons or thyroid protection if it makes patients more comfortable, even though the radiation dose is minimal. You should discuss any concerns with your orthodontist to determine the best timing and precautions for your treatment. Proper imaging ensures accurate diagnosis and planning for orthodontic care. Open communication helps you receive essential treatment safely while pregnant."
+  },
+  {
+    "intent": "replace_retainer_case",
+    "keywords": [
+      "when",
+      "should",
+      "I",
+      "replace",
+      "retainer case",
+      "hygiene",
+      "bacteria",
+      "cleaning"
+    ],
+    "question": "When should I replace my retainer case?",
+    "answer": "You should replace your retainer case if you notice cracks, visible wear, or persistent odor even after cleaning. Old cases can harbor bacteria that undo the hygiene efforts you make with your retainer. Using a damaged or unhygienic case may compromise your appliance and increase the risk of oral infections. Regularly replacing the case ensures your retainer stays clean, protected, and effective. Most patients find that switching cases every few months keeps their retainer in good condition."
+  },
+  {
+    "intent": "pet_safety_retainer",
+    "keywords": [
+      "retainer",
+      "pets",
+      "chewing",
+      "damage",
+      "safe"
+    ],
+    "question": "Is a retainer safe for my pet if they find it?",
+    "answer": "No, retainers are not safe for pets. Dogs and cats are often attracted to the smell of saliva and may chew on the appliance, which can damage it or pose a choking hazard. If your retainer has been compromised, stop using it immediately and contact your orthodontist for a replacement. Always store your retainer in a sealed case out of reach of pets. Proper storage protects both your retainer and your furry friends."
+  },
+  {
+    "intent": "retainer_cleaning_travel",
+    "keywords": [
+      "retainer",
+      "travel",
+      "clean",
+      "hygiene",
+      "case",
+      "portable"
+    ],
+    "question": "How do I clean my retainer while traveling?",
+    "answer": "Even when traveling, maintaining proper retainer hygiene is essential. Bring a travel-size cleaning kit that includes a soft toothbrush, mild soap or a specialized retainer cleanser, and a compact soaking container. Always carry a sturdy, ventilated case in your carry-on or day bag to rinse and store your appliance safely. Maintaining your daily routine of cleaning and rinsing prevents bacterial buildup. Consistent care while away from home ensures your retainer remains effective and hygienic."
+  },
+  {
+    "intent": "retainer_odor",
+    "keywords": [
+      "retainer",
+      "smell",
+      "odor",
+      "cleaning",
+      "bacteria",
+      "maintenance"
+    ],
+    "question": "What if my retainer smells even after cleaning?",
+    "answer": "If your retainer still smells after cleaning, it may not be drying properly or may have micro-cracks where bacteria accumulate. Strong-smelling foods or drinks can also contribute to odor. Try weekly soaks with retainer-cleaning tablets or a baking soda paste to help eliminate bacteria. If the smell persists, contact your orthodontist, as the retainer may need professional cleaning or replacement. Regular maintenance helps keep your appliance fresh and hygienic."
+  },
+  {
+    "intent": "mouthwash_retainer",
+    "keywords": [
+      "Can",
+      "retainer",
+      "mouthwash",
+      "cleaning",
+      "clean",
+      "alcohol-free",
+      "hygiene"
+    ],
+    "question": "Can I use mouthwash to clean my retainer?",
+    "answer": "It’s best to avoid soaking your retainer in standard mouthwash, as alcohol and harsh chemicals can weaken the material or cause discoloration. If you like a minty-fresh feel, briefly swish your retainer with an alcohol-free rinse. Always follow up with a thorough rinse under lukewarm water. Proper cleaning preserves the strength and fit of the retainer. Maintaining this habit helps ensure your teeth remain aligned and your retainer lasts longer."
+  },
+  {
+    "intent": "deep_bite_health_concerns",
+    "keywords": [
+      "deep bite",
+      "overbite",
+      "health risks",
+      "teeth wear",
+      "health",
+      "gum recession",
+      "jaw pain"
+    ],
+    "question": "Is it just a cosmetic concern, or are health implications tied to a deep bite?",
+    "answer": "While a deep bite may first be noticed for cosmetic reasons, it can cause significant dental issues over time. These include accelerated wear on upper and lower front teeth, potential jaw discomfort, gum recession, and a higher risk of chipping teeth. Addressing a deep bite early can prevent long-term damage and improve oral function. Orthodontic treatment can correct alignment and reduce these risks. Regular check-ups allow your dentist to monitor and manage any complications effectively."
+  },
+  {
+    "intent": "deep_bite_self_correction",
+    "keywords": [
+      "Can",
+      "deep bite",
+      "overbite",
+      "correct",
+      "itself",
+      "adult",
+      "treatment"
+    ],
+    "question": "Can a deep bite correct itself over time?",
+    "answer": "No, deep bites typically do not resolve on their own and can worsen without treatment. Factors like teeth grinding or natural wear may exacerbate the condition, especially in adults. Orthodontic intervention is often necessary to correct the bite and prevent further dental problems. Timely treatment helps maintain proper tooth function, prevents uneven wear, and improves overall oral health. Consulting an orthodontist ensures a personalized plan for correction."
+  },
+  {
+    "intent": "deep_bite_vs_overjet",
+    "keywords": [
+      "deep bite",
+      "overbite",
+      "same",
+      "overjet",
+      "malocclusion",
+      "buck teeth",
+      "bite"
+    ],
+    "question": "Is a deep bite the same as an overbite?",
+    "answer": "A deep bite and an overbite are terms often used interchangeably to describe a vertical malocclusion where the upper front teeth cover the lower front teeth excessively. This is different from an overjet, which refers to the horizontal distance between the upper and lower front teeth, often called 'buck teeth.' Proper diagnosis is important, as the treatment approach can differ depending on whether the issue is a deep bite, overjet, or both. Orthodontic treatment can correct these conditions, restoring function and improving appearance. Understanding the difference helps patients and parents make informed treatment decisions."
+  },
+  {
+    "intent": "crossbite_complications",
+    "keywords": [
+      "untreated",
+      "crossbite",
+      "complications",
+      "jaw misalignment",
+      "tooth enamel",
+      "facial asymmetry",
+      "chewing issues"
+    ],
+    "question": "What complications can arise from an untreated crossbite?",
+    "answer": "If a crossbite is left untreated, it can lead to several dental and jaw problems. These may include jaw misalignment, uneven growth of the jaw, premature wearing of tooth enamel, and facial asymmetry. Improper chewing and difficulty maintaining oral hygiene can also occur. Early diagnosis and orthodontic treatment can prevent these issues and ensure proper alignment of teeth. Regular check-ups with an orthodontist are essential for timely intervention."
+  },
+  {
+    "intent": "crossbite_vs_under_overbite",
+    "keywords": [
+      "crossbite",
+      "underbite",
+      "overbite",
+      "same",
+      "malocclusion",
+      "teeth alignment",
+      "posterior",
+      "anterior"
+    ],
+    "question": "Is a crossbite the same as an underbite or overbite?",
+    "answer": "No, a crossbite is different from an underbite or overbite. A crossbite occurs when the upper teeth fit inside the lower teeth and can affect front teeth, back teeth, or both. Posterior crossbites involve the back teeth, while anterior crossbites affect the front teeth. In contrast, an underbite is when the lower jaw protrudes and the upper teeth sit behind the lower teeth. Each type of bite issue can affect oral health and may require orthodontic treatment to prevent further complications."
+  },
+  {
+    "intent": "detect_crossbite",
+    "keywords": [
+      "crossbite",
+      "diagnosis",
+      "child",
+      "adult",
+      "orthodontist",
+      "bite alignment"
+    ],
+    "question": "How can I tell if my child or I have a crossbite?",
+    "answer": "A crossbite is usually noticeable when the upper teeth fit inside the lower teeth either in the front or back while biting. Parents may observe uneven chewing or shifting of the jaw while the child bites down. If you suspect a crossbite, it is important to consult an orthodontist for a proper evaluation. Early detection allows treatment to begin at the optimal age, preventing long-term issues. Professional assessment ensures accurate diagnosis and a customized treatment plan."
+  },
+  {
+    "intent": "braces_hygiene_challenges",
+    "keywords": [
+      "braces",
+      "hard",
+      "harder",
+      "maintain",
+      "oral hygiene",
+      "cleaning",
+      "flossing",
+      "brushing"
+    ],
+    "question": "Is it harder to maintain oral hygiene with braces?",
+    "answer": "Braces can make cleaning teeth more challenging, but with the right tools and techniques, excellent oral hygiene is achievable. Using orthodontic brushes, floss threaders, and interdental brushes can help reach areas around brackets and wires. Consistent brushing and flossing are crucial to prevent plaque buildup and cavities. Regular dental check-ups during orthodontic treatment ensure that teeth and gums remain healthy. Always follow your orthodontist’s guidance for a proper hygiene routine."
+  },
+  {
+    "intent": "orthodontic_pain",
+    "keywords": [
+      "braces",
+      "orthodontic treatment",
+      "pain",
+      "painful",
+      "OTC pain relievers"
+    ],
+    "question": "Will orthodontic treatment be painful?",
+    "answer": "Some discomfort is common when braces or aligners are first applied or after adjustments. Most patients adapt quickly to the pressure, and any soreness is usually temporary. Over-the-counter pain relievers can help manage mild discomfort. Orthodontic wax can also protect soft tissues from irritation caused by wires or brackets. With proper care and guidance, pain is generally minimal and manageable throughout treatment."
+  },
+  {
+    "intent": "treatment_duration",
+    "keywords": [
+      "How long",
+      "treatment",
+      "last",
+      "duration",
+      "timeline",
+      "severity",
+      "type of braces"
+    ],
+    "question": "How long will my treatment last?",
+    "answer": "The duration of orthodontic treatment varies depending on the severity of the dental issue and the type of treatment used. Mild cases may take less time, while complex misalignments or bite issues can take longer. Your orthodontist will provide a more accurate timeline based on your individual needs and treatment plan. Regular appointments and patient compliance can also affect the overall duration. Clear communication with your orthodontist ensures realistic expectations for treatment progress."
+  },
+  {
+    "intent": "retainer_usage",
+    "keywords": [
+      "need",
+      "retainer",
+      "forever",
+      "after braces",
+      "permanent wear",
+      "maintenance",
+      "teeth alignment"
+    ],
+    "question": "Do I need to wear my retainer forever?",
+    "answer": "Retainers are essential for maintaining the results of braces or aligners. Most orthodontists recommend wearing them full-time initially, then switching to nighttime use for long-term stability. Teeth can shift naturally over time, so consistent retainer use prevents relapse. Proper maintenance, cleaning, and storage prolong the life of your retainer. Following your orthodontist’s instructions ensures that your smile remains straight and healthy for years to come."
+  },
+  {
+    "intent": "adult_orthodontics_duration",
+    "keywords": [
+      "adult",
+      "orthodontics",
+      "take longer",
+      "treatment",
+      "time",
+      "teeth movement",
+      "bone density"
+    ],
+    "question": "Does orthodontic treatment take longer as an adult?",
+    "answer": "Yes, adult orthodontic treatment can take longer than in children because adult teeth are more firmly set in the jawbone. Bones are denser and less malleable, which may require more time and controlled pressure to achieve the desired tooth movement. Despite the longer duration, adults still achieve excellent results with proper treatment planning. Orthodontic appliances like braces or clear aligners are tailored to the individual’s needs. Patience and compliance are key to achieving optimal outcomes as an adult."
+  },
+  {
+    "intent": "adult_orthodontics_insurance",
+    "keywords": [
+      "adult",
+      "orthodontics",
+      "insurance",
+      "cover",
+      "HSA",
+      "FSA",
+      "dental plan"
+    ],
+    "question": "Does insurance cover adult orthodontics?",
+    "answer": "In India, most dental insurance plans do not cover adult orthodontics as it is often considered a cosmetic procedure. Some plans may offer a limited annual or lifetime benefit, especially if treatment is medically necessary. If your orthodontist recommends treatment due to a medical issue, check with your medical or dental insurance provider to verify coverage. Utilizing Health Savings Accounts (HSA) or Flexible Spending Accounts (FSA) can help finance treatment. Planning ahead can make adult orthodontic care more affordable."
+  },
+  {
+    "intent": "mouthguard_sports_designs",
+    "keywords": [
+      "mouthguard",
+      "sports",
+      "designs",
+      "protection",
+      "different"
+    ],
+    "question": "Are there different mouthguard designs for different sports?",
+    "answer": "Yes, mouthguards are designed with specific sports in mind, offering different levels of protection. High-contact sports like football or hockey require robust, custom-fitted guards for maximum safety. Low-contact sports may allow simpler, store-bought guards, but a custom mouthguard ensures better fit, comfort, and durability. Using the correct mouthguard protects teeth, gums, and reduces the risk of injuries. Your orthodontist can recommend the best type of mouthguard for your activity."
+  },
+  {
+    "intent": "mouthguard_odor",
+    "keywords": [
+      "mouthguard",
+      "smell",
+      "odour",
+      "hygiene",
+      "cleaning"
+    ],
+    "question": "How can I prevent my mouthguard from smelling bad?",
+    "answer": "To prevent your mouthguard from developing a bad odor, it is important to clean it regularly and store it properly. After use, rinse it thoroughly with cool water and use a mild soap or a dedicated mouthguard cleaning solution. Make sure it is completely dry before placing it in its ventilated case. Avoid storing it in a damp or closed container, as bacteria can grow easily. Consistent care keeps your mouthguard fresh and hygienic for regular use."
+  },
+  {
+    "intent": "mouthguard_sleep",
+    "keywords": [
+      "mouthguard",
+      "sleeping",
+      "night"
+    ],
+    "question": "Can I wear my mouthguard while sleeping?",
+    "answer": "Sports mouthguards are generally not designed for nighttime use, but there are specialized night guards for teeth grinders (bruxism). These night guards help protect your teeth from grinding and clenching while sleeping. If you are concerned about tooth wear or jaw discomfort overnight, your orthodontist can recommend the best solution. Using the correct mouthguard helps prevent damage and ensures comfort during sleep. Never use a sports mouthguard for nocturnal grinding without professional advice."
+  },
+  {
+    "intent": "mouthguard_fit",
+    "keywords": [
+      "mouthguard",
+      "fit",
+      "discomfort",
+      "adjustment",
+      "orthodontist",
+      "correctly"
+    ],
+    "question": "What should I do if my mouthguard doesn’t fit correctly?",
+    "answer": "If your mouthguard feels uncomfortable or does not fit properly, it is important to consult your orthodontist. They can check whether adjustments are possible or if a new custom-fitted mouthguard is required. Wearing an ill-fitting mouthguard can reduce its effectiveness and may even cause irritation or sores. A proper fit ensures maximum protection and comfort. Regular follow-ups can also help monitor wear and ensure the guard continues to fit well."
+  },
+  {
+    "intent": "mouthguard_sharing",
+    "keywords": [
+      "mouthguard",
+      "share",
+      "sharing",
+      "hygiene",
+      "someone",
+      "fit",
+      "comfort"
+    ],
+    "question": "Is it okay to share my mouthguard with someone else?",
+    "answer": "No, mouthguards should never be shared for hygiene reasons. Sharing can transfer bacteria and germs, leading to infections or oral health problems. In addition, the mouthguard may not fit properly on another person’s teeth, reducing its protective function. A poorly fitting guard can also cause discomfort or even injury. Always use a personal, custom-fitted mouthguard to ensure safety and hygiene."
+  },
+  {
+    "intent": "mouthguard_speech",
+    "keywords": [
+      "mouthguard",
+      "speaking",
+      "speech",
+      "adaptation",
+      "custom fit"
+    ],
+    "question": "Can I speak clearly with a mouthguard?",
+    "answer": "Initially, speaking with a mouthguard may feel unusual or slightly difficult. However, with practice, most individuals adapt quickly. Custom-fitted mouthguards tend to interfere less with speech than over-the-counter models, as they are tailored to the shape of your teeth. Over time, talking, breathing, and even singing or communicating normally becomes easy. Using a properly fitted guard ensures comfort and minimal disruption to daily activities."
+  },
+  {
+    "intent": "mouthguard_replacement",
+    "keywords": [
+      "mouthguard",
+      "replace",
+      "wear and tear",
+      "How often",
+      "contact sports"
+    ],
+    "question": "How often should I replace my mouthguard?",
+    "answer": "A mouthguard can last several years with proper care, but it should be replaced after significant growth changes, dental procedures, or if signs of wear appear. Athletes or those engaged in frequent contact sports may need to replace it more regularly due to wear and tear. Inspect your mouthguard periodically for cracks, tears, or loss of fit. A well-maintained mouthguard ensures optimal protection for your teeth and jaw. Prompt replacement prevents injuries and maintains comfort."
+  },
+  {
+    "intent": "mouthguard_care",
+    "keywords": [
+      "mouthguard",
+      "care",
+      "cleaning",
+      "storage",
+      "inspection"
+    ],
+    "question": "What’s the right way to care for my mouthguard?",
+    "answer": "Proper care of your mouthguard involves regular cleaning, careful storage, and routine inspection. After each use, rinse with cool water and clean with mild soap or a specialized cleaning solution. Store it in a ventilated case to avoid bacterial growth, and inspect for any cracks or damage before each use. Avoid exposure to heat or direct sunlight, as this can warp the material. Regular maintenance prolongs the lifespan and ensures your mouthguard continues to provide full protection."
+  },
+  {
+    "intent": "retainer_eating",
+    "keywords": [
+      "retainer",
+      "eating",
+      "eat",
+      "Can I",
+      "removable",
+      "fixed"
+    ],
+    "question": "Can I eat with my retainer on?",
+    "answer": "It is recommended to remove removable retainers while eating to prevent any potential damage. Eating with a retainer in place can lead to cracks, warping, or buildup of food debris. For fixed retainers, avoid hard, sticky, or chewy foods that may dislodge the wire or damage the teeth. Proper care during meals ensures that your retainers continue to maintain your teeth alignment effectively. After eating, always clean your teeth and retainer thoroughly."
+  },
+  {
+    "intent": "retainer_loss_breakage",
+    "keywords": [
+      "retainer",
+      "lost",
+      "broken",
+      "broke",
+      "break",
+      "replacement",
+      "orthodontist"
+    ],
+    "question": "What do I do if I lose or break my retainer?",
+    "answer": "If your retainer is lost or broken, contact your orthodontist immediately to get a replacement. Using a damaged or missing retainer can lead to teeth shifting and undo your orthodontic progress. Prompt replacement ensures your teeth remain in their correct position and prevents long-term alignment issues. Avoid trying to fix it yourself, as improper handling may worsen the problem. Regular follow-ups with your orthodontist can help prevent future incidents."
+  },
+  {
+    "intent": "retainer_daily_use",
+    "keywords": [
+      "retainer",
+      "daily use",
+      "wear",
+      "duration",
+      "post-treatment",
+      "day"
+    ],
+    "question": "How long should I wear my retainer each day?",
+    "answer": "The duration for wearing a retainer varies depending on your orthodontist’s instructions and your stage in post-treatment care. Typically, retainers are worn full-time initially and gradually reduced to nighttime use. Following your orthodontist’s guidance is essential to ensure teeth remain in their corrected position. Consistent use prevents relapse and maintains the results achieved by braces or aligners. Proper care and adherence to schedule are key to long-term stability of your smile."
+  },
+  {
+    "intent": "retainer_snug",
+    "keywords": [
+      "retainer",
+      "tight",
+      "snug",
+      "discomfort",
+      "teeth shift"
+    ],
+    "question": "Why does my retainer feel snug or tight?",
+    "answer": "If your retainer feels snug, it usually indicates that your teeth have shifted slightly since the last time you wore it. Wearing your retainer as prescribed is important to maintain alignment and prevent further movement. Mild tightness is normal initially, but if it causes significant discomfort or pain, you should consult your orthodontist. They can check the fit and make adjustments if necessary. A properly fitting retainer ensures your teeth remain in their corrected positions."
+  },
+  {
+    "intent": "prepare_child_braces",
+    "keywords": [
+      "child",
+      "braces",
+      "preparation",
+      "hesitant",
+      "orthodontist"
+    ],
+    "question": "How do I prepare a hesitant child for braces?",
+    "answer": "Preparing a child for braces involves clear and positive communication. Explain the benefits of braces, including healthier teeth, better alignment, and a confident smile. Emphasize that the orthodontist and their team will ensure the process is comfortable and safe. Reading books, watching videos, or showing pictures of kids with braces can also help reduce fear. Encouragement and reassurance make the experience less stressful for children and set them up for a successful treatment journey."
+  },
+  {
+    "intent": "braces_non_cosmetic_benefits",
+    "keywords": [
+      "braces",
+      "benefits",
+      "function",
+      "oral health",
+      "alignment"
+    ],
+    "question": "Are there benefits to braces besides having straighter teeth?",
+    "answer": "Yes, braces provide significant functional benefits beyond cosmetic improvement. They help correct bite issues, improve chewing and speech, and make oral hygiene easier by properly spacing the teeth. Braces also reduce the risk of long-term dental problems such as gum disease, jaw pain, or uneven tooth wear. Modern braces are more comfortable and less intrusive than older models, allowing for effective treatment with minimal disruption to daily life."
+  },
+  {
+    "intent": "braces_psychological_benefits",
+    "keywords": [
+      "braces",
+      "mental health",
+      "confidence",
+      "self-esteem",
+      "psychological"
+    ],
+    "question": "What are the psychological benefits of braces?",
+    "answer": "A well-aligned smile contributes significantly to self-esteem and overall mental well-being. People with straighter teeth often feel more confident in social and professional settings. Studies indicate that individuals with properly aligned teeth report higher satisfaction with their appearance, better interpersonal interactions, and improved self-confidence. Braces can therefore positively affect both emotional health and social life, in addition to providing long-term oral health benefits."
+  },
+  {
+    "intent": "post_braces_preparation",
+    "keywords": [
+      "braces",
+      "after",
+      "retainer",
+      "maintenance",
+      "follow-up"
+    ],
+    "question": "How do I prepare for life after braces?",
+    "answer": "After braces are removed, retainers are essential for maintaining your new smile. Your orthodontist will advise whether a removable or fixed retainer is appropriate. Wearing retainers as prescribed prevents teeth from shifting back to their previous positions. Regular follow-up visits ensure your retainers fit properly and your teeth remain aligned. Maintaining a proper oral hygiene routine and following the orthodontist’s guidance helps keep your smile healthy and long-lasting."
+  },
+  {
+    "intent": "pre_braces_checkup",
+    "keywords": [
+      "Pre-Braces",
+      "dentist",
+      "pre-checkup",
+      "necessary",
+      "cleaning",
+      "fluoride",
+      "before braces"
+    ],
+    "question": "Pre-Braces Dental Check-up: Is It Necessary?",
+    "answer": "Yes, a thorough dental check-up and cleaning are highly recommended before starting braces. Your family dentist will ensure that your teeth and gums are healthy, removing plaque, tartar, and cavities that could interfere with orthodontic treatment. Avoid fluoride treatments within two weeks of getting braces, as excessive fluoride can affect how braces bond to your teeth. This pre-treatment check-up sets the foundation for a successful and smooth orthodontic journey."
+  },
+  {
+    "intent": "aligner_appointments",
+    "keywords": [
+      "clear aligners",
+      "appointments",
+      "check-up",
+      "remote monitoring"
+    ],
+    "question": "How many appointments are required during clear aligner treatment?",
+    "answer": "The number of appointments varies depending on your treatment plan. Regular check-ups ensure that teeth are moving correctly and allow your orthodontist to address any issues. Some clinics offer remote monitoring through photos or scans, which can reduce the frequency of in-person visits. However, initial scans, aligner delivery, and periodic adjustments usually require in-office appointments. Maintaining communication with your orthodontist ensures treatment stays on track and progresses efficiently."
+  },
+  {
+    "intent": "aligner_process",
+    "keywords": [
+      "clear aligners",
+      "process",
+      "scan",
+      "attachments",
+      "delivery"
+    ],
+    "question": "What is the process for getting clear aligners?",
+    "answer": "Getting clear aligners typically starts with an in-office 3D scan of your teeth, which takes about 10–15 minutes. The scan is sent to the manufacturer for production, which can take up to six weeks. Once the aligners arrive, the orthodontist will place attachments if needed and provide instructions on wearing and caring for them. This final appointment may take 45 minutes to an hour. The process ensures that your aligners fit accurately and move your teeth according to the treatment plan."
+  },
+  {
+    "intent": "aligner_vs_braces",
+    "keywords": [
+      "clear aligners",
+      "braces",
+      "speed",
+      "treatment duration"
+    ],
+    "question": "Is getting aligners faster than getting braces?",
+    "answer": "Not necessarily. While clear aligners are removable and convenient, they are usually fabricated off-site, and delivery can take four to six weeks. Combined with initial scans, placement of attachments, and patient education on proper wear and care, aligner treatment may take as long as braces in practice. The speed of results also depends on the complexity of your case, tooth movement requirements, and adherence to the prescribed wear schedule. Both braces and aligners can achieve excellent outcomes if used properly."
+  },
+  {
+    "intent": "payment_issue",
+    "keywords": [
+      "payment",
+      "affordability",
+      "financial",
+      "orthodontist",
+      "delay"
+    ],
+    "question": "What if a problem comes up and I can’t make my payment?",
+    "answer": "If you are unable to make your orthodontic payments, it is crucial to inform your orthodontist immediately. They need to understand your situation to explore possible solutions, such as modified payment plans or temporary adjustments. Communication ensures that treatment is not disrupted and allows you to continue your orthodontic care without negative consequences. Many clinics in India offer EMI options or flexible payment arrangements to accommodate unforeseen circumstances."
+  },
+  {
+    "intent": "dentist_during_treatment",
+    "keywords": [
+      "dentist",
+      "orthodontic treatment",
+      "check-up",
+      "cleaning",
+      "visits"
+    ],
+    "question": "Do I need to see a dentist during orthodontic treatment?",
+    "answer": "Yes, it is very important to continue visiting your family dentist while undergoing orthodontic treatment. Your dentist provides professional cleanings, monitors oral health, and can detect issues like cavities or gum problems that could interfere with your orthodontic progress. In India, it is recommended to see your dentist at least every six months, or more frequently if advised. Maintaining these visits ensures both your teeth and gums stay healthy throughout the treatment period."
+  },
+  {
+    "intent": "all_treatment_braces",
+    "keywords": [
+      "orthodontic treatment",
+      "braces",
+      "aligners",
+      "appliances",
+      "options"
+    ],
+    "question": "Is all orthodontic treatment done with braces?",
+    "answer": "No, not all orthodontic treatment involves traditional braces. While braces, consisting of brackets and wires, are still the most common method, clear aligners are an increasingly popular alternative. Aligners are transparent, removable trays that gradually shift teeth and are especially appealing to adults who prefer a discreet treatment option. Your orthodontist will recommend the appliance that best suits your dental condition, lifestyle, and aesthetic preference."
+  },
+  {
+    "intent": "types_appliances",
+    "keywords": [
+      "What kinds",
+      "orthodontic",
+      "appliances",
+      "types",
+      "TADs",
+      "power chains",
+      "brackets",
+      "aligners"
+    ],
+    "question": "What kinds of appliances are there?",
+    "answer": "Orthodontists use a variety of appliances to move teeth and align jaws, not just braces. Common appliances include:\n\n- **Braces:** Traditional brackets and wires, available in stainless steel, gold-colored, or tooth-colored ceramic. Brackets may be placed on the front or back (lingual braces) of teeth.\n- **Clear Aligners:** Transparent, removable trays that gradually shift teeth. Attachments may be placed to help teeth move correctly.\n- **Temporary Anchorage Devices (TADs):** Small implants used as fixed points to move teeth predictably.\n- **Power Chains:** Strong elastic chains that provide additional force to close gaps or correct alignment. \n\nEach appliance has specific uses depending on your orthodontic needs."
+  },
+  {
+    "intent": "appliances_description",
+    "keywords": [
+      "Orthodontic",
+      "braces",
+      "aligners",
+      "TADs",
+      "they work",
+      "power chains",
+      "appliances",
+      "description"
+    ],
+    "question": "What are orthodontic appliances and how do they work?",
+    "answer": "Orthodontic appliances are tools used to correct teeth and jaw alignment. Braces use brackets and wires to apply gentle pressure on teeth over time. Clear aligners gradually move teeth using a series of custom-made trays. TADs act as anchor points to apply precise forces, and power chains are elastic chains that help close gaps or adjust teeth spacing faster. Each appliance works on the principle of controlled, consistent pressure, but the choice depends on the complexity of your case and your aesthetic preferences."
+  },
+  {
+    "intent": "untreated_issues",
+    "keywords": [
+      "untreated",
+      "orthodontic problems",
+      "complications",
+      "dental health",
+      "consequences"
+    ],
+    "question": "What happens if orthodontic problems are not treated?",
+    "answer": "If orthodontic problems are left untreated, they can worsen over time and lead to serious dental issues. Common consequences include tooth decay, gum disease, abnormal wear of tooth enamel, chewing difficulties, and even tooth loss. Misaligned teeth can also impact jaw function and overall oral health. In many cases, treating the orthodontic problem early is less costly and invasive than repairing damage caused by delayed treatment. Orthodontic treatment helps maintain both function and aesthetics of the teeth and jaws."
+  },
+  {
+    "intent": "who_provides_treatment",
+    "keywords": [
+      "who",
+      "provides",
+      "orthodontist",
+      "dentist",
+      "pediatric dentist",
+      "specialist",
+      "qualifications"
+    ],
+    "question": "Who provides orthodontic treatment?",
+    "answer": "Orthodontic treatment is provided primarily by orthodontists, who are dental specialists with additional training in correcting teeth and jaw alignment. Some general dentists and pediatric dentists also offer orthodontic services. Orthodontists complete dental school and then undergo two to three more years of specialized education in orthodontics and dentofacial orthopedics. This additional training equips them with advanced skills to create healthy, functional bites and beautiful smiles. In India, choosing a certified orthodontist ensures professional and safe treatment."
+  },
+  {
+    "intent": "treatment_cosmetic_myth",
+    "keywords": [
+      "orthodontic treatment",
+      "cosmetic",
+      "function",
+      "health",
+      "bite"
+    ],
+    "question": "Orthodontic treatment is just cosmetic, right?",
+    "answer": "No, orthodontic treatment is much more than a cosmetic procedure. While improving the appearance of your smile is an obvious benefit, braces or aligners also correct bite issues, improve chewing and speech, and promote oral health. Proper alignment reduces the risk of gum disease, tooth wear, and jaw problems. The aesthetic improvement is a visible result, but the functional and health benefits of orthodontic treatment are equally important for long-term well-being."
+  },
+  {
+    "intent": "purpose_orthodontics",
+    "keywords": [
+      "orthodontic treatment",
+      "purpose",
+      "bite",
+      "teeth",
+      "jaw",
+      "health"
+    ],
+    "question": "What is the purpose of orthodontic treatment?",
+    "answer": "The primary goal of orthodontic treatment is to create a healthy, functional bite, which involves proper tooth alignment and jaw positioning. Correctly aligned teeth and jaws improve chewing, speaking, and overall oral function. Orthodontic treatment also prevents long-term dental problems such as abnormal tooth wear, jaw pain, or gum disease. The resulting straight smile is a bonus that enhances confidence and overall facial aesthetics. In India, early treatment can help prevent more complex dental issues later in life."
+  },
+  {
+    "intent": "retainer_advice",
+    "keywords": [
+      "retainers",
+      "removable",
+      "fixed",
+      "care",
+      "storage",
+      "pets"
+    ],
+    "question": "Some important advice about retainers?",
+    "answer": "Retainers are effective only when worn as instructed. Removable retainers should be kept either in your mouth or in the protective case provided by your orthodontist. Avoid placing them on cafeteria trays, in pockets, or wrapping them in napkins, as these can lead to damage or loss. Keep retainers away from pets, especially dogs, who may chew them. Proper storage and consistent use are key to maintaining your teeth’s corrected positions after braces or aligners."
+  },
+  {
+    "intent": "followup_dentist_visits",
+    "keywords": [
+      "dentist",
+      "check-up",
+      "cleaning",
+      "orthodontic treatment",
+      "visits"
+    ],
+    "question": "Will I need to visit the dentist?",
+    "answer": "Yes, continue visiting your dentist for regular check-ups and cleanings at least every six months, or more frequently if recommended. Even with orthodontic treatment, professional cleanings prevent cavities, gum disease, and other oral health issues. Dentists and orthodontists work together to ensure your teeth remain healthy and your treatment progresses smoothly. Regular dental visits are an essential part of a safe and successful orthodontic journey."
+  },
+  {
+    "intent": "retainer_fit_pain",
+    "keywords": [
+      "retainer",
+      "doesn’t fit",
+      "pain",
+      "tight",
+      "uncomfortable"
+    ],
+    "question": "What if the retainer doesn’t fit at all or feels painful?",
+    "answer": "If your retainer feels painful or does not fit properly, do not try to force it onto your teeth, as this may cause damage. Contact your orthodontist immediately. In India, most orthodontists will evaluate the situation and determine the appropriate solution. This could involve making a new retainer or, if necessary, using clear aligners or minor adjustments to reposition teeth before the retainer fits comfortably. Prompt attention prevents unwanted shifting or discomfort."
+  },
+  {
+    "intent": "retainer_lost_broken",
+    "keywords": [
+      "retainer",
+      "broken",
+      "lost",
+      "stolen",
+      "replacement"
+    ],
+    "question": "What happens if the retainer is broken or stolen?",
+    "answer": "If you lose or break a removable retainer, contact your orthodontist right away to arrange for a replacement. In India, the cost and turnaround time for a replacement retainer varies by clinic, but getting it promptly is important to prevent teeth from shifting back to their original positions. For fixed retainers, if the wire becomes loose, inform your orthodontist immediately."
+  },
+  {
+    "intent": "post_treatment_orthodontist_visits",
+    "keywords": [
+      "retainer checks",
+      "follow-up",
+      "orthodontist",
+      "post-treatment"
+    ],
+    "question": "Will I continue to see the orthodontist post-treatment?",
+    "answer": "Yes, your orthodontist may schedule periodic follow-up visits after you receive your retainers. These appointments ensure that removable retainers are worn correctly and that fixed retainers remain secure. Bringing your removable retainers to each visit helps your orthodontist monitor alignment and make necessary adjustments. Regular follow-ups in India are usually spaced a few months apart, depending on individual needs."
+  },
+  {
+    "intent": "cleaning_retainers",
+    "keywords": [
+      "best way",
+      "retainer",
+      "cleaning",
+      "hygiene",
+      "maintenance",
+      "fixed",
+      "removable"
+    ],
+    "question": "What’s the best way to clean my retainer?",
+    "answer": "For removable retainers, gently brush with a soft-bristled toothbrush and lukewarm water after removing them from your mouth. You can also soak them periodically in a retainer-cleaning solution to remove buildup. For fixed retainers, brush carefully around the wire and use floss threaders or interdental brushes to clean between teeth. Regular dental check-ups in India will also help maintain retainer hygiene and prevent plaque buildup. Avoid hot water, harsh chemicals, or putting retainers in the dishwasher, as these can deform the plastic or weaken the wire."
+  },
+  {
+    "intent": "retainer_types",
+    "keywords": [
+      "retainer",
+      "types",
+      "removable",
+      "fixed",
+      "wire",
+      "clear"
+    ],
+    "question": "Are there different retainer options?",
+    "answer": "Yes, there are two main types of retainers: removable and fixed (bonded). Removable retainers can be taken out for eating and cleaning, making oral hygiene easier. Common removable retainers include wire retainers, which combine wire and plastic parts to hold teeth, and clear retainers, which are transparent trays molded to your teeth. Fixed retainers consist of a thin, custom-fitted wire bonded to the backside of front teeth. Both types are designed to maintain teeth positions after active orthodontic treatment, allowing bone to stabilize around the teeth."
+  },
+  {
+    "intent": "replacement_cost",
+    "keywords": [
+      "replacement",
+      "retainer",
+      "cost",
+      "India",
+      "fees"
+    ],
+    "question": "How much do replacement retainers cost?",
+    "answer": "The cost of a replacement retainer in India depends on the type and the orthodontic clinic. Typically, removable retainers may cost between ₹3,000–₹8,000, while fixed retainers might cost more due to lab work and bonding. Your orthodontist will provide exact pricing and can also advise on maintaining the retainer to extend its life."
+  },
+  {
+    "intent": "retainer_lifespan",
+    "keywords": [
+      "retainer",
+      "how long",
+      "last",
+      "durability",
+      "care"
+    ],
+    "question": "How long do retainers last?",
+    "answer": "With proper care, retainers can last many years. Proper care includes storing removable retainers in their case, keeping them away from heat and pets, and avoiding placing them in pockets or wrapping in napkins. Fixed retainers require regular flossing and check-ups. If your retainer loses its shape or no longer fits comfortably, contact your orthodontist for a replacement. Regular maintenance maximizes the lifespan and effectiveness of your retainer."
+  },
+  {
+    "intent": "retainer_duration",
+    "keywords": [
+      "retainer",
+      "how long",
+      "lifetime",
+      "daily wear",
+      "nighttime"
+    ],
+    "question": "How long will I need to wear a retainer?",
+    "answer": "Typically, retainers are necessary for life, although the frequency of wear may reduce over time. Initially, full-time wear may be required for 6–12 months, followed by nighttime wear indefinitely. Your orthodontist will guide you based on how stable your teeth remain. A helpful reminder is: 'Nighttime for a lifetime ensures your hard-earned results!' Regular use is essential to prevent relapse of teeth alignment."
+  },
+  {
+    "intent": "why_retainers",
+    "keywords": [
+      "retainer",
+      "purpose",
+      "bone stabilization",
+      "teeth movement",
+      "post-treatment"
+    ],
+    "question": "Why are retainers prescribed?",
+    "answer": "Retainers are prescribed to allow the bone and tissues around the teeth to rebuild after teeth have been moved, and to maintain the healthy new positions achieved by orthodontic treatment. Since your teeth can continue to shift over your lifetime, wearing retainers ensures that your smile remains aligned. In India, orthodontists emphasize lifelong use of retainers, particularly at night, to protect the investment made in your orthodontic treatment."
+  },
+  {
+    "intent": "orthodontic_surgery_info",
+    "keywords": [
+      "surgery",
+      "orthognathic",
+      "orthodontic",
+      "procedures",
+      "videos"
+    ],
+    "question": "Surgery has been recommended for me. Where can I get more information?",
+    "answer": "If orthodontic surgery has been recommended, it’s important to understand the procedure and its purpose. Many clinics and online resources in India provide detailed information, including educational videos about various types of surgical procedures related to orthodontics. Your orthodontist can guide you to trusted sources, explain the steps involved, and discuss recovery and outcomes. Always seek guidance from a qualified orthodontist before making decisions about surgery."
+  },
+  {
+    "intent": "surgical_orthodontist_roles",
+    "keywords": [
+      "surgery",
+      "orthodontist",
+      "oral surgeon",
+      "maxillofacial",
+      "team"
+    ],
+    "question": "Is the surgery performed by the orthodontist, or by an oral surgeon?",
+    "answer": "Surgical orthodontics is performed by an oral and maxillofacial surgeon, not by the orthodontist alone. In India, the orthodontist and the oral surgeon work closely as a team to plan and execute treatment. The orthodontist ensures teeth are correctly positioned before and after surgery, while the surgeon handles the jaw and facial bone adjustments. Both specialists coordinate care to achieve optimal function and aesthetics."
+  },
+  {
+    "intent": "surgery_alone_alignment",
+    "keywords": [
+      "surgery",
+      "align teeth",
+      "align jaws",
+      "alone",
+      "orthodontic treatment"
+    ],
+    "question": "Can surgery by itself align teeth and jaws?",
+    "answer": "Surgery alone cannot typically correct both misaligned teeth and jaws. Orthodontic treatment is essential to position the teeth properly within the jaws. In India, orthodontists align the teeth prior to surgery so that after the jaw surgery, teeth meet correctly, and post-surgical orthodontic treatment fine-tunes the bite for long-term function and aesthetics."
+  },
+  {
+    "intent": "surgical_orthodontics_required",
+    "keywords": [
+      "surgical orthodontics",
+      "needed",
+      "always",
+      "required"
+    ],
+    "question": "Is orthodontic treatment always required with surgical orthodontics?",
+    "answer": "Yes. Orthodontic treatment is always required in conjunction with surgical orthodontics. Teeth need to be aligned before surgery to ensure that the jaws can be repositioned accurately. After surgery, orthodontic treatment continues to adjust the bite and optimize the final positions of the teeth."
+  },
+  {
+    "intent": "surgical_orthodontics_age",
+    "keywords": [
+      "surgical orthodontics",
+      "adults",
+      "growth",
+      "age"
+    ],
+    "question": "Is surgical orthodontics performed only on adults?",
+    "answer": "Surgical orthodontics is generally performed on patients who have completed their growth, which usually means adults. In India, this approach is taken because moving jaws surgically is only predictable once growth has stabilized. Teenagers or children with active growth are usually treated with conventional orthodontics unless there is a specific medical need."
+  },
+  {
+    "intent": "surgery_jaws_only",
+    "keywords": [
+      "surgical orthodontics",
+      "jaws",
+      "misaligned",
+      "teeth",
+      "necessary"
+    ],
+    "question": "Is surgical orthodontics only necessary for jaws that are misaligned?",
+    "answer": "Surgical orthodontics is recommended for adults with severe misalignment of teeth and jaws that cannot be corrected by braces or aligners alone. In India, it may also be needed in cases of jaw injury, birth defects, or complex dental conditions. The surgery, combined with orthodontic treatment, ensures proper bite, chewing function, and facial symmetry."
+  },
+  {
+    "intent": "surgery_timing",
+    "keywords": [
+      "surgery first",
+      "orthodontic treatment",
+      "sequence",
+      "order"
+    ],
+    "question": "Which comes first – surgery or orthodontic treatment?",
+    "answer": "Orthodontic treatment usually comes first. The goal is to align teeth properly so that after surgery, the jaws fit together optimally. In India, treatment continues after surgery to fine-tune the bite and achieve the best long-term results. This combined approach ensures functionality, aesthetics, and stability of your smile."
+  },
+  {
+    "intent": "causes_surgery_needed",
+    "keywords": [
+      "cause",
+      "need surgery",
+      "genetic",
+      "birth defects",
+      "injury"
+    ],
+    "question": "What causes the need for surgery?",
+    "answer": "The need for surgical orthodontics can be due to genetic factors, where the upper and lower jaws grow disproportionately. Other causes include birth defects, injuries, or environmental factors affecting jaw development. In India, these cases are carefully evaluated by orthodontists and oral surgeons to plan treatment that restores proper bite, chewing ability, and facial balance."
+  },
+  {
+    "intent": "who_needs_surgery",
+    "keywords": [
+      "surgical orthodontics",
+      "who needs",
+      "jaws out of position",
+      "chewing",
+      "speaking"
+    ],
+    "question": "Who needs surgical orthodontics?",
+    "answer": "Surgical orthodontics may be necessary for someone whose upper and lower jaws are out of position, resulting in a misaligned bite that impairs chewing, speaking, or facial appearance. In India, orthodontists coordinate with oral surgeons to reposition jaws and teeth for optimal function, aesthetics, and long-term oral health."
+  },
+  {
+    "intent": "gum_disease_info",
+    "keywords": [
+      "gum disease",
+      "gingivitis",
+      "periodontitis",
+      "plaque",
+      "oral health"
+    ],
+    "question": "What is gum disease?",
+    "answer": "Gum disease is caused by bacterial growth in the mouth and is quite common. In India, many people are unaware they have gum disease because early stages, like gingivitis, may not cause pain. If untreated, it can progress to periodontitis, damaging gums and bone around teeth. Properly aligned teeth are easier to clean, reducing the risk of gum disease. Regular dental check-ups, brushing, and flossing help prevent this condition."
+  },
+  {
+    "intent": "advanced_oral_hygiene_tools",
+    "keywords": [
+      "oral hygiene",
+      "tools",
+      "we can use",
+      "interproximal brushes",
+      "water irrigators",
+      "fluoride rinse"
+    ],
+    "question": "Are there other tools we can use to help with oral hygiene?",
+    "answer": "Yes, several tools can make oral hygiene easier during orthodontic treatment in India:\n\n1. **Interproximal brushes** – small brushes that remove plaque and food particles from between teeth and around brackets.\n2. **Water irrigators** – devices that flush out debris quickly using a stream of water.\n3. **Fluoride mouth rinse** – helps strengthen tooth enamel and prevent white spots or decay. Your orthodontist may suggest dipping an interproximal brush in fluoride rinse or using a fluoride rinse in a water irrigator for targeted protection. Using these tools consistently helps maintain a healthy mouth during braces or aligner treatment."
+  },
+  {
+    "intent": "toothbrush_choice",
+    "keywords": [
+      "manual toothbrush",
+      "power toothbrush",
+      "brushing",
+      "oral hygiene"
+    ],
+    "question": "Manual toothbrush or a power toothbrush?",
+    "answer": "Use the toothbrush that works best for you. Whether you prefer a manual toothbrush or a power toothbrush, make sure you brush for at least two minutes each time. Replace the toothbrush or toothbrush head at the first sign of wear, or at least every three months. In India, power toothbrushes are widely available, and both options are effective if used properly."
+  },
+  {
+    "intent": "importance_brushing_flossing",
+    "keywords": [
+      "brushing",
+      "flossing",
+      "plaque",
+      "white marks",
+      "oral hygiene"
+    ],
+    "question": "Why is all this brushing and flossing necessary?",
+    "answer": "Brushing and flossing keep your teeth and gums clean by removing plaque and food debris. If plaque or food remains on teeth or around braces, it can cause cavities, swollen gums, bad breath, and permanent white marks. Maintaining good oral hygiene in India helps minimize treatment time and ensures a healthy, long-lasting result."
+  },
+  {
+    "intent": "flossing_needed",
+    "keywords": [
+      "flossing",
+      "plaque",
+      "orthodontic treatment",
+      "oral health"
+    ],
+    "question": "Do I have to floss?",
+    "answer": "Yes, flossing is crucial for successful orthodontic treatment and ongoing oral health. Floss removes plaque from areas your toothbrush cannot reach. Plaque is the primary cause of gum disease and tooth decay, so daily flossing is essential."
+  },
+  {
+    "intent": "flossing_frequency",
+    "keywords": [
+      "How often",
+      "flossing",
+      "frequency",
+      "daily",
+      "oral hygiene"
+    ],
+    "question": "How often should you floss?",
+    "answer": "Floss at least once a day. Many orthodontists in India recommend flossing before bedtime to remove trapped food and plaque from the day."
+  },
+  {
+    "intent": "toothpaste_choice",
+    "keywords": [
+      "toothpaste",
+      "fluoride",
+      "orthodontic care",
+      "India"
+    ],
+    "question": "What kind of toothpaste should you use?",
+    "answer": "Use fluoride toothpaste approved for use in India. Avoid whitening or abrasive toothpastes while wearing braces, as they can damage brackets or create uneven marks on teeth."
+  },
+  {
+    "intent": "brushing_frequency",
+    "keywords": [
+      "brushing",
+      "How often",
+      "brush",
+      "frequency",
+      "after meals",
+      "orthodontic care"
+    ],
+    "question": "How often should you brush?",
+    "answer": "Brush for at least two minutes after every meal or snack, and before bed. Carry a travel toothbrush and small toothpaste tube when away from home. Bring floss and an interproximal brush. If brushing isn’t possible immediately, rinse your mouth thoroughly with water to remove food debris."
+  },
+  {
+    "intent": "appointment_booking",
+    "keywords": [
+      "appointment",
+      "orthodontist",
+      "consultation",
+      "India"
+    ],
+    "question": "How do I make an appointment with an orthodontist?",
+    "answer": "Making an appointment with an orthodontist in India is simple. Many orthodontists offer free or low-cost initial consultations. You can contact clinics directly via phone, email, or their websites. Be ready to provide your location so they can suggest nearby specialists. At the appointment, you can discuss your treatment options, cost, and timeline."
+  },
+  {
+    "intent": "finding_certified_orthodontist",
+    "keywords": [
+      "orthodontist",
+      "specialist",
+      "India",
+      "credentials"
+    ],
+    "question": "How do I find a real orthodontist?",
+    "answer": "Look for orthodontists who have completed a two-to-three year accredited orthodontic residency program after dental school in India. These specialists focus solely on diagnosing, preventing, and treating orthodontic problems. Avoid relying solely on a general dentist for complex tooth movement. You can check credentials through dental associations or clinic websites to ensure the orthodontist is qualified."
+  },
+  {
+    "intent": "verified_orthodontist",
+    "keywords": [
+      "How do I know",
+      "certified orthodontist",
+      "verification",
+      "India",
+      "credentials"
+    ],
+    "question": "How do I know my orthodontist is a certified specialist?",
+    "answer": "Check that the orthodontist has a recognized postgraduate degree in orthodontics from a reputable dental institution in India. They should have completed advanced training in dentofacial orthopedics and be focused on tooth movement, bite alignment, and facial development. Verified specialists often list these credentials on their clinic websites."
+  },
+  {
+    "intent": "second_opinion",
+    "keywords": [
+      "What if",
+      "says",
+      "second opinion",
+      "dentist",
+      " orthodontic",
+      "specialist"
+    ],
+    "question": "What if my dentist says he/she can provide orthodontic treatment?",
+    "answer": "Consider seeking a second opinion from a certified orthodontist in India. While general dentists receive minimal orthodontic training, orthodontists complete years of specialized education and residency programs to ensure safe and effective tooth movement. Consulting a specialist guarantees that your teeth and jaws are aligned properly and safely."
+  },
+  {
+    "intent": "dentist_vs_orthodontist",
+    "keywords": [
+      "dentist",
+      "orthodontist",
+      "difference",
+      "India"
+    ],
+    "question": "Is my dentist an orthodontist?",
+    "answer": "In India, your general dentist may offer orthodontic treatment, but that does not mean they are an orthodontist. Orthodontists complete additional specialized education after dental school, typically a 2–3 year accredited residency in orthodontics and dentofacial orthopedics. They are specialists in diagnosing, preventing, and treating dental and facial irregularities. Only about 5–7% of dental graduates become certified orthodontists in India. If your dentist focuses solely on orthodontics and has completed accredited specialty training, then they are a true orthodontist."
+  },
+  {
+    "intent": "importance_of_extra_education",
+    "keywords": [
+      "orthodontist education",
+      "extra education",
+      "treatment outcome",
+      "specialist skills",
+      "India"
+    ],
+    "question": "Does extra education really make a difference in orthodontic treatment or outcome?",
+    "answer": "Yes. Orthodontists’ additional education and clinical experience make a significant difference. They are experts in diagnosing orthodontic problems, choosing the right type of appliance, timing the treatment, planning long-term strategies, and supervising the process to ensure stable results. Their expertise allows them to customize treatment for each patient, giving safer, more predictable, and effective outcomes compared to general dentists."
+  },
+  {
+    "intent": "why_choose_specialist",
+    "keywords": [
+      "specialist",
+      "orthodontist",
+      "India",
+      "qualified"
+    ],
+    "question": "Why choose a certified orthodontist?",
+    "answer": "Choosing a certified orthodontist in India ensures that your doctor has completed accredited postgraduate training in orthodontics and dentofacial orthopedics. These specialists focus entirely on aligning teeth, correcting bite issues, and guiding facial development, giving you both a healthy and aesthetically pleasing smile."
+  },
+  {
+    "intent": "orthodontist_definition",
+    "keywords": [
+      "orthodontist",
+      "definition",
+      "India",
+      "specialist"
+    ],
+    "question": "What is an orthodontist?",
+    "answer": "An orthodontist is a dental specialist trained to align teeth and jaws and to guide facial development. After completing dental school in India, only those who complete an accredited 2–3 year residency in orthodontics can call themselves orthodontists. They provide care for children, teenagers, and adults to create healthy, functional, and beautiful smiles."
+  },
+  {
+    "intent": "dentist_communication",
+    "keywords": [
+      "dentist communication",
+      "consultation",
+      "India"
+    ],
+    "question": "Will the orthodontist tell my dentist about the consultation and its findings?",
+    "answer": "Yes. In India, orthodontists generally communicate your consultation results with your family dentist, including recommended next steps. If you prefer your dentist not be informed, most orthodontists will respect your wishes."
+  },
+  {
+    "intent": "insurance_orthodontic_treatment",
+    "keywords": [
+      "insurance",
+      "orthodontic coverage",
+      "India",
+      "payment"
+    ],
+    "question": "I have insurance for orthodontic treatment. Does the orthodontist take my insurance?",
+    "answer": "Ask your orthodontist directly during your consultation. Bring your insurance details, including policy number and coverage, so the clinic can verify what services are included. In India, many health insurance policies cover medically necessary orthodontics but may exclude purely cosmetic procedures."
+  },
+  {
+    "intent": "exam_discomfort",
+    "keywords": [
+      "exam",
+      "orthodontist",
+      "pain",
+      "India"
+    ],
+    "question": "Will the exam cause me any discomfort?",
+    "answer": "No. A routine orthodontic exam in India is painless. The orthodontist will check your teeth, bite, and facial structure without causing discomfort."
+  },
+  {
+    "intent": "xray_necessity",
+    "keywords": [
+      "x-ray",
+      "diagnosis",
+      "orthodontist",
+      "India"
+    ],
+    "question": "Are X-rays really necessary?",
+    "answer": "Yes. X-rays allow your orthodontist to accurately diagnose problems, plan treatment, and monitor progress. Modern digital X-ray machines used in India emit very low levels of radiation, making them safe for both children and adults."
+  },
+  {
+    "intent": "types_of_xrays",
+    "keywords": [
+      "x-ray types",
+      "panoramic x-ray",
+      "cephalometric",
+      "orthodontist",
+      "India"
+    ],
+    "question": "Will the orthodontist take X-rays?",
+    "answer": "Most orthodontic evaluations in India include a panoramic X-ray, which provides a full view of the teeth, jaws, and surrounding structures. Sometimes, a cephalometric X-ray (a side view of the head) is also taken to study jaw alignment and growth patterns."
+  },
+  {
+    "intent": "consultation_expectations",
+    "keywords": [
+      "orthodontic consultation",
+      "initial visit",
+      "India",
+      "adult"
+    ],
+    "question": "What will I learn at a consultation?",
+    "answer": "At an orthodontic consultation in India, you will typically learn: 1) what your orthodontic problem is, 2) the available options to correct it, 3) customized treatment goals, 4) whether any teeth need to be removed, 5) whether additional dental services are needed for optimal oral health, 6) an estimate of the length of treatment, and 7) the estimated cost of care."
+  },
+  {
+    "intent": "consultation_cost",
+    "keywords": [
+      "How much",
+      "consultation",
+      "cost",
+      "fees",
+      "India"
+    ],
+    "question": "How much does a consultation cost?",
+    "answer": "Many orthodontists in India offer initial consultations at little or no cost. Some clinics may charge a nominal fee for diagnostic records such as X-rays or photographs."
+  },
+  {
+    "intent": "prepare_questions",
+    "keywords": [
+      "questions",
+      "consultation",
+      "India"
+    ],
+    "question": "Should I prepare questions to ask the orthodontist?",
+    "answer": "Yes. Preparing questions in advance ensures you cover all concerns, such as treatment options, duration, cost, appliances, and possible extractions. This helps you make an informed decision about your care."
+  },
+  {
+    "intent": "initial_consultation_process",
+    "keywords": [
+      "initial consultation",
+      "procedure",
+      "India"
+    ],
+    "question": "What typically happens at an initial consultation?",
+    "answer": "During your consultation in India, the orthodontist will examine your teeth, gums, and bite. Photographs and a panoramic X-ray may be taken to assess your teeth and jaws. The orthodontist will discuss treatment recommendations, potential fees, and payment options. You can also ask questions about appliances like braces or aligners."
+  },
+  {
+    "intent": "child_treatment_timing",
+    "keywords": [
+      "children",
+      "orthodontics",
+      "timing",
+      "why?",
+      "growth",
+      "India"
+    ],
+    "question": "Some children start treatment earlier than others. Why?",
+    "answer": "Each child’s treatment plan is individualized, based on their specific orthodontic problem and growth pattern. Interceptive treatment may be recommended to prevent more severe issues. Children mature at different rates, so your orthodontist will decide the ideal timing for treatment."
+  },
+  {
+    "intent": "nickel_allergy_options",
+    "keywords": [
+      "allergy",
+      "nickel-free braces",
+      "India"
+    ],
+    "question": "My child has a nickel allergy. Can orthodontic treatment still be done?",
+    "answer": "Yes. There are nickel-free braces and appliances available in India. Always inform your orthodontist about any allergies before treatment begins."
+  },
+  {
+    "intent": "free_treatment_programs",
+    "keywords": [
+      "free orthodontic treatment",
+      "financial aid",
+      "India"
+    ],
+    "question": "Is free treatment available for children whose families can’t afford it?",
+    "answer": "In India, some charitable programs, NGOs, and dental societies provide low-cost or free orthodontic care for children in need. Local dental associations or hospital dental departments may also run subsidized treatment programs. Check with your city or state dental society for options."
+  },
+  {
+    "intent": "top_bottom_teeth",
+    "keywords": [
+      "braces",
+      "top teeth",
+      "bottom teeth",
+      "India"
+    ],
+    "question": "My child’s top teeth aren’t too crooked. Can he/she just get braces on the bottom?",
+    "answer": "Orthodontic treatment typically addresses both upper and lower teeth to ensure a proper bite and balanced function. Treating only one set may lead to uneven wear or poor long-term results. Your orthodontist will recommend the best approach for a healthy and functional bite."
+  },
+  {
+    "intent": "treatment_transfer",
+    "keywords": [
+      "transfer patient",
+      "other",
+      "another",
+      "India"
+    ],
+    "question": "Can I start braces in another city or country and continue treatment elsewhere?",
+    "answer": "It is not ideal. Orthodontic treatment is customized for each patient, including appliance type, wires, and attachments. Transferring to a different orthodontist may complicate treatment, extend its duration, and cause inconsistencies. It’s best to complete treatment with the same orthodontist from start to finish."
+  },
+  {
+    "intent": "front_teeth_biting_issue",
+    "keywords": [
+      "child biting",
+      "side teeth",
+      "incisors",
+      "orthodontic problem",
+      "India"
+    ],
+    "question": "My child bites with side teeth instead of front teeth. Is this a problem?",
+    "answer": "Yes. Front teeth (incisors) are designed to cut food. If your child is not using them properly, it may indicate misaligned jaws or protruding front teeth. A consultation with an Indian orthodontist is recommended to evaluate and correct this issue."
+  },
+  {
+    "intent": "delayed_permanent_teeth",
+    "keywords": [
+      "delayed teeth",
+      "permanent teeth",
+      "India",
+      "orthodontist"
+    ],
+    "question": "My child’s permanent teeth are coming in late. Should we see a dentist or orthodontist?",
+    "answer": "Consult an orthodontist. They specialize in tooth eruption patterns and can determine whether teeth are blocked, missing, or simply delayed. You do not need a referral from a dentist to see an orthodontist in India."
+  },
+  {
+    "intent": "lip_incompetence",
+    "keywords": [
+      "child cannot close mouth",
+      "lip incompetence",
+      "India"
+    ],
+    "question": "My child doesn’t seem to be able to close her mouth all the way. Is that a problem?",
+    "answer": "When a child cannot comfortably keep their lips together at rest, this is called 'lip incompetence.' It can affect facial muscle development, jaw function, and the way teeth erupt. Consult an Indian orthodontist for evaluation and advice."
+  },
+  {
+    "intent": "early_baby_teeth_loss",
+    "keywords": [
+      "early tooth loss",
+      "baby teeth",
+      "India"
+    ],
+    "question": "My child’s baby teeth came out early. Why is that considered a problem?",
+    "answer": "Baby teeth hold space for permanent teeth and guide proper facial development. Early loss can lead to misaligned permanent teeth. An Indian orthodontist can assess and plan to prevent future issues."
+  },
+  {
+    "intent": "protrusive_front_teeth",
+    "keywords": [
+      "front teeth stick out",
+      "protrusion",
+      "child",
+      "India"
+    ],
+    "question": "My child’s front teeth stick out. Should we see an orthodontist?",
+    "answer": "Yes. Protrusive front teeth can indicate jaw or tooth alignment problems and are more prone to injury. Early evaluation by an Indian orthodontist is recommended even if your child still has baby teeth."
+  },
+  {
+    "intent": "thumb_sucking",
+    "keywords": [
+      "thumb sucking",
+      "pacifier",
+      "finger sucking",
+      "India"
+    ],
+    "question": "My child sucks his thumb/finger/pacifier. Should I be concerned?",
+    "answer": "Prolonged sucking beyond age 4 can push teeth forward, cause open bites, and affect bone shape. Consult an Indian orthodontist to evaluate any orthodontic consequences."
+  },
+  {
+    "intent": "crowded_baby_teeth",
+    "keywords": [
+      "baby teeth crowded",
+      "child",
+      "India"
+    ],
+    "question": "My child’s baby teeth are crowded. Is that OK?",
+    "answer": "Crowding in baby teeth may signal the need for monitoring by an orthodontist. An early check-up with an Indian orthodontist can identify potential future problems."
+  },
+  {
+    "intent": "spaced_baby_teeth",
+    "keywords": [
+      "baby teeth spacing",
+      "gaps",
+      "child",
+      "India"
+    ],
+    "question": "My child’s baby teeth have big spaces between them. Is that OK?",
+    "answer": "Generally, spacing between baby teeth is normal and indicates room for permanent teeth. If you have concerns, an Indian orthodontist can provide an evaluation. Referral is not necessary, and many orthodontists offer free or low-cost initial visits."
+  },
+  {
+    "intent": "child_teeth_hygiene",
+    "keywords": [
+      "when to brush child teeth",
+      "When should I",
+      "start brushing",
+      "dental hygiene",
+      "child’s teeth"
+    ],
+    "question": "When should I start brushing my child’s teeth?",
+    "answer": "Start cleaning your baby’s gums with a soft, damp cloth after meals. Begin brushing twice daily as teeth emerge, and start flossing when two teeth touch. Visit a dentist by the first birthday and maintain regular check-ups to keep baby teeth healthy."
+  },
+  {
+    "intent": "importance_of_baby_teeth",
+    "keywords": [
+      "why should",
+      "care",
+      "baby teeth",
+      "primary teeth",
+      "fall out",
+      "India"
+    ],
+    "question": "Why should we care about baby teeth if they are just going to fall out?",
+    "answer": "Baby teeth support facial development, chewing, speech, and proper alignment of permanent teeth. Even baby teeth can decay, so limit sugary or acidic drinks and maintain oral hygiene."
+  },
+  {
+    "intent": "moving_baby_teeth",
+    "keywords": [
+      "why",
+      "early treatment",
+      "move",
+      "baby teeth",
+      "movement",
+      "India"
+    ],
+    "question": "Why move baby teeth?",
+    "answer": "Early treatment aims to create a healthy environment for permanent teeth. Moving baby teeth is usually incidental and is done to maintain space, support facial development, and ensure proper function."
+  },
+  {
+    "intent": "phased_treatment",
+    "keywords": [
+      "child",
+      "treatment phases",
+      "baby teeth",
+      "done with",
+      "that means",
+      "India"
+    ],
+    "question": "If treatment is done while my child has some baby teeth, does that mean s/he is done with treatment?",
+    "answer": "Not necessarily. Some children only need a preventive or interceptive phase, while most will require a second, comprehensive phase after permanent teeth erupt to complete alignment and bite correction."
+  },
+  {
+    "intent": "early_braces_use",
+    "keywords": [
+      "early treatment",
+      "braces",
+      "baby teeth",
+      "used",
+      "palate expander",
+      "India"
+    ],
+    "question": "Are braces used in early treatment?",
+    "answer": "Early treatment for children varies depending on the problem. Not all early treatment uses braces. Options include removing a stubborn baby tooth, habit appliances for thumb or finger sucking, tongue-position training, or a palate expander to widen the jaw. Braces are usually recommended after most permanent teeth have erupted. Your Indian orthodontist will recommend the best appliance for your child’s needs."
+  },
+  {
+    "intent": "need_for_early_treatment",
+    "keywords": [
+      "child",
+      "orthodontic",
+      "early treatment",
+      "India"
+    ],
+    "question": "Will my child need early treatment?",
+    "answer": "Only a few orthodontic problems need correction while a child still has baby teeth. Often, an orthodontist will monitor your child’s growth and development and take a 'wait-and-see' approach. Treatment is started when it is most advantageous for the child."
+  },
+  {
+    "intent": "checkup_cost",
+    "keywords": [
+      "early orthodontic check-up cost",
+      "India"
+    ],
+    "question": "How much does a check-up cost?",
+    "answer": "Most Indian orthodontists offer initial examinations at no cost or low cost, with no obligation."
+  },
+  {
+    "intent": "early_checkup_learnings",
+    "keywords": [
+      "early orthodontic check-up",
+      "India"
+    ],
+    "question": "What will I learn at an early check-up?",
+    "answer": "An examination can reveal whether your child has an existing orthodontic problem or one that is developing. Sometimes, you may also learn that no problems are present at this time."
+  },
+  {
+    "intent": "dentist_communication",
+    "keywords": [
+      "orthodontist",
+      "tell",
+      "informs",
+      "dentist",
+      "India"
+    ],
+    "question": "Will the orthodontist tell our dentist about this visit?",
+    "answer": "Yes, the orthodontist can communicate findings with your child’s dentist, including recommended next steps. If you prefer, the orthodontist can keep this information confidential."
+  },
+  {
+    "intent": "first_visit_expectations",
+    "keywords": [
+      "first",
+      "orthodontic",
+      "visit",
+      "expect",
+      "India"
+    ],
+    "question": "Is there anything else I should expect on a first visit?",
+    "answer": "Photographs of your child’s teeth and face may be taken for documentation to track changes during treatment. This helps the orthodontist monitor progress at subsequent visits."
+  },
+  {
+    "intent": "xray_necessity",
+    "keywords": [
+      "orthodontic x-rays",
+      "India",
+      "panoramic x-ray"
+    ],
+    "question": "Are x-rays really necessary?",
+    "answer": "Yes. X-rays are essential for accurate diagnosis of orthodontic problems. Modern x-ray machines emit significantly less radiation than older machines. Panoramic or cephalometric x-rays may be taken to help the orthodontist plan treatment so your child achieves a healthy bite and beautiful smile."
+  },
+  {
+    "intent": "xray_timing",
+    "keywords": [
+      "Will",
+      "x-ray",
+      "x-ray timing",
+      "first visit",
+      "India"
+    ],
+    "question": "Will the orthodontist take x-rays?",
+    "answer": "A panoramic x-ray may be taken at the first visit, or it may be postponed until closer to when treatment is recommended, depending on your child’s needs."
+  },
+  {
+    "intent": "special_needs",
+    "keywords": [
+      "child special needs orthodontist",
+      "India"
+    ],
+    "question": "What if my child has special needs?",
+    "answer": "Inform the orthodontist when making the appointment. The doctor and staff will prepare to accommodate your child and make the visit comfortable. If they cannot accommodate your child, they may recommend a colleague who can."
+  },
+  {
+    "intent": "treatment_found",
+    "keywords": [
+      "what happens",
+      "orthodontic",
+      "problem",
+      "found",
+      "during",
+      "visit",
+      "early treatment",
+      "India"
+    ],
+    "question": "What happens if an orthodontic problem is found during this visit?",
+    "answer": "The orthodontist will discuss the best time and type of treatment for your child. Early intervention may be recommended for some, while others may benefit from waiting until most permanent teeth have erupted. The approach is individualized and based on what is best for the child."
+  },
+  {
+    "intent": "parent_presence",
+    "keywords": [
+      "parent",
+      "present",
+      "first visit",
+      "child",
+      "orthodontist",
+      "exam",
+      "India"
+    ],
+    "question": "Am I allowed to be present for the exam?",
+    "answer": "Yes, parents are allowed to be present during their child’s orthodontic exam."
+  },
+  {
+    "intent": "first_visit_learnings",
+    "keywords": [
+      "first",
+      "visit",
+      "learn",
+      "know",
+      "problem",
+      "options",
+      "treatment",
+      "length",
+      "cost",
+      "orthodontist",
+      "checkup"
+    ],
+    "question": "What will I learn from the first visit?",
+    "answer": "During the first visit, you will generally learn: 1) if there is an orthodontic problem, and what it is, 2) options to correct the problem, 3) whether teeth might need to be removed, 4) the expected length of treatment, and 5) the estimated cost of treatment."
+  },
+  {
+    "intent": "first_visit_discomfort",
+    "keywords": [
+      "first",
+      "visit",
+      "child",
+      "pain",
+      "discomfort",
+      "hurt",
+      "procedure",
+      "checkup",
+      "orthodontist"
+    ],
+    "question": "Will anything be uncomfortable for my child on a first visit?",
+    "answer": "No. The first visit is usually non-invasive, and your child should experience no discomfort."
+  },
+  {
+    "intent": "first_visit_age",
+    "keywords": [
+      "age",
+      "when",
+      "child",
+      "first",
+      "visit",
+      "orthodontist",
+      "checkup",
+      "kids",
+      "early",
+      "seven"
+    ],
+    "question": "When should my child have the first visit with an orthodontist?",
+    "answer": "The AAO recommends that children have their first check-up with an orthodontist no later than age 7. At this age, children have a mix of baby and permanent teeth, allowing the orthodontist to detect developing problems early. If you notice a problem before age 7, you don’t need to wait."
+  },
+  {
+    "intent": "scheduling_first_visit",
+    "keywords": [
+      "schedule",
+      "appointment",
+      "book",
+      "visit",
+      "exam",
+      "checkup",
+      "orthodontist",
+      "contact",
+      "office"
+    ],
+    "question": "How do I schedule an appointment for an initial exam?",
+    "answer": "Use the Find an Orthodontist service to locate an AAO orthodontist near you. You can call the office or send an email to schedule a check-up. Many offices offer these visits at no cost or low cost."
+  },
+  {
+    "intent": "referral_needed",
+    "keywords": [
+      "referral",
+      "dentist",
+      "refer",
+      "need",
+      "visit",
+      "orthodontist",
+      "child",
+      "appointment"
+    ],
+    "question": "Should I wait for our dentist to refer my child to an orthodontist?",
+    "answer": "No. Parents may be the first to notice a problem. You can schedule a visit with an AAO orthodontist directly. A referral is not required."
+  },
+  {
+    "intent": "dentist_can_do_braces",
+    "keywords": [
+      "dentist",
+      "braces",
+      "treatment",
+      "orthodontist",
+      "specialist",
+      "training",
+      "second",
+      "opinion"
+    ],
+    "question": "What if my dentist says they can do my child’s braces?",
+    "answer": "Consider a second opinion with an AAO orthodontist. Orthodontists complete a 2–3 year accredited residency focused solely on tooth movement and jaw alignment, giving them specialized expertise beyond general dental training."
+  },
+  {
+    "intent": "wait_for_permanent_teeth",
+    "keywords": [
+      "wait",
+      "permanent",
+      "teeth",
+      "child",
+      "visit",
+      "orthodontist",
+      "early",
+      "treatment",
+      "growth"
+    ],
+    "question": "Should we wait to see the orthodontist until my child has all of his/her permanent teeth?",
+    "answer": "No. Waiting until all permanent teeth are in or facial growth is complete may make some corrections more difficult. Early evaluation allows for timely intervention if needed."
+  },
+  {
+    "intent": "older_than_7_checkup",
+    "keywords": [
+      "child",
+      "older",
+      "age",
+      "seven",
+      "late",
+      "checkup",
+      "orthodontist",
+      "visit",
+      "start",
+      "treatment"
+    ],
+    "question": "What if my child is older than 7 – is it too late for a check-up?",
+    "answer": "No. It’s never too late. Many patients begin treatment between ages 9 and 16 depending on growth and treatment needs. Orthodontists can usually treat most conditions successfully at these ages."
+  },
+  {
+    "intent": "why_age_7",
+    "keywords": [
+      "why",
+      "age",
+      "seven",
+      "kids",
+      "checkup",
+      "orthodontist",
+      "early",
+      "evaluation",
+      "young",
+      "braces"
+    ],
+    "question": "Why does the AAO say that kids should see an orthodontist for a check-up no later than age 7? Isn’t 7 too young to get braces?",
+    "answer": "At age 7, children have a mix of baby and permanent teeth. Early evaluation allows the orthodontist to detect developing problems and advise if treatment is needed, when it should start, and what type of treatment is recommended. Not all treatment at this age involves braces; sometimes a 'wait-and-see' approach is taken."
+  },
+  {
+    "intent": "right_age_for_treatment",
+    "keywords": [
+      "right",
+      "age",
+      "when",
+      "start",
+      "treatment",
+      "braces",
+      "child",
+      "timing",
+      "growth",
+      "jaws"
+    ],
+    "question": "What’s the right age for orthodontic treatment?",
+    "answer": "There is no single 'right' age. Children should have an orthodontic evaluation no later than age 7. The ideal time to begin treatment depends on the type of problem, dental development, and growth of the jaws. Some children need only tooth movement, while others may require guidance for jaw growth or help with habits like thumb-sucking. Your AAO orthodontist will advise the best time for your child."
+  },
+  {
+    "intent": "teeth_straighten_with_growth",
+    "keywords": [
+      "teeth",
+      "straighten",
+      "naturally",
+      "growth",
+      "child",
+      "space",
+      "permanent",
+      "crowding",
+      "problem",
+      "worse"
+    ],
+    "question": "Won’t my child’s teeth straighten out as they grow?",
+    "answer": "No. The space available for permanent teeth does not increase with growth. Untreated orthodontic problems can worsen over time, making treatment more difficult. Problems may lead to crooked or protruding teeth, tooth decay, gum disease, broken teeth, and loss of bone that holds teeth in place."
+  },
+  {
+    "intent": "cause_of_problems",
+    "keywords": [
+      "cause",
+      "orthodontic",
+      "problems",
+      "child",
+      "teeth",
+      "habits",
+      "thumb",
+      "breathing",
+      "hygiene",
+      "nutrition"
+    ],
+    "question": "Where did my child’s orthodontic problems come from?",
+    "answer": "Most orthodontic problems are inherited. Some develop over time due to habits like thumb-sucking, mouth breathing, abnormal swallowing, dental disease, poor hygiene, early or late loss of baby teeth, accidents, or poor nutrition. Regardless of the cause, orthodontists can usually treat most conditions successfully."
+  },
+  {
+    "intent": "benefits_of_treatment",
+    "keywords": [
+      "benefits",
+      "why",
+      "braces",
+      "help",
+      "child",
+      "bite",
+      "chew",
+      "speech",
+      "confidence",
+      "health"
+    ],
+    "question": "How will orthodontic treatment help my child?",
+    "answer": "Orthodontic treatment helps your child bite and chew properly and can improve speech. Straight teeth look nice and contribute to self-confidence. Properly aligned teeth are less prone to decay, gum disease, and injury. A beautiful smile is a pleasant side effect."
+  },
+  {
+    "intent": "braces_myths_fish",
+    "keywords": [
+      "braces",
+      "fish",
+      "attract",
+      "scuba",
+      "diving",
+      "water",
+      "sea",
+      "myth",
+      "ceramic"
+    ],
+    "question": "Will my braces attract attention from fish?",
+    "answer": "No. Modern braces, especially ceramic or tooth-colored ones, will not attract fish or sea life while scuba diving."
+  },
+  {
+    "intent": "braces_lightning",
+    "keywords": [
+      "braces",
+      "lightning",
+      "strike",
+      "chance",
+      "risk",
+      "safety",
+      "weather",
+      "storm",
+      "myth"
+    ],
+    "question": "Will braces increase my chance of being struck by lightning?",
+    "answer": "No. Braces do not affect your chance of being struck by lightning. In the U.S., the chance in any one year is roughly 1 in 700,000."
+  },
+  {
+    "intent": "braces_electronics",
+    "keywords": [
+      "braces",
+      "electronics",
+      "radio",
+      "signal",
+      "devices",
+      "interfere",
+      "technology",
+      "communication",
+      "myth"
+    ],
+    "question": "Will my braces interfere with radio signals or electronic devices?",
+    "answer": "No. Braces do not interfere with radios, electronics, or any other devices."
+  },
+  {
+    "intent": "braces_rust",
+    "keywords": [
+      "Can",
+      "modern braces",
+      "rust",
+      "corrosion",
+      "material",
+      "steel",
+      "titanium",
+      "durable",
+      "water",
+      "saliva"
+    ],
+    "question": "Can braces rust?",
+    "answer": "No. Modern braces are made of strong materials, such as titanium alloys, and will not rust."
+  },
+  {
+    "intent": "braces_kissing",
+    "keywords": [
+      "braces",
+      "kiss",
+      "lock",
+      "stick",
+      "together",
+      "magnetic",
+      "people",
+      "contact",
+      "myth",
+      "modern"
+    ],
+    "question": "If two people with braces kiss, can their braces become locked together?",
+    "answer": "Almost impossible. Modern braces are smaller and sleeker, and they are not magnetic. Any 'sticking' sensation is from the people, not the braces."
+  },
+  {
+    "intent": "event_braces_removal",
+    "keywords": [
+      "remove",
+      "braces",
+      "event",
+      "special",
+      "holiday",
+      "wedding",
+      "photo",
+      "early",
+      "treatment",
+      "orthodontist"
+    ],
+    "question": "We have a special event coming up – can braces be removed?",
+    "answer": "Discuss with your orthodontist, but premature removal is generally not recommended. Removing braces early can affect the stability and function of the final result."
+  },
+  {
+    "intent": "braces_care_overview",
+    "keywords": [
+      "clean",
+      "braces",
+      "care",
+      "hygiene",
+      "brush",
+      "floss",
+      "rinse",
+      "toothpaste",
+      "teeth",
+      "tools",
+      "avoid",
+      "food"
+    ],
+    "question": "How should teeth and braces be cared for?",
+    "answer": "Your orthodontist or a member of the orthodontist’s staff will brief you on brushing, flossing, toothpaste, rinses, other hygiene tools, and foods to enjoy or avoid. Following these instructions keeps your teeth healthy, helps prevent cavities or white marks, and ensures your treatment progresses smoothly. AAO videos also offer general tips on braces care."
+  },
+  {
+    "intent": "loose_bracket_wire",
+    "keywords": [
+      "bracket",
+      "wire",
+      "loose",
+      "broken",
+      "fell",
+      "poking",
+      "aligner",
+      "lost",
+      "damage",
+      "repair",
+      "orthodontist"
+    ],
+    "question": "What do I do if a bracket or wire comes loose?",
+    "answer": "If a bracket or wire comes loose, or if you lose or break an aligner, contact your orthodontist immediately. Broken braces or lost aligners cannot deliver the proper force to move your teeth, which may prolong your treatment and affect results."
+  },
+  {
+    "intent": "daily_activities",
+    "keywords": [
+      "school",
+      "work",
+      "activities",
+      "daily",
+      "normal",
+      "routine",
+      "sports",
+      "exercise",
+      "braces",
+      "after",
+      "apply"
+    ],
+    "question": "Will I take part in typical daily activities the day braces are applied?",
+    "answer": "Yes. You can continue going to work or school and participate in your usual activities. Most patients find that braces do not interfere with day-to-day routines after the initial adjustment period."
+  },
+  {
+    "intent": "initial_discomfort",
+    "keywords": [
+      "pain",
+      "hurt",
+      "sore",
+      "mouth",
+      "tender",
+      "discomfort",
+      "days",
+      "after",
+      "braces",
+      "relief",
+      "salt",
+      "water"
+    ],
+    "question": "How will the mouth feel after getting braces?",
+    "answer": "Expect mild discomfort for the first few days after braces are applied. This is temporary and can be relieved by rinsing with warm salt water (1 tsp salt in 8 oz warm water) or taking an over-the-counter pain reliever. Cold soft foods like ice cream, pudding, or smoothies can also help soothe soreness."
+  },
+  {
+    "intent": "allowed_drinks",
+    "keywords": [
+      "drink",
+      "beverages",
+      "water",
+      "milk",
+      "coffee",
+      "tea",
+      "soda",
+      "juice",
+      "sports",
+      "acidic",
+      "sugary",
+      "braces"
+    ],
+    "question": "Which drinks are allowed with braces?",
+    "answer": "Tap water and milk are the best choices while wearing braces. Beverages like coffee, tea, red wine, soda, sports drinks, flavored water, and fruit juices can stain or damage teeth. If you consume acidic or sugary drinks, brush immediately afterward or rinse thoroughly with water to protect enamel."
+  },
+  {
+    "intent": "foods_to_avoid",
+    "keywords": [
+      "can’t",
+      "I",
+      "avoid",
+      "foods",
+      "hard",
+      "sticky",
+      "chewy",
+      "crunchy",
+      "candy",
+      "popcorn",
+      "nuts",
+      "caramel",
+      "chips",
+      "braces"
+    ],
+    "question": "What can’t I eat with braces?",
+    "answer": "Avoid hard, sticky, crunchy, or chewy foods, as well as sugary or starchy items. Examples include hard pretzels, crusty bread, taco chips, caramel, popcorn, taffy, suckers, hard candies, nuts, and licorice. Eating these foods can damage your braces or prolong treatment."
+  },
+  {
+    "intent": "foods_to_eat",
+    "keywords": [
+      "I",
+      "eat",
+      "foods",
+      "soft",
+      "diet",
+      "soup",
+      "pasta",
+      "eggs",
+      "smoothies",
+      "fruit",
+      "healthy",
+      "chew",
+      "braces"
+    ],
+    "question": "What can I eat with braces?",
+    "answer": "Enjoy a healthy, easy-to-chew diet such as soups, stews, casseroles, pasta, scrambled eggs, smoothies, and soft fruits (slice apples or pears). Sandwiches and pizza are okay if cut into small, bite-sized pieces. Be sure to cut corn off the cob before eating to avoid damaging brackets and wires."
+  },
+  {
+    "intent": "eating_after_braces",
+    "keywords": [
+      "eat",
+      "food",
+      "meal",
+      "after",
+      "braces",
+      "applied",
+      "soft",
+      "chew",
+      "start",
+      "diet"
+    ],
+    "question": "Will I be able to eat after braces are applied?",
+    "answer": "Yes. After braces are applied, start with soft foods like soup, pudding, mashed potatoes, applesauce, or ice cream. As you become accustomed to your braces, chewing normal foods becomes easier and more comfortable."
+  },
+  {
+    "intent": "braces_discomfort",
+    "keywords": [
+      "braces",
+      "pain",
+      "hurt",
+      "sore",
+      "discomfort",
+      "tight",
+      "pressure",
+      "feeling",
+      "adjustment",
+      "normal"
+    ],
+    "question": "Do braces cause discomfort?",
+    "answer": "Some initial discomfort is normal when braces are placed or after adjustments. This is temporary and usually manageable. Most patients get used to their braces quickly, and over time, many forget they are wearing them."
+  },
+  {
+    "intent": "braces_duration_application",
+    "keywords": [
+      "how",
+      "long",
+      "time",
+      "braces",
+      "apply",
+      "getting",
+      "appointment",
+      "session",
+      "duration",
+      "minutes"
+    ],
+    "question": "How long does it take to get braces?",
+    "answer": "Applying braces typically takes about 90–120 minutes. During this time, the orthodontist carefully positions brackets, attaches wires, and ensures everything fits correctly to begin effective treatment."
+  },
+  {
+    "intent": "braces_application",
+    "keywords": [
+      "how",
+      "braces",
+      "applied",
+      "brackets",
+      "wire",
+      "adhesive",
+      "ligatures",
+      "procedure",
+      "orthodontist",
+      "process"
+    ],
+    "question": "How are braces applied?",
+    "answer": "A retractor keeps your mouth open comfortably while the teeth are etched and rinsed. Special adhesive is applied to each tooth and brackets are placed, then cured with a light. Finally, wires are threaded through brackets, held by ligatures or self-ligating clips, and your orthodontist will explain brushing, flossing, foods to avoid, and how to care for your braces."
+  },
+  {
+    "intent": "spacers_needed",
+    "keywords": [
+      "spacers",
+      "space",
+      "molars",
+      "bands",
+      "before",
+      "braces",
+      "insert",
+      "week",
+      "appointment",
+      "orthodontist"
+    ],
+    "question": "Will spacers be needed?",
+    "answer": "About a week before braces, spacers may be inserted between back molars to create space for bands. If a spacer falls out before your appointment, notify your orthodontist so adjustments can be made before braces are placed."
+  },
+  {
+    "intent": "ceramic_braces",
+    "keywords": [
+      "What",
+      "are",
+      "ceramic",
+      "clear",
+      "braces",
+      "tooth",
+      "colored",
+      "adult",
+      "visible",
+      "option",
+      "brackets",
+      "aesthetic"
+    ],
+    "question": "What are ceramic braces?",
+    "answer": "Ceramic braces are tooth-colored brackets that make them less visible. They can be self-ligating or use conventional ties to hold wires. Not all orthodontic problems are suited for ceramic braces, and sometimes adults use a combination of ceramic and metal braces. Discuss options with your orthodontist to see if they are right for you."
+  },
+  {
+    "intent": "self_ligating_braces",
+    "keywords": [
+      "self",
+      "ligating",
+      "braces",
+      "clip",
+      "door",
+      "brackets",
+      "wire",
+      "hold",
+      "elastic",
+      "friction"
+    ],
+    "question": "My orthodontist talked about brackets that have doors on them. What does that mean?",
+    "answer": "Brackets with built-in clips are called self-ligating braces. The clip holds the wire in place, eliminating the need for elastic ligatures. This can reduce friction, improve comfort, and sometimes shorten treatment times."
+  },
+  {
+    "intent": "wire_connection",
+    "keywords": [
+      "wire",
+      "connect",
+      "braces",
+      "ligatures",
+      "elastic",
+      "rings",
+      "brackets",
+      "hold",
+      "thread",
+      "tension"
+    ],
+    "question": "How do the wires connect to the braces?",
+    "answer": "Wires are threaded through slots in brackets and held by ligatures, usually small elastic o-rings that come in many colors. The o-rings are replaced at each appointment to maintain proper tension and tooth movement."
+  },
+  {
+    "intent": "other_braces_types",
+    "keywords": [
+      "Are there",
+      "other",
+      "types",
+      "braces",
+      "options",
+      "steel",
+      "ceramic",
+      "brackets",
+      "orthodontist",
+      "choice",
+      "materials"
+    ],
+    "question": "Are there other kinds of braces?",
+    "answer": "Yes. In addition to clear ceramic braces, metal braces are available. Brackets can be made of stainless steel or ceramic, and orthodontists offer different options depending on treatment needs and aesthetic preferences."
+  },
+  {
+    "intent": "top_or_bottom_only",
+    "keywords": [
+      "top",
+      "bottom",
+      "only",
+      "braces",
+      "teeth",
+      "crooked",
+      "save",
+      "money",
+      "bite",
+      "alignment"
+    ],
+    "question": "My teeth on top aren’t that crooked. Can I just get braces on the bottom to save money?",
+    "answer": "This decision requires an in-person evaluation by an AAO orthodontist. Proper orthodontic treatment considers the bite as a whole, so both top and bottom teeth may need alignment to achieve a healthy, functional result."
+  },
+  {
+    "intent": "dental_laws_compliance",
+    "keywords": [
+      "laws",
+      "regulations",
+      "dental",
+      "state",
+      "legal",
+      "orthodontic",
+      "practice",
+      "board",
+      "compliance",
+      "rules"
+    ],
+    "question": "Does the treatment model comply with the dental laws in your state?",
+    "answer": "State dental boards set regulations for orthodontic practice. For specific laws and compliance details in your state, you can check your state dental board’s official website. This ensures that orthodontic treatment follows legal and safety standards."
+  },
+  {
+    "intent": "patient_rights_disputes",
+    "keywords": [
+      "injury",
+      "dispute",
+      "complaint",
+      "rights",
+      "patient",
+      "orthodontic",
+      "treatment",
+      "legal",
+      "board",
+      "process"
+    ],
+    "question": "If I am injured or have a dispute involving my orthodontic treatment, what rights do I have?",
+    "answer": "Each state has complaint processes via its dental board. If there’s an injury or dispute, you may pursue complaints, arbitration, or litigation according to state rules. Check your state dental board for procedures and your rights as a patient."
+  },
+  {
+    "intent": "tooth_pain",
+    "keywords": [
+      "tooth",
+      "pain",
+      "hurt",
+      "ache",
+      "teeth pain"
+    ],
+    "question": "I have tooth pain, what should I do?",
+    "answer": "Tooth pain can be caused by cavities, infections, or gum issues. Rinse your mouth with warm salt water and avoid very hot or cold foods. You can take over-the-counter pain relief if needed. However, it is important to visit a dentist as soon as possible to identify and treat the underlying cause."
+  },
+  {
+    "intent": "whiten_teeth",
+    "keywords": [
+      "whiten",
+      "yellow teeth",
+      "stains",
+      "clean teeth"
+    ],
+    "question": "How can I whiten my teeth?",
+    "answer": "Teeth whitening can be done through professional treatments or at-home methods like whitening toothpaste or strips. Avoid foods and drinks that stain teeth, such as coffee and tobacco. Maintaining good oral hygiene also helps. For best and safe results, consult your dentist for professional whitening options."
+  },
+  {
+    "intent": "bad_breath",
+    "keywords": [
+      "bad breath",
+      "smell",
+      "mouth odor",
+      "halitosis"
+    ],
+    "question": "Why does my breath smell bad?",
+    "answer": "Bad breath can be caused by poor oral hygiene, food particles, dry mouth, or gum disease. Brushing your teeth and tongue, flossing regularly, and staying hydrated can help. If the problem persists, you should visit a dentist to rule out underlying issues."
+  },
+  {
+    "intent": "bleeding_gums",
+    "keywords": [
+      "bleeding gums",
+      "gum bleed",
+      "blood brushing"
+    ],
+    "question": "Why are my gums bleeding when I brush?",
+    "answer": "Bleeding gums are often a sign of gum inflammation or gingivitis. This can happen due to plaque buildup or improper brushing technique. Maintain proper oral hygiene and use a soft-bristled toothbrush. If bleeding continues, consult your dentist for evaluation and treatment."
+  },
+  {
+    "intent": "sensitive_teeth",
+    "keywords": [
+      "sensitive",
+      "pain cold",
+      "pain hot",
+      "teeth sensitivity"
+    ],
+    "question": "Why are my teeth sensitive to hot and cold?",
+    "answer": "Tooth sensitivity occurs when the inner layer of the tooth becomes exposed. It can be caused by enamel wear, gum recession, or cavities. Using toothpaste for sensitive teeth and avoiding extreme temperatures can help. A dentist can identify the exact cause and suggest proper treatment."
+  },
+  {
+  "intent": "swollen_gums",
+  "keywords": [
+    "swollen gums",
+    "gum swelling",
+    "puffy gums",
+    "swollen"
+    ],
+    "question": "Why are my gums swollen?",
+    "answer": "Swollen gums are usually caused by plaque buildup, infection, or irritation. Poor oral hygiene is a common reason. Brushing, flossing, and dental cleaning can help reduce swelling. If it persists, visit a dentist."
+  },
+  {
+  "intent": "gum_pain",
+  "keywords": [
+    "gum pain",
+    "gums pain",
+    "pain in gums",
+    "sore gums",
+    "gums hurt"
+    ],
+    "question": "Why do my gums hurt?",
+    "answer": "Gum pain can occur due to infection, food stuck between teeth, injury, or aggressive brushing. Maintaining good oral hygiene and using a soft toothbrush can help. Persistent pain should be checked by a dentist."
+  },
+  {
+  "intent": "gum_infection",
+  "keywords": [
+    "gum infection",
+    "pus in gums",
+    "gum abscess",
+    "How do I know if I have a gum infection?"
+    ],
+    "question": "How do I know if I have a gum infection?",
+    "answer": "Signs of gum infection include swelling, redness, pain, pus discharge, and bad breath. In severe cases, it may cause difficulty chewing. You should seek dental treatment immediately."
+  },
+  {
+  "intent": "gum_recession",
+  "keywords": [
+    "receding gums",
+    "gums going back",
+    "tooth root visible",
+    "Why are my gums receding?"
+    ],
+    "question": "Why are my gums receding?",
+    "answer": "Gum recession can happen due to aggressive brushing, gum disease, or poor oral hygiene. It exposes the tooth root and can cause sensitivity. Early treatment can prevent further damage."
+  },
+  {
+  "intent": "gum_bleeding_floss",
+  "keywords": [
+    "bleeding floss",
+    "gums bleed when i floss",
+    "floss bleeding"
+    ],
+    "question": "Why do my gums bleed when I floss?",
+    "answer": "Bleeding while flossing is often due to gum inflammation or lack of regular flossing. With proper technique and daily flossing, the bleeding usually reduces. If it continues, consult a dentist."
+  },
+  {
+  "intent": "gum_care_tips",
+  "keywords": [
+    "gum care",
+    "healthy gums",
+    "care gums"
+    ],
+    "question": "How can I keep my gums healthy?",
+    "answer": "Brush twice daily, floss regularly, use a soft toothbrush, and avoid tobacco. Regular dental checkups and cleanings help maintain healthy gums."
+  },
+  {
+  "intent": "bad_breath_gums",
+  "keywords": [
+    "bad breath",
+    "smelly mouth",
+    "gum smell",
+    "Can gum problems cause bad breath?"
+    ],
+    "question": "Can gum problems cause bad breath?",
+    "answer": "Yes, gum infections and plaque buildup can cause bad breath. Bacteria in the gums produce unpleasant odors. Proper oral hygiene and dental care can fix this problem."
+  }
+]
