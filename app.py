@@ -1057,7 +1057,17 @@ def clinician_update_profile():
         logging.error(f"Error updating profile for clinician {clinician_id}: {e}")
         return jsonify({"error": "Failed to update profile"}), 500
 
-    return jsonify({"message": "Profile updated successfully"})
+    return jsonify({
+        "message": "Profile updated successfully",
+        "user": {
+            "user_id": clinician.clinician_id,
+            "name": clinician.name,
+            "email": clinician.email,
+            "role": "clinician",
+            "phone_number": clinician.phone_number,
+            "specialization": clinician.specialization
+        }
+    })
 
 
 # ---------------------------
@@ -1225,7 +1235,16 @@ def patient_update_profile():
         logging.error(f"Error updating profile for patient {patient_id}: {e}")
         return jsonify({"error": "Failed to update profile"}), 500
 
-    return jsonify({"message": "Profile updated successfully"})
+    return jsonify({
+        "message": "Profile updated successfully",
+        "user": {
+            "user_id": patient.patient_id,
+            "name": patient.name,
+            "email": patient.email,
+            "role": "patient",
+            "phone_number": patient.phone_number
+        }
+    })
 
 # ---------------------------
 # DELETE PATIENT ACCOUNT
@@ -3361,7 +3380,7 @@ def admin_profile_update():
             "name": admin.name,
             "email": admin.email,
             "role": "admin",
-            "phone": admin.phone_number
+            "phone_number": admin.phone_number
         }
     })
 
